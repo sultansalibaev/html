@@ -287,7 +287,8 @@
                 height: 100%;
                 display: flex;
                 align-items: center;
-                margin: 0 2px;
+                margin: 0 3px;
+                padding: 6px !important;
             }
     
             .pagination {
@@ -297,7 +298,7 @@
                 /*position: absolute;
                 right: 10px;
                 bottom: 10px;*/
-                font-size: 14px;
+                font-size: 13px;
                 height: 25px;
                 user-select: none;
             }
@@ -305,8 +306,15 @@
             .pagination>div>*,
             .pagination>*:not(.pagination > div) {
                 height: 100%;
-                padding: 5px 6px;
+                padding: 0 7px;
+                display: flex !important;
+                align-items: center !important;
                 cursor: pointer;
+                background: white;
+            }
+
+            .h-full {
+                height: 100%;
             }
     
             .pagination>*:first-child {
@@ -318,18 +326,19 @@
             }
     
             .pagination>div>* {
-                border-bottom: 2px solid transparent;
+                border-bottom: 1px solid transparent;
+
             }
     
             .pagination>div>*.selected,
             .pagination>div>*:hover {
-                border-bottom: 2px solid #3b5998;
+                border-bottom: 1px solid #3b5998;
                 color: #3b5998;
                 font-weight: 600;
             }
     
             .pagination>svg:hover {
-                background: rgba(60, 82, 223, 0.899);
+                background: #3b5998;
                 fill: white;
             }
     
@@ -540,7 +549,7 @@
                             d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z">
                         </path>
                     </svg>
-                    <div class="flex">
+                    <div class="flex h-full">
                         <span onclick="set_page('main', 1)" class="selected">1</span><span onclick="set_page('main', 2)">2</span><span
                             onclick="set_page('main', 3)">3</span><span onclick="set_page('main', 4)">4</span><span
                             onclick="set_page('main', 5)">5</span><span onclick="set_page('main', 6)">6</span><span
@@ -7530,7 +7539,7 @@
                         <path
                             d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
                     </svg>
-                    <div class="flex">
+                    <div class="flex h-full">
                         ${page_tags}
                     </div>
                     <svg onclick="plus_page('${tab_names[selected_tab_index]}')" xmlns="http://www.w3.org/2000/svg"
