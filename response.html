@@ -121,6 +121,12 @@
                 padding: 12px 15px;
                 border-radius: 4px;
                 box-shadow: 0 0 4px #7f7f7f;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            .mt-auto {
+                margin-top: auto;
             }
     
             .key-word {
@@ -294,7 +300,6 @@
                 font-size: 14px;
                 height: 25px;
                 user-select: none;
-                margin: 10px auto;
             }
     
             .pagination>div>*,
@@ -375,7 +380,7 @@
 
             .filter-search-arbitrary {
                 padding: 15px 7.5px 0;
-                width: 100%;
+                width: 50%;
             }
 
             .filter-search-arbitrary .input {
@@ -487,26 +492,6 @@
                     text-align: center;
                     margin-right: 10px;
                 ">Объект: <span style="white-space:nowrap">Седых Алексей Иванович</span></h2>
-                <div class="pagination">
-                    <svg onclick="minus_page('main')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                        <path
-                            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z">
-                        </path>
-                    </svg>
-                    <div class="flex">
-                        <span onclick="set_page('main', 1)" class="selected">1</span><span
-                            onclick="set_page('main', 2)">2</span><span onclick="set_page('main', 3)">3</span><span
-                            onclick="set_page('main', 4)">4</span><span onclick="set_page('main', 5)">5</span><span
-                            onclick="set_page('main', 6)">6</span><span onclick="set_page('main', 7)">7</span><span
-                            onclick="set_page('main', 8)">8</span><span onclick="set_page('main', 9)">9</span><span
-                            onclick="set_page('main', 10)">10</span>
-                    </div>
-                    <svg onclick="plus_page('main')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                        <path
-                            d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z">
-                        </path>
-                    </svg>
-                </div>
 
             </div>
             <div class=" tabs flex flex-wrap items-center" style="
@@ -539,13 +524,36 @@
             </div>
         </div>
         
-        <div class="filter-search-arbitrary" style="display: none;">
-            <label class="input">
-                <input type="text" placeholder="Введите название произвольного ключа" onclick="showListModal(event)" oninput="updateList(event)" />
-                <svg onclick="toggleListModal(event)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
-                <div class="arbitrary-keys" onclick="showListModal(event)">
+        <div class="flex items-center">
+            <div class="filter-search-arbitrary" style="display: none;">
+                <label class="input">
+                    <input type="text" placeholder="Введите название произвольного ключа" onclick="showListModal(event)" oninput="updateList(event)" />
+                    <svg onclick="toggleListModal(event)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+                    <div class="arbitrary-keys" onclick="showListModal(event)">
+                    </div>
+                </label>
+            </div>
+            <div style="padding: 15px 7.5px 0;margin:auto;">
+                <div class="pagination">
+                    <svg onclick="minus_page('main')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path
+                            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z">
+                        </path>
+                    </svg>
+                    <div class="flex">
+                        <span onclick="set_page('main', 1)" class="selected">1</span><span onclick="set_page('main', 2)">2</span><span
+                            onclick="set_page('main', 3)">3</span><span onclick="set_page('main', 4)">4</span><span
+                            onclick="set_page('main', 5)">5</span><span onclick="set_page('main', 6)">6</span><span
+                            onclick="set_page('main', 7)">7</span><span onclick="set_page('main', 8)">8</span><span
+                            onclick="set_page('main', 9)">9</span><span onclick="set_page('main', 10)">10</span>
+                    </div>
+                    <svg onclick="plus_page('main')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path
+                            d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z">
+                        </path>
+                    </svg>
                 </div>
-            </label>
+            </div>
         </div>
         
         <div class="content">
@@ -7487,11 +7495,13 @@
                                     <a target="_blank" href="${item?.link}" class="item-more">Источник <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a>
                                 </div>
                                 <div class="item-content">${item?.content}</div>
-                                <div class="item-param"><div class="query-content" title='${decodeURI(item?.keyword_list?.join(',  '))}'><span style="color:black">По запросу:</span> ${keyword_list}
-                                    <small class="prompt">Копировать при клике</small></div>
+                                <div class="mt-auto">
+                                    <div class="item-param"><div class="query-content" title='${decodeURI(item?.keyword_list?.join(',  '))}'><span style="color:black">По запросу:</span> ${keyword_list}
+                                        <small class="prompt">Копировать при клике</small></div>
+                                    </div>
+                                    <div class="item-param">Вес ссылки: <span class="param-text">${item?.link_weight}</span></div>
+                                    <div class="item-param">Фигурирует в списках: <span class="param-text">${item?.has_in_list}</span></div>
                                 </div>
-                                <div class="item-param">Вес ссылки: <span class="param-text">${item?.link_weight}</span></div>
-                                <div class="item-param">Фигурирует в списках: <span class="param-text">${item?.has_in_list}</span></div>
                             </div>
                         </div>
                     `;
