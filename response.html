@@ -693,6 +693,50 @@
             color: white;
             background: #9300FF;
         }
+        .filter-info {
+            position: absolute !important;
+            top: unset !important;
+            bottom: 38px !important;
+            right: 0 !important;
+            margin: 5px;
+            z-index: 15;
+            width: 18.5px !important;
+            height: 18.5px !important;
+        }
+        .filter-info svg {
+            width: 18.5px !important;
+            height: 18.5px !important;
+            fill: rgba(131, 131, 131, 0.58) !important;
+            transform: rotateX(0deg) !important;
+        }
+        .filter-info svg:hover {
+            fill: #838383 !important;
+        }
+        .filter-info .filter-info_prompt {
+            position: absolute;
+            bottom: calc(100% + 9px);
+            right: 0;
+            background: #838383;
+            color: white;
+            font-size: 11px;
+            white-space: nowrap;
+            padding: 3px 5px;
+            border-radius: 4px;
+            transition: .15s;
+        }
+        .filter-info_prompt::after {
+            content: "▶";
+            position: absolute;
+            top: calc(100% - 1.5px);
+            right: 8.5px;
+            color: #838383;
+            height: 9px;
+            transform: rotate(90deg);
+        }
+        .filter-info svg:not(.filter-info svg:hover) + .filter-info_prompt {
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -877,6 +921,16 @@
     </div>
 
     <script>
+        const isMobile = Boolean(navigator.userAgent.match(/Android/i)
+                || navigator.userAgent.match(/webOS/i)
+                || navigator.userAgent.match(/iPhone/i)
+                || navigator.userAgent.match(/iPad/i)
+                || navigator.userAgent.match(/iPod/i)
+                || navigator.userAgent.match(/BlackBerry/i)
+                || navigator.userAgent.match(/Windows Phone/i));
+
+        console.log('isMobile', isMobile, navigator.userAgent);
+
         let selected_tab_index = 1
         function $(str) {
             let elements = document?.querySelectorAll(str);
@@ -7747,6 +7801,12 @@
                     <span onclick="checkAll()">Выделить все</span>
                     <span onclick="uncheckAll()">Снять выделение</span>
                 </div>
+                ${isMobile ? '' : `
+                    <div class="filter-info">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+                        <div class="filter-info_prompt">Выделить только один<br/> через Ctrl + Click</div>
+                    </div>
+                `}
             `
         }
 
