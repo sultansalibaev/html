@@ -502,18 +502,18 @@
             border-radius: 5px;
         }
 
-        .arbitrary-keys::-webkit-scrollbar {
+        .arbitrary-keys > div:first-child::-webkit-scrollbar {
             width: 7px;
             height: 6px;
             margin-left: 2px;
         }
 
-        .arbitrary-keys::-webkit-scrollbar-track {
+        .arbitrary-keys > div:first-child::-webkit-scrollbar-track {
             margin-left: 2px;
             background-color: transparent;
         }
 
-        .arbitrary-keys::-webkit-scrollbar-thumb {
+        .arbitrary-keys > div:first-child::-webkit-scrollbar-thumb {
             /*background-color: #eaeaea;*/
             background-color: rgb(170, 227, 255);
             border-radius: 5px;
@@ -524,6 +524,14 @@
             top: 100%;
             left: 0;
             right: 0;
+            margin-top: 5px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 0 4px #7f7f7f;
+        }
+        
+        .arbitrary-keys > div:first-child {
+            border-radius: 4px;
             min-height: 50px;
             max-height: 270px;
             overflow-y: scroll;
@@ -531,10 +539,8 @@
             background: white;
             padding: 8px 10px;
             font-size: 14px;
-            border-radius: 4px;
-            margin-top: 5px;
+            position: relative;
             z-index: 5;
-            box-shadow: 0 0 4px #7f7f7f;
         }
 
         .arbitrary-keys:not(.arbitrary-keys.show) {
@@ -660,6 +666,32 @@
             .pagination .hovered-angle {
                 padding-bottom: 8px;
             }
+        }
+
+        .filter-btns {
+            background: white;
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid #ccc;
+            font-size: 15px;
+            display: flex;
+        }
+        .filter-btns span {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 38px;
+            cursor: pointer;
+            transition: .15s;
+            padding-bottom: 1px;
+        }
+        .filter-btns span:first-child {
+            border-right: 1px solid #ccc;
+        }
+        .filter-btns span:hover {
+            color: white;
+            background: #9300FF;
         }
     </style>
 </head>
@@ -7610,7 +7642,6 @@
         function showListModal(event) {
             event.stopPropagation()
             if (event.pointerType == '') return;
-            console.log('showListModal', event.target.tagName, event);
             if (!$('.arbitrary-keys').hasClass('show')) {
                 $('.arbitrary-keys').addClass('show')
                 $('.filter-search-arbitrary .input').addClass('selected')
@@ -7650,19 +7681,34 @@
             'полиция': true,
         }
 
+        function filter() {
+            updateList({ target: { value: '' } })
+            render_items()
+            $('.filter-search-arbitrary .input > input').focus()
+        }
+
+        function uncheckAll() {
+            Object.keys(arbitrary_keys).forEach(arbitrary_key => {
+                arbitrary_keys[arbitrary_key] = false;
+            });
+            filter()
+        }
+
+        function checkAll() {
+            Object.keys(arbitrary_keys).forEach(arbitrary_key => {
+                arbitrary_keys[arbitrary_key] = true;
+            });
+            filter()
+        }
+
         function toggleArbitraryKey(event, key_name) {
-            console.log('event.ctrlKey', event);
             if (event.ctrlKey) {
                 Object.keys(arbitrary_keys).forEach(arbitrary_key => {
                     arbitrary_keys[arbitrary_key] = false;
                 });
             }
             arbitrary_keys[key_name] = !arbitrary_keys[key_name]
-            updateList({ target: { value: '' } })
-            setTimeout(() => {
-                render_items()
-                $('.filter-search-arbitrary .input > input').focus()
-            }, 100);
+            filter()
         }
 
         String.prototype.lowerIncludes = function (string) {
@@ -7696,7 +7742,12 @@
                         `;
             });
 
-            $('.filter-search-arbitrary .arbitrary-keys').innerHTML = arbitrary_keys_tags
+            $('.filter-search-arbitrary .arbitrary-keys').innerHTML = `<div>` + arbitrary_keys_tags + `</div>
+                <div class="filter-btns">
+                    <span onclick="checkAll()">Выделить все</span>
+                    <span onclick="uncheckAll()">Снять выделение</span>
+                </div>
+            `
         }
 
         let temp_pagination_count = 1;
@@ -7751,7 +7802,7 @@
                                         <small class="prompt">Копировать при клике</small></div>
                                     </div>
                                     <div class="item-param">Вес ссылки: <span class="param-text">${item?.link_weight}</span></div>
-                                    <div class="item-param">Фигурирует в списках: <span class="param-text">${item?.has_in_list}</span></div>
+                                    <!-- <div class="item-param">Фигурирует в списках: <span class="param-text">${item?.has_in_list}</span></div> -->
                                 </div>
                             </div>
                         </div>
