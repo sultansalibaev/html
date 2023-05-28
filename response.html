@@ -749,11 +749,11 @@
         <div class=" tabs flex flex-wrap items-center">
             <div class="tab-1 selected" onclick="select_tab(1)">
                 Главное
-                <span class="tab-count">14</span>
+                <span class="tab-count">0</span>
             </div>
             <div class="tab-2" onclick="select_tab(2)">
                 Произвольные
-                <span class="tab-count">407</span>
+                <span class="tab-count">0</span>
             </div>
             <div class="tab-3" onclick="select_tab(3)">
                 Негатив
@@ -7624,6 +7624,10 @@
             connections: 5,
             all_materials: 6,
         }
+
+        Object.entries(tab_indexes).forEach(([tab_name, tab_index]) => {
+            $(`.tab-${tab_index} .tab-count`).innerHTML = items[tab_name]?.length
+        });
         const tab_names = {
             1: 'main',
             2: 'arbitrary',
