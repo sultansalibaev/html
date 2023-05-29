@@ -951,36 +951,8 @@
         Object.prototype.removeClass = function (className) {
             this?.classList?.remove(className)
         }
-        function select_tab(new_tab_index) {
-            if (selected_tab_index == new_tab_index) return
 
-            $(`.tab-${new_tab_index}`)?.addClass('selected')
-            $(`.tab-content-${new_tab_index}`)?.addClass('selected')
-
-            $(`.tab-${selected_tab_index}`)?.removeClass('selected')
-            $(`.tab-content-${selected_tab_index}`)?.removeClass('selected')
-
-            selected_tab_index = new_tab_index
-            render_items()
-            let tab_name = tab_names[selected_tab_index];
-
-            if (tab_name == 'arbitrary') {
-
-                updateList({target:{value:''}})
-                $(`.filter-search-arbitrary`).style.display = 'block';
-            }
-            else {
-                $(`.filter-search-arbitrary`).style.display = 'none';
-            }
-        }
-        function copy(that) {
-            var inp = document.createElement('input');
-            document.body.appendChild(inp)
-            inp.value = that.textContent
-            inp.select();
-            document.execCommand('copy', false);
-            inp.remove();
-        }
+        let filterable_tabs = [2,3,4,5]
         const items = {
             main: [
 
@@ -7616,6 +7588,48 @@
             ],
         }
 
+        const tab_names = {
+            1: 'main',
+            2: 'arbitrary',
+            3: 'negative',
+            4: 'reputation',
+            5: 'connections',
+            6: 'all_materials',
+        }
+
+        function isFilterableTab() {
+            return filterable_tabs.find(filterable_tab => filterable_tab == selected_tab_index) != undefined
+        }
+        function select_tab(new_tab_index) {
+            if (selected_tab_index == new_tab_index) return
+
+            $(`.tab-${new_tab_index}`)?.addClass('selected')
+            $(`.tab-content-${new_tab_index}`)?.addClass('selected')
+
+            $(`.tab-${selected_tab_index}`)?.removeClass('selected')
+            $(`.tab-content-${selected_tab_index}`)?.removeClass('selected')
+
+            selected_tab_index = new_tab_index
+            render_items()
+            let tab_name = tab_names[selected_tab_index];
+
+            if (isFilterableTab() && items[tab_names[selected_tab_index]]?.length > 0) {
+
+                updateList({ target: { value: '' } })
+                $(`.filter-search-arbitrary`).style.display = 'block';
+            }
+            else {
+                $(`.filter-search-arbitrary`).style.display = 'none';
+            }
+        }
+        function copy(that) {
+            var inp = document.createElement('input');
+            document.body.appendChild(inp)
+            inp.value = that.textContent
+            inp.select();
+            document.execCommand('copy', false);
+            inp.remove();
+        }
         const tab_indexes = {
             main: 1,
             arbitrary: 2,
@@ -7628,14 +7642,6 @@
         Object.entries(tab_indexes).forEach(([tab_name, tab_index]) => {
             $(`.tab-${tab_index} .tab-count`).innerHTML = items[tab_name]?.length
         });
-        const tab_names = {
-            1: 'main',
-            2: 'arbitrary',
-            3: 'negative',
-            4: 'reputation',
-            5: 'connections',
-            6: 'all_materials',
-        }
         const tab_pages = {
             main: {
                 count: 0,
@@ -7732,11 +7738,31 @@
             }
         }
 
-        let arbitrary_keys = {
-            'детектив': true,
-            'майор': true,
-            'россия': true,
-            'полиция': true,
+        let filters = {
+            2: {
+                'детектив': true,
+                'майор': true,
+                'россия': true,
+                'полиция': true,
+            },
+            3: {
+                'детектив': true,
+                'майор': true,
+                'россия': true,
+                'полиция': true,
+            },
+            4: {
+                'детектив': true,
+                'майор': true,
+                'россия': true,
+                'полиция': true,
+            },
+            5: {
+                'детектив': true,
+                'майор': true,
+                'россия': true,
+                'полиция': true,
+            },
         }
 
         function filter() {
@@ -7746,26 +7772,26 @@
         }
 
         function uncheckAll() {
-            Object.keys(arbitrary_keys).forEach(arbitrary_key => {
-                arbitrary_keys[arbitrary_key] = false;
+            Object.keys(filters[selected_tab_index]).forEach(arbitrary_key => {
+                filters[selected_tab_index][arbitrary_key] = false;
             });
             filter()
         }
 
         function checkAll() {
-            Object.keys(arbitrary_keys).forEach(arbitrary_key => {
-                arbitrary_keys[arbitrary_key] = true;
+            Object.keys(filters[selected_tab_index]).forEach(arbitrary_key => {
+                filters[selected_tab_index][arbitrary_key] = true;
             });
             filter()
         }
 
         function toggleArbitraryKey(event, key_name) {
             if (event.ctrlKey) {
-                Object.keys(arbitrary_keys).forEach(arbitrary_key => {
-                    arbitrary_keys[arbitrary_key] = false;
+                Object.keys(filters[selected_tab_index]).forEach(arbitrary_key => {
+                    filters[selected_tab_index][arbitrary_key] = false;
                 });
             }
-            arbitrary_keys[key_name] = !arbitrary_keys[key_name]
+            filters[selected_tab_index][key_name] = !filters[selected_tab_index][key_name]
             filter()
         }
 
@@ -7775,9 +7801,9 @@
 
         function updateList(event) {
 
-            let arbitrary_keys_tags = ``
+            let filter_keys_tags = ``
 
-            let temp_keys = Object.keys(arbitrary_keys).filter(key_name => key_name?.lowerIncludes(event.target.value));
+            let temp_keys = Object.keys(filters[selected_tab_index]).filter(key_name => key_name?.lowerIncludes(event.target.value));
 
             temp_keys.sort((a, b) => {
                 if (a?.lowerIncludes(event.target.value) == false && b?.lowerIncludes(event.target.value) == false) {
@@ -7792,15 +7818,15 @@
             });
 
             temp_keys.forEach(arbitrary_key => {
-                arbitrary_keys_tags += `
+                filter_keys_tags += `
                             <label class="arbitrary-key">
-                                <input type="checkbox" onclick="toggleArbitraryKey(event, '${arbitrary_key}')" ${arbitrary_keys[arbitrary_key] ? 'checked' : 'unchecked'}/>
+                                <input type="checkbox" onclick="toggleArbitraryKey(event, '${arbitrary_key}')" ${filters[selected_tab_index][arbitrary_key] ? 'checked' : 'unchecked'}/>
                                 <span title="${arbitrary_key}">${arbitrary_key}</span>
                             </label>
                         `;
             });
 
-            $('.filter-search-arbitrary .arbitrary-keys').innerHTML = `<div>` + arbitrary_keys_tags + `</div>
+            $('.filter-search-arbitrary .arbitrary-keys').innerHTML = `<div>` + filter_keys_tags + `</div>
                 <div class="filter-btns">
                     <span onclick="checkAll()">Выделить все</span>
                     <span onclick="uncheckAll()">Снять выделение</span>
@@ -7822,8 +7848,8 @@
 
             let temp_items = [...items[tab_name]];
 
-            if (tab_name == 'arbitrary') {
-                temp_items = temp_items.filter(item => (item.keyword_list.find(keyword => arbitrary_keys[keyword])))
+            if (isFilterableTab()) {
+                temp_items = temp_items.filter(item => (item.keyword_list.find(keyword => filters[selected_tab_index][keyword])))
                 $('.tab-2 .tab-count').innerHTML = temp_items.length;
             }
 
@@ -7835,9 +7861,9 @@
                 temp_items.slice((tab_pages[tab_name].page - 1) * range, tab_pages[tab_name].page * range)
             ));
 
-            if (tab_name == 'arbitrary') {
+            if (isFilterableTab()) {
                 sliced_items.forEach(sliced_item => {
-                    sliced_item.keyword_list = sliced_item.keyword_list.filter(keyword => arbitrary_keys[keyword])
+                    sliced_item.keyword_list = sliced_item.keyword_list.filter(keyword => filters[selected_tab_index][keyword])
                 });
             }
 
