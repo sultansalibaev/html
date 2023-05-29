@@ -7850,7 +7850,7 @@
 
             if (isFilterableTab()) {
                 temp_items = temp_items.filter(item => (item.keyword_list.find(keyword => filters[selected_tab_index][keyword])))
-                $('.tab-2 .tab-count').innerHTML = temp_items.length;
+                $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
             }
 
             temp_pagination_count = Math.ceil(temp_items?.length / range) || 1;
