@@ -244,7 +244,6 @@
             -webkit-box-orient: vertical;
             text-align: justify;
             color: white;
-            cursor: pointer;
         }
 
         .query {
@@ -7792,7 +7791,9 @@
                 });
             }
             filters[selected_tab_index][key_name] = !filters[selected_tab_index][key_name]
-            filter()
+
+            render_items()
+            $('.filter-search-arbitrary .input > input').focus()
         }
 
         String.prototype.lowerIncludes = function (string) {
