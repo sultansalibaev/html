@@ -501,18 +501,18 @@
             border-radius: 5px;
         }
 
-        .arbitrary-keys > div:first-child::-webkit-scrollbar {
+        .arbitrary-keys>div:first-child::-webkit-scrollbar {
             width: 7px;
             height: 6px;
             margin-left: 2px;
         }
 
-        .arbitrary-keys > div:first-child::-webkit-scrollbar-track {
+        .arbitrary-keys>div:first-child::-webkit-scrollbar-track {
             margin-left: 2px;
             background-color: transparent;
         }
 
-        .arbitrary-keys > div:first-child::-webkit-scrollbar-thumb {
+        .arbitrary-keys>div:first-child::-webkit-scrollbar-thumb {
             /*background-color: #eaeaea;*/
             background-color: rgb(170, 227, 255);
             border-radius: 5px;
@@ -528,8 +528,8 @@
             overflow: hidden;
             box-shadow: 0 0 4px #7f7f7f;
         }
-        
-        .arbitrary-keys > div:first-child {
+
+        .arbitrary-keys>div:first-child {
             border-radius: 4px;
             min-height: 50px;
             max-height: 270px;
@@ -675,6 +675,7 @@
             font-size: 15px;
             display: flex;
         }
+
         .filter-btns span {
             width: 100%;
             display: flex;
@@ -685,13 +686,16 @@
             transition: .15s;
             padding-bottom: 1px;
         }
+
         .filter-btns span:first-child {
             border-right: 1px solid #ccc;
         }
+
         .filter-btns span:hover {
             color: white;
             background: #9300FF;
         }
+
         .filter-info {
             position: absolute !important;
             top: unset !important;
@@ -702,15 +706,18 @@
             width: 18.5px !important;
             height: 18.5px !important;
         }
+
         .filter-info svg {
             width: 18.5px !important;
             height: 18.5px !important;
             fill: rgba(131, 131, 131, 0.58) !important;
             transform: rotateX(0deg) !important;
         }
+
         .filter-info svg:hover {
             fill: #838383 !important;
         }
+
         .filter-info .filter-info_prompt {
             position: absolute;
             bottom: calc(100% + 9px);
@@ -723,6 +730,7 @@
             border-radius: 4px;
             transition: .15s;
         }
+
         .filter-info_prompt::after {
             content: "▶";
             position: absolute;
@@ -732,9 +740,204 @@
             height: 9px;
             transform: rotate(90deg);
         }
-        .filter-info svg:not(.filter-info svg:hover) + .filter-info_prompt {
+
+        .filter-info svg:not(.filter-info svg:hover)+.filter-info_prompt {
             opacity: 0;
             pointer-events: none;
+        }
+
+        .similars-range {
+            max-width: 300px;
+            width: 100%;
+            /*max-height: 25px;*/
+            position: relative;
+            
+            padding: 15px 7.5px 0;
+        }
+
+        .similars-range input {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Range */
+
+        [slider] {
+            position: relative;
+            height: 9px;
+            border-radius: 10px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        [slider]>div {
+            position: absolute;
+            left: 13px;
+            right: 15px;
+            height: 9px;
+        }
+
+        [slider]>div>[inverse-left] {
+            position: absolute;
+            left: 0;
+            height: 9px;
+            border-radius: 10px;
+            background-color: #CCC;
+            margin: 0 7px;
+        }
+
+        [slider]>div>[inverse-right] {
+            position: absolute;
+            right: 0;
+            height: 9px;
+            border-radius: 10px;
+            background-color: #CCC;
+            margin: 0 7px;
+        }
+
+        [slider]>div>[range] {
+            position: absolute;
+            left: 0;
+            height: 9px;
+            border-radius: 14px;
+            background-color: #1ABC9C;
+        }
+
+        [slider]>div>[thumb] {
+            position: absolute;
+            top: -4px;
+            z-index: 2;
+            height: 18px;
+            width: 18px;
+            text-align: left;
+            margin-left: -7px;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            background-color: #FFF;
+            border-radius: 50%;
+            outline: none;
+        }
+
+        [slider]>input[type=range] {
+            position: absolute;
+            pointer-events: none;
+            -webkit-appearance: none;
+            z-index: 3;
+            height: 9px;
+            top: -2px;
+            width: 100%;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+            -moz-opacity: 0;
+            -khtml-opacity: 0;
+            opacity: 0;
+        }
+
+        div[slider]>input[type=range]::-ms-track {
+            -webkit-appearance: none;
+            background: transparent;
+            color: transparent;
+        }
+
+        div[slider]>input[type=range]::-moz-range-track {
+            -moz-appearance: none;
+            background: transparent;
+            color: transparent;
+        }
+
+        div[slider]>input[type=range]:focus::-webkit-slider-runnable-track {
+            background: transparent;
+            border: transparent;
+        }
+
+        div[slider]>input[type=range]:focus {
+            outline: none;
+        }
+
+        div[slider]>input[type=range]::-ms-thumb {
+            pointer-events: all;
+            width: 28px;
+            height: 28px;
+            border-radius: 0px;
+            border: 0 none;
+            background: red;
+        }
+
+        div[slider]>input[type=range]::-moz-range-thumb {
+            pointer-events: all;
+            width: 28px;
+            height: 28px;
+            border-radius: 0px;
+            border: 0 none;
+            background: red;
+        }
+
+        div[slider]>input[type=range]::-webkit-slider-thumb {
+            pointer-events: all;
+            width: 28px;
+            height: 28px;
+            border-radius: 0px;
+            border: 0 none;
+            background: red;
+            -webkit-appearance: none;
+        }
+
+        div[slider]>input[type=range]::-ms-fill-lower {
+            background: transparent;
+            border: 0 none;
+        }
+
+        div[slider]>input[type=range]::-ms-fill-upper {
+            background: transparent;
+            border: 0 none;
+        }
+
+        div[slider]>input[type=range]::-ms-tooltip {
+            display: none;
+        }
+
+        [slider]>div>[sign] {
+            font-size: 15px;
+            opacity: 0;
+            position: absolute;
+            margin-left: -11px;
+            top: -2.4375em;
+            z-index: 3;
+            background-color: #1ABC9C;
+            color: #fff;
+            width: 1.75em;
+            height: 1.75em;
+            border-radius: 1.75em;
+            -webkit-border-radius: 1.75em;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        [slider]>div>[sign]:after {
+            position: absolute;
+            content: '';
+            left: 0;
+            border-radius: 1em;
+            top: calc(1.1875em + 1px);
+            border-left: 0.875em solid transparent;
+            border-right: 0.875em solid transparent;
+            border-top-width: 1em;
+            border-top-style: solid;
+            border-top-color: #1ABC9C;
+        }
+
+        [slider]>div>[sign]>span {
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 28px;
+        }
+
+        [slider]:hover>div>[sign] {
+            opacity: 1;
         }
     </style>
 </head>
@@ -774,9 +977,30 @@
     </div>
 
     <div class="flex items-center wrap-reverse-container">
+        <div class="similars-range">
+            <div slider id="slider-distance">
+                <div>
+                    <div inverse-left style="width:100%;"></div>
+                    <div inverse-right style="width:100%;"></div>
+                    <div range style="left:0%;right:0%;"></div>
+                    <span thumb style="left:0%;"></span>
+                    <span thumb style="left:100%;"></span>
+                    <div sign style="left:0%;">
+                        <span id="value">0</span>
+                    </div>
+                    <div sign style="left:100%;">
+                        <span id="value">100</span>
+                    </div>
+                </div>
+                <input id="startRangeValue" type="range" tabindex="0" value="0" max="100" min="0" step="1" onchange="update_startRangeValue(+event.target.value)" oninput="startRange(event)" />
+
+                <input id="endRangeValue" type="range" tabindex="0" value="100" max="100" min="0" step="1" onchange="update_endRangeValue(+event.target.value)" oninput="endRange(event)" />
+            </div>
+        </div>
         <div class="filter-search-arbitrary" style="display: none;">
             <label class="input">
-                <input type="text" placeholder="Введите название произвольного ключа" onclick="showListModal(event)"
+                <!-- Введите название произвольного ключа -->
+                <input type="text" placeholder="Введите название ключа" onclick="showListModal(event)"
                     oninput="updateList(event)" />
                 <svg onclick="toggleListModal(event)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path
@@ -920,13 +1144,46 @@
     </div>
 
     <script>
+        let startRangeValue = 0;
+        let endRangeValue = 0;
+
+        function update_startRangeValue(value) {
+            startRangeValue = value;
+            render_items()
+        }
+        function update_endRangeValue(value) {
+            endRangeValue = value;
+            render_items()
+        }
+
+        const startRange = (event) => {
+            let $this = event?.target;
+            $this.value = Math.min($this.value, $this.parentNode.childNodes[5].value - 1);
+            var value = (100 / (parseInt($this.max) - parseInt($this.min))) * parseInt($this.value) - (100 / (parseInt($this.max) - parseInt($this.min))) * parseInt($this.min);
+            var children = $this.parentNode.childNodes[1].childNodes;
+            children[1].style.width = value + '%';
+            children[5].style.left = value + '%';
+            children[7].style.left = value + '%'; children[11].style.left = value + '%';
+            children[11].childNodes[1].innerHTML = $this.value;
+        }
+        const endRange = (event) => {
+            let $this = event?.target;
+            $this.value = Math.max($this.value, $this.parentNode.childNodes[3].value);
+            var value = (100 / (parseInt($this.max) - parseInt($this.min))) * parseInt($this.value) - (100 / (parseInt($this.max) - parseInt($this.min))) * parseInt($this.min);
+            var children = $this.parentNode.childNodes[1].childNodes;
+            children[3].style.width = (100 - value) + '%';
+            children[5].style.right = (100 - value) + '%';
+            children[9].style.left = value + '%'; children[13].style.left = value + '%';
+            children[13].childNodes[1].innerHTML = $this.value;
+        }
+
         const isMobile = Boolean(navigator.userAgent.match(/Android/i)
-                || navigator.userAgent.match(/webOS/i)
-                || navigator.userAgent.match(/iPhone/i)
-                || navigator.userAgent.match(/iPad/i)
-                || navigator.userAgent.match(/iPod/i)
-                || navigator.userAgent.match(/BlackBerry/i)
-                || navigator.userAgent.match(/Windows Phone/i));
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i));
 
         console.log('isMobile', isMobile, navigator.userAgent);
 
@@ -951,7 +1208,7 @@
             this?.classList?.remove(className)
         }
 
-        let filterable_tabs = [2,3,4,5]
+        let filterable_tabs = [2, 3, 4, 5]
         const items = {
             main: [
 
@@ -7587,6 +7844,21 @@
             ],
         }
 
+        endRangeValue = []
+        items.main.forEach(item => {
+            endRangeValue.push(+item.link_weight)
+        });
+        startRangeValue = endRangeValue.length ? Math.min(...endRangeValue) : 0
+        endRangeValue = endRangeValue.length ? Math.max(...endRangeValue) : 0
+
+        let endRangeElement = $('#endRangeValue');
+        let startRangeElement = $('#startRangeValue');
+        startRangeElement.min = endRangeElement.min = startRangeElement.value = startRangeValue;
+        startRangeElement.max = endRangeElement.max = endRangeElement.value = endRangeValue;
+        startRange({ target: startRangeElement })
+        endRange({ target: endRangeElement })
+
+
         const tab_names = {
             1: 'main',
             2: 'arbitrary',
@@ -7620,6 +7892,7 @@
             else {
                 $(`.filter-search-arbitrary`).style.display = 'none';
             }
+            $(`.similars-range`).style.display = new_tab_index == 1 ? 'block' : 'none';
         }
         function copy(that) {
             var inp = document.createElement('input');
@@ -7853,6 +8126,10 @@
                 temp_items = temp_items.filter(item => (item.keyword_list.find(keyword => filters[selected_tab_index][keyword])))
                 $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
             }
+            else if (tab_name == 'main') {
+                temp_items = temp_items.filter(item => (+item.link_weight >= startRangeValue && +item.link_weight <= endRangeValue))
+                $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
+            }
 
             temp_pagination_count = Math.ceil(temp_items?.length / range) || 1;
 
@@ -7880,6 +8157,9 @@
                             </span>`
                 })
 
+                // Вес ссылки
+                // Похожие
+
                 result += `
                         <div class="item-container">
                             <div class="item">
@@ -7892,7 +8172,7 @@
                                     <div class="item-param"><div class="query-content" title='${decodeURI(item?.keyword_list?.join(',  '))}'><span style="color:black">По запросу:</span> ${keyword_list}
                                         <small class="prompt">Копировать при клике</small></div>
                                     </div>
-                                    <div class="item-param">Вес ссылки: <span class="param-text">${item?.link_weight}</span></div>
+                                    <div class="item-param">Дубликаты: <span class="param-text">${item?.link_weight}</span></div>
                                     <!-- <div class="item-param">Фигурирует в списках: <span class="param-text">${item?.has_in_list}</span></div> -->
                                 </div>
                             </div>
