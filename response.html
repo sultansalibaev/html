@@ -185,8 +185,8 @@
 
         .item-content {
             font-size: 13px;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            margin-top: 6px;
+            margin-bottom: 0px;
 
             text-align: justify;
             max-height: 80px;
@@ -232,6 +232,22 @@
             /*white-space: nowrap;*/
             font-weight: 600;
             position: relative;
+        }
+        .item-info > a + span,
+        .item-info > a {
+            white-space: nowrap;
+            padding-top:4px;
+        }
+        @media (max-width: 425px) {
+            .item-info {
+                flex-wrap: wrap-reverse;
+            }
+            .item-keywords {
+                margin-bottom: 3px;
+            }
+            .item-info > a + span {
+                margin-left: auto !important;
+            }
         }
 
         .query-content {
@@ -430,7 +446,7 @@
             .item-content {
                 font-size: 11px;
                 margin-top: 5px;
-                margin-bottom: 8px;
+                margin-bottom: 3px;
                 line-height: 17px;
             }
 
@@ -751,13 +767,15 @@
             width: 100%;
             /*max-height: 25px;*/
             position: relative;
-            
+
             margin: 15px 7.5px 0;
             padding-top: 11.5px;
             height: 25px;
             background: white;
             border-radius: 4px;
-            box-shadow: 0 0 5px rgba(0,0,0,.15);
+            box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
 
         .similars-range input {
@@ -944,6 +962,12 @@
         [slider]:hover>div>[sign] {
             opacity: 1;
         }
+
+        .clone {
+            width: 16px;
+            height: 16px;
+            fill: #4169e1;
+        }
     </style>
 </head>
 
@@ -981,8 +1005,13 @@
         </div>
     </div>
 
-    <div class="flex items-center wrap-reverse-container">
-        <div class="similars-range">
+    <div class="flex items-center wrap-reverse-container" style="padding: 0 10px;">
+        <div class="similars-range" style="padding-left: 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="clone" style="position:absolute;left:5px;top:4px;"
+                viewBox="0 0 512 512">
+                <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM184 296c0 13.3 10.7 24 24 24s24-10.7 24-24V232h64c13.3 0 24-10.7 24-24s-10.7-24-24-24H232V120c0-13.3-10.7-24-24-24s-24 10.7-24 24v64H120c-13.3 0-24 10.7-24 24s10.7 24 24 24h64v64z" />
+            </svg>
             <div slider id="slider-distance">
                 <div>
                     <div inverse-left style="width:100%;"></div>
@@ -997,9 +1026,11 @@
                         <span id="value">100</span>
                     </div>
                 </div>
-                <input id="startRangeValue" type="range" tabindex="0" value="0" max="100" min="0" step="1" onchange="update_startRangeValue(+event.target.value)" oninput="startRange(event)" />
+                <input id="startRangeValue" type="range" tabindex="0" value="0" max="100" min="0" step="1"
+                    onchange="update_startRangeValue(+event.target.value)" oninput="startRange(event)" />
 
-                <input id="endRangeValue" type="range" tabindex="0" value="100" max="100" min="0" step="1" onchange="update_endRangeValue(+event.target.value)" oninput="endRange(event)" />
+                <input id="endRangeValue" type="range" tabindex="0" value="100" max="100" min="0" step="1"
+                    onchange="update_endRangeValue(+event.target.value)" oninput="endRange(event)" />
             </div>
         </div>
         <div class="filter-search-arbitrary" style="display: none;">
@@ -1216,13 +1247,12 @@
         let filterable_tabs = [2, 3, 4, 5]
         const items = {
             main: [
-
                 {
                     title: `История Олимпийских игр - Результат из Google Книги`,
-                    link: `https://books.google.ru`,
+                    link: `https://books.gjflskdjgfkdjgklsfdjgkldgoogle.ru`,
                     content: `... к охране были привлечены армейские подразделения и <span class="key-word">полиция</span>. ... Весь пьедестал почета заняли советские метатели молота Юрий <span class="key-word">Седых</span>, <span class="key-word">Алексей</span> Спиридонов и...`,
                     link_weight: `16`,
-                    keyword_list: ['полиция', 'россия', 'детектив'],
+                    keyword_list: ['полиция', 'россия', 'детектив', 'полиция', 'россия', 'детектив', 'полиция', 'россия', 'детектив', 'полиция', 'россия', 'детектив'],
                 },
 
                 {
@@ -8077,6 +8107,10 @@
         String.prototype.lowerIncludes = function (string) {
             return this.toLowerCase().includes(string.toLowerCase())
         }
+        String.prototype.maxLength = function (max_length) {
+            if (this?.length > max_length) return this.slice(0,max_length) + '...';
+            else return this;
+        }
 
         function updateList(event) {
 
@@ -8120,6 +8154,12 @@
         }
 
         let temp_pagination_count = 1;
+
+        function get_domain_name(url) {
+            let a = document.createElement('a')
+            a.href = url;
+            return a.hostname;
+        }
 
         function render_items() {
             let result = ``;
@@ -8173,12 +8213,26 @@
                                     <!-- <a target="_blank" href="${item?.link}" class="item-more">Источник <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a> -->
                                 </div>
                                 <div class="item-content">${item?.content}</div>
-                                <div class="mt-auto">
-                                    <div class="item-param"><div class="query-content" title='${decodeURI(item?.keyword_list?.join(',  '))}'><span style="color:black">По запросу:</span> ${keyword_list}
-                                        <small class="prompt">Копировать при клике</small></div>
+                                <div class="item-info" style="display:flex;align-items:center;margin-top:5px;font-size:12px;">
+                                    <a href="${item?.link}" style="color: #4d4dff;" title="${get_domain_name(item?.link)}">${get_domain_name(item?.link).maxLength(20)}</a>
+                                    
+                                    <span style="margin: 0 .8em;white-space:nowrap;display:flex;align-items:center;cursor:default;" title="Вес ссылки: найдено ${item?.link_weight} раз">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="clone" style="max-width:12px;min-width:12px;"
+                                            viewBox="0 0 512 512">
+                                            <path
+                                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM184 296c0 13.3 10.7 24 24 24s24-10.7 24-24V232h64c13.3 0 24-10.7 24-24s-10.7-24-24-24H232V120c0-13.3-10.7-24-24-24s-24 10.7-24 24v64H120c-13.3 0-24 10.7-24 24s10.7 24 24 24h64v64z" />
+                                        </svg>
+                                        <span style="margin-left:5px;font-size:12px;">${item?.link_weight}</span>
+                                    </span>
+                                    
+                                    <div class="mt-auto item-keywords">
+                                        <div class="item-param"><div class="query-content" title='${decodeURI(item?.keyword_list?.join(',  '))}'><span style="color:black">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:12px;fill:#9300FF;margin-bottom: -2.1px;"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg> </span>${keyword_list}
+                                            <small class="prompt">Копировать при клике</small></div>
+                                        </div>
+                                        <!-- <div class="item-param">Дубликаты: <span class="param-text">${item?.link_weight}</span></div> -->
+                                        <!-- <div class="item-param">Фигурирует в списках: <span class="param-text">${item?.has_in_list}</span></div> -->
                                     </div>
-                                    <div class="item-param">Дубликаты: <span class="param-text">${item?.link_weight}</span></div>
-                                    <!-- <div class="item-param">Фигурирует в списках: <span class="param-text">${item?.has_in_list}</span></div> -->
                                 </div>
                             </div>
                         </div>
