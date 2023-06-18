@@ -8932,7 +8932,7 @@
             if (event.ctrlKey) {
                 Object.keys(filters[selected_tab_index]).forEach(arbitrary_key => {
                     filters[selected_tab_index][arbitrary_key] = false;
-                    $(`.keyword-id-${decode_filter_classes[selected_tab_index][makeSafeForCSS(arbitrary_key)]} input`).checked = false;
+                    $(`.keyword-id-${makeSafeForCSS(arbitrary_key)} input`).checked = false;
                 });
             }
             let decode_base_64 = decode_filter_classes[selected_tab_index][key_name];
