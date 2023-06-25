@@ -999,7 +999,11 @@
                 Связи
                 <span class="tab-count">0</span>
             </div>
-            <div class="tab-6" onclick="select_tab(6)">Все
+            <div class="tab-6" onclick="select_tab(6)">
+                Соц.сети
+                <span class="tab-count">0</span>
+            </div>
+            <div class="tab-7" onclick="select_tab(7)">Все
                 материалы
                 <span class="tab-count">407</span>
             </div>
@@ -1139,6 +1143,14 @@
                 </svg>Нет найденных результатов!
             </div>
         </div>
+        <div class="tab-content-7">
+            <div class="empty-list">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path
+                        d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+                </svg>Нет найденных результатов!
+            </div>
+        </div>
     </div>
 
     <div class="flex" onclick="closeModal(event)">
@@ -1245,7 +1257,7 @@
             this?.classList?.remove(className)
         }
 
-        let filterable_tabs = [2, 3, 4, 5]
+        let filterable_tabs = [2, 3, 4, 5, 6]
         const items = {
                 main: [
 
@@ -4582,6 +4594,607 @@
                     },
                 ],
                 connections: [
+                    {
+                        title: `Земля - 3000 советов адвокатов и юристов | Страница 29`,
+                        link: `https://www.9111.ru/%D0%B7%D0%B5%D0%BC%D0%BB%D1%8F/%D0%97%D0%B5%D0%BC%D0%BB%D1%8F/?p=29`,
+                        content: `Человек якобы за свой счёт, этой семье за 500 т. р (якобы <span class="key-word">семья</span> купила землю) незнаю где, и сразу же за 1 мил. рублей ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>.`,
+                        link_weight: `4`,
+                        keyword_list: ['мать', 'брак', 'семья', 'отец'],
+                    },
+
+                    {
+                        title: `PEP: Титов Дмитрий Викторович - RUPEP.org`,
+                        link: `https://rupep.org/ru/person/19425?format=pdf`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Последнее изменение профиля:22 января ... <span class="key-word">Титов</span>а Светлана Геннадьевна – <span class="key-word">жена</span>, вывод о родстве сделан на основе...`,
+                        link_weight: `4`,
+                        keyword_list: ['сын', 'жена', 'отец', 'мать'],
+                    },
+
+                    {
+                        title: `PEP: Титов Дмитрий Викторович - RUPEP.org`,
+                        link: `https://rupep.org/ru/person/19425`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Члены семьи. <span class="key-word">Титов</span> Виктор Николаевич – отец,. вывод о родстве сделан на основе анализа утечек государственных баз данных.`,
+                        link_weight: `4`,
+                        keyword_list: ['сын', 'жена', 'отец', 'мать'],
+                    },
+
+                    {
+                        title: `Обнародован список из 504 человек, пропавших без вести ...`,
+                        link: `https://ukraine.segodnya.ua/ukraine/obnarodovan-spisok-504-chelovek-propavshih-bez-vesti-v-zone-ato-554590.html`,
+                        content: `419 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> Военный 12-июл-86 ... Напомним, вооруженный <span class="key-word">конфликт</span> на востоке Украины начался в середине апреля и...`,
+                        link_weight: `4`,
+                        keyword_list: ['сестра', 'сын', 'конфликт', 'отец'],
+                    },
+
+                    {
+                        title: `102 by Alexandr Ermolenko - Issuu - DistributorCentral`,
+                        link: `https://sc.distributorcentral.com/priazrab/docs/102/4`,
+                        content: `... заслуженную артистку Украины. <span class="key-word">Титова</span> <span class="key-word">Дмитрия</span> <span class="key-word">Викторовича</span>, ... Если я вижу, что мой <span class="key-word">коллега</span> сознательно или неосознанно нарушает правила, я не имею права...`,
+                        link_weight: `3`,
+                        keyword_list: ['брат', 'коллега', 'сестра'],
+                    },
+
+                    {
+                        title: `Инновационных социальных проектов - Право и закон`,
+                        link: `https://p.120-bal.ru/doc/20191/index.html?page=7`,
+                        content: `Помощь в оформлении семейного фотоальбома - «Наша <span class="key-word">семья</span>» ). ... «Event - студия "Моя <span class="key-word">семья</span>» ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>`,
+                        link_weight: `3`,
+                        keyword_list: ['мать', 'семья', 'отец'],
+                    },
+
+                    {
+                        title: `Декларации депутатов.docx`,
+                        link: `http://www.kosiha-raion.ru/file/download/1332`,
+                        content: `<span class="key-word">супруг</span>, 304 677,50, Земельный участок ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>, Сын, Земельный участок ... <span class="key-word">Титов</span> Виктор Анатольевич, <span class="key-word">супруг</span>, 546 000,00, Земельный`,
+                        link_weight: `3`,
+                        keyword_list: ['дочь', 'сын', 'супруг'],
+                    },
+
+                    {
+                        title: `Из истории Владимирского мини-футбола. Сезон 1994 ...`,
+                        link: `https://vladimir.bezformata.com/listnews/vladimirskogo-mini-futbola-sezon/27870999/`,
+                        content: `... в воротах самоотверженно играл родной <span class="key-word">брат</span> Евгения Чернова великан <span class="key-word">Дмитрий</span>; ... <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> <span class="key-word">Титов</span>, Андрей Николаевич Моисеев.`,
+                        link_weight: `3`,
+                        keyword_list: ['брат', 'муж', 'команда'],
+                    },
+
+                    {
+                        title: `НМГО "Права Молодь": записи сообщества - ВКонтакте`,
+                        link: `https://vk.com/wall-21326535?offset=8660`,
+                        content: `347 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> Военный 12-июл-86 ... В частности, назревает <span class="key-word">конфликт</span> между луганскими и алчевскими террористами.`,
+                        link_weight: `3`,
+                        keyword_list: ['враг', 'конфликт', 'отец'],
+                    },
+
+                    {
+                        title: `Киселев знает толк в шмурдке`,
+                        link: `https://compromat.t30p.ru/post/Kiselev-znaet-tolk-v-shmurdke.aspx`,
+                        content: `Впрочем, <span class="key-word">конфликт</span> интересов в этой истории все же есть. ... Овчаров <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>, <span class="key-word">Титов</span> Борис Юрьевич, <span class="key-word">Титов</span> Павел Борисович.`,
+                        link_weight: `3`,
+                        keyword_list: ['жена', 'семья', 'конфликт'],
+                    },
+
+                    {
+                        title: `Перечень фирм 246 - Проверка контрагента`,
+                        link: `https://statuspro.by/katalog-kompaniy/perechen-kompaniy-246`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> · Азарова Татьяна Игнатьевна · Солтан Сергей Зенонович ... Общество с ограниченной ответственностью "<span class="key-word">сын</span> Плотника".`,
+                        link_weight: `2`,
+                        keyword_list: ['сын', 'ребенок'],
+                    },
+
+                    {
+                        title: `Титова Эмилия Юрьевна | сайт воспитателя дошкольной ...`,
+                        link: `https://nsportal.ru/titova-emiliya-yurevna`,
+                        content: `Супруг, <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>, награжден медалью "Отцовская слава". ... <span class="key-word">дочь</span> Анастасия награждена медалью «Надежда Кузбасса».`,
+                        link_weight: `2`,
+                        keyword_list: ['дочь', 'сын'],
+                    },
+
+                    {
+                        title: `Азов - городской округ - Декларатор.org`,
+                        link: `https://declarator.org/section/2475241/`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Показать подробности. 519 284. 0. Квартиры: 0 кв. м (0 шт.) 0. Скрыть подробности. Доход. 519 284,38 руб. Недвижимое имущество.`,
+                        link_weight: `2`,
+                        keyword_list: ['супруг', 'ребенок'],
+                    },
+
+                    {
+                        title: `РОЗШУК ЛЮДЕЙ серед поранених учасників бойових дій ...`,
+                        link: `http://forum.gorod.dp.ua/showthread.php?t=357584&page=8`,
+                        content: `300 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> ВСУ Киевская ... Я про этот список знаю, его <span class="key-word">жена</span> после безрезультатных поездок в Черкасское сама подала его в...`,
+                        link_weight: `2`,
+                        keyword_list: ['жена', 'семья'],
+                    },
+
+                    {
+                        title: `Зоря Ольга Васильевна: 15 отзывов, уролог, где принимает`,
+                        link: `https://doctu.ru/msk/doctor/zorja-olga-vasilevna`,
+                        content: `<span class="key-word">муж</span> обратился для профилактического обследования, а оказалась онкология. ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> - Москва. <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>.`,
+                        link_weight: `2`,
+                        keyword_list: ['муж', 'жена'],
+                    },
+
+                    {
+                        title: `Андрологи в Нагорном районе - Москва - Zoon.ru`,
+                        link: `https://zoon.ru/msk/p-doctor-androlog/rayon-nagornyj/`,
+                        content: `<span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> <span class="key-word">Титов</span>. Стаж 16 лет. Андролог, уролог · Городская поликлиника №67 Филиал №2. 16 мин. Пролетарская 1-й Дербеневский переулок, 3.`,
+                        link_weight: `2`,
+                        keyword_list: ['сестра', 'брат'],
+                    },
+
+                    {
+                        title: `Андрологи - метро Павелецкая - Москва - Zoon.ru`,
+                        link: `https://zoon.ru/msk/p-doctor-androlog/metro-paveletskaya/`,
+                        content: `<span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> <span class="key-word">Титов</span>. Стаж 16 лет. Андролог, уролог · Городская поликлиника №67 Филиал №2. 16 мин. Пролетарская 1-й Дербеневский переулок, 3.`,
+                        link_weight: `2`,
+                        keyword_list: ['сестра', 'брат'],
+                    },
+
+                    {
+                        title: `Поликлиника № 67 филиал № 2 - Москва - MedDocLab.ru`,
+                        link: `https://meddoclab.ru/zapis-na-priem/poliklinika-67-filial-2/1134789`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Уролог. Сазонова Галина Петровна. ЛОР. Шиман Татьяна Михайловна. Терапевт. Чутуев Арсен Чутуевич.`,
+                        link_weight: `2`,
+                        keyword_list: ['сестра', 'муж'],
+                    },
+
+                    {
+                        title: `Медицинских работников Ясногорского района ...`,
+                        link: `https://yasgazeta.ru/n480075.html`,
+                        content: `Олеся Сергеевна Лощенкова, медицинская <span class="key-word">сестра</span> детского поликлинического отделения Ясногорской районной больницы;. <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> <span class="key-word">Титов</span>...`,
+                        link_weight: `2`,
+                        keyword_list: ['сестра', 'брат'],
+                    },
+
+                    {
+                        title: `Лист1 - Социальный фонд России`,
+                        link: `https://sfr.gov.ru/files/branches/chelyabinsk/2022/2_19-01-2022_Grafik_oblast.xls`,
+                        content: `401, 396, 084-010-052209, 7457003282, ООО <span class="key-word">партнер</span>, 1, ТКС, 12/01/22 ... 4450, 4445, 084-017-052154, 740502870080, <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>...`,
+                        link_weight: `2`,
+                        keyword_list: ['семья', 'партнер'],
+                    },
+
+                    {
+                        title: `Социальный ресурсный центр - Ростов | Facebook`,
+                        link: `https://www.facebook.com/groups/1815979302062267/?locale=fi_FI`,
+                        content: `<span class="key-word">коллега</span>, здравствуйте! ... докладчиками выступили председатель правления Социального ресурсного центра <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> <span class="key-word">Титов</span> и главный специалист отдела…`,
+                        link_weight: `2`,
+                        keyword_list: ['коллега', 'отец'],
+                    },
+
+                    {
+                        title: `Андрей Краснобаев - Поиск людей`,
+                        link: `https://sociuminfo.com/?id=151363775`,
+                        content: `... <span class="key-word">Титов</span><span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>Алёна ПенягинаСергей ЕреминТренажерный-Клуб ДобрыняМакс ... TattooerАтмосфера ЛаунджбарСтарый <span class="key-word">приятель</span>DELETED Сергей ДенисовСухой...`,
+                        link_weight: `2`,
+                        keyword_list: ['приятель', 'ребенок'],
+                    },
+
+                    {
+                        title: `Постановление Десятого арбитражного апелляционного суда от ...`,
+                        link: `https://base.garant.ru/65461616/`,
+                        content: `Финансовый управляющий Бурмистрова <span class="key-word">Дмитрия</span> <span class="key-word">Викторовича</span> <span class="key-word">Титова</span> Татьяна Викторовна обратилась в Арбитражный суд Московской области с ходатайством о разрешении...`,
+                        link_weight: `1`,
+                        keyword_list: ['сын'],
+                    },
+
+                    {
+                        title: `Увелка: здоровое питание и рецепты: записи сообщества`,
+                        link: `https://vk.com/wall-26119347?offset=40`,
+                        content: `#Увелка #рисуемУвелку #дети #<span class="key-word">ребенок</span> #рисунки #творчество #детирисуют #детскиерисунки #художественноетворчество ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>`,
+                        link_weight: `1`,
+                        keyword_list: ['ребенок'],
+                    },
+
+                    {
+                        title: `Запись к врачу в клинику в Ниармедик - Москва`,
+                        link: `https://meddoclab.ru/zapis-na-priem/niarmedik/1116771`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> ... Установление биологического родства, дуэт (<span class="key-word">ребенок</span> и предполагаемый родитель – 20 маркеров)10990 руб.`,
+                        link_weight: `1`,
+                        keyword_list: ['ребенок'],
+                    },
+
+                    {
+                        title: `Сведения о зарегистрированных кандидатах в депутаты ...`,
+                        link: `https://textarchive.ru/c-2683225-pall.html`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. 08.10.68 ... Стрелковая <span class="key-word">команда</span> Екатеринбургского отряда ВО, филиал ФГПВО, заместитель начальника команды. Нижнесергинский район,.`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `Статьи о волонтерах, - Сторінка 18`,
+                        link: `https://samooboronazp.ukraine7.com/t5p435-topic`,
+                        content: `347 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>, военный, 12-июл-86 ... <span class="key-word">команда</span> «Чисті седця» Правого Сектору вже майже два місяці воює на сході із зовнішнім окупаційним...`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `Михаил Коваленко, Полтава | Поиск информации`,
+                        link: `https://sociumin.com/?id=155706790`,
+                        content: `... ЛеоноваРоман ЛукьяненкоИгорь <span class="key-word">Титов</span><span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>Пашка ЖуравлёвДенис МининМаксим МакеевскийРуслан ПаламарчукИван КрыленкоАлександр...`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `‪#‎почтароссии39‬ - Jelajah | Facebook`,
+                        link: `https://www.facebook.com/hashtag/%D0%BF%D0%BE%D1%87%D1%82%D0%B0%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B839/?__eep__=6&source=feed_text&epa=HASHTAG&locale=ms_MY`,
+                        content: `Светлый, Ветераны Балтики, сети супермаркетов Виктория. <span class="key-word">команда</span> #Ростелеком в ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Руководитель отдела по имущественным вопросам АУ...`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `ООО "АПЕЛЬСИН", Магадан, проверка по ИНН 4909100088`,
+                        link: `https://www.audit-it.ru/contragent/1084910002935_ooo-apelsin`,
+                        content: `(руководитель, учредитель ООО "КСП"); <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> (руководитель ООО "КСП"); Васкевич Татьяна Васильевна (руководитель до 17.12.2021 ООО "КСП")...`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `Анкеты спортивных тренеров на profi.ru в Москве`,
+                        link: `https://profi.ru/sph-profiles/?p=27`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> · <span class="key-word">Титов</span> Иван Михайлович · <span class="key-word">Титов</span> Максим Андреевич · <span class="key-word">Титов</span> Сергей Юрьевич ... Типография <span class="key-word">команда</span> · Титаева Татьяна Георгиевна.`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `Боевые искусства в России. Энциклопедия в лицах.`,
+                        link: `https://www.enc-bi.ru/clubs/edinoborstva-v-sportivnom-tsentre-olimp/`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> - Яцкая Карина Юрьевна - Кропочев Геннадий Петрович - Южанин Олег Николаевич Регион: Томская область. Город: Томск`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `ООО "НЕФТЕХИМГАЗ - ПРОЕКТ" — ОГРН 1037739180500, ИНН ...`,
+                        link: `https://www.rbc.ru/companies/id/1037739180500-obschestvo-s-ogranichennoj-otvetstvennostyu-neftehimgaz-proekt/`,
+                        content: `Первое место в интенсиве RLT.Hack заняла <span class="key-word">команда</span> «Яковлев П.А.» ... Руководители. <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> Генеральный ДиректорИНН 504305168400. Учредители.`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `Вторая лига 2010 г.р. сезона 2023 года: статистика`,
+                        link: `https://mosff.ru/tournament/497/stats?pjax=stats-pjax&sort=-games`,
+                        content: `<span class="key-word">команда</span>, И, РМ, О ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> · Смена-Легион 2010 г.р. 5, 8, 1.6, 0, 0. 78. Курсиков Александр Сергеевич · Красногвардеец 2010 г.р.`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `Московская федерация футбола. Официальное спортивное ...`,
+                        link: `https://mosff.ru/tournament/497/stats`,
+                        content: `<span class="key-word">команда</span>, И, РМ, О. 1. Космос 2010 г.р. ... Игрок · <span class="key-word">команда</span> · И · Г (ПН) · СР. ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> · Смена-Легион 2010 г.р. 1, 2, 2, 0, 0.`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `Марафон «Зимний Дубль»: результаты забега - PROBEG.org`,
+                        link: `https://probeg.org/race/10374/`,
+                        content: `7, <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> <span class="key-word">Титов</span>, 213, 3:54:40, 6, 19.01.1977 ... 9, Юрий Владимирович Степанов, 211, 4:01:28, 8, 25.10.1971, <span class="key-word">команда</span>: Юла.`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `Титов Дмитрий Викторович (ИНН 673006463643) - Rusprofile`,
+                        link: `https://www.rusprofile.ru/person/titov-dv-673006463643`,
+                        content: `Учредитель · Учредитель: <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> · Директор: Колонтаева Анастасия Леонидовна · Основной вид деятельности: 10.71 Производство хлеба и мучных...`,
+                        link_weight: `1`,
+                        keyword_list: ['команда'],
+                    },
+
+                    {
+                        title: `Все врачи Москвы. Отзывы о врачах города Москва`,
+                        link: `https://123vrachi.ru/page/49/`,
+                        content: `Сеть многопрофильных медицинских центров <span class="key-word">мать</span> и Дитя (633); ☑ ФГБУ "Главный военный клинический госпиталь ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Врач — уролог.`,
+                        link_weight: `1`,
+                        keyword_list: ['мать'],
+                    },
+
+                    {
+                        title: `Обнародован список из 504 человек, пропавших без вести ...`,
+                        link: `https://censor.net/ru/news/303868/obnarodovan_spisok_iz_504_chelovek_propavshih_bez_vesti_v_zone_ato`,
+                        content: `Смотрите на «Цензор.НЕТ»: <span class="key-word">мать</span> погибшего героя Антона Жукова: "Только вы Антошку моего не ... 419 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> Военный 12-июл-86`,
+                        link_weight: `1`,
+                        keyword_list: ['мать'],
+                    },
+
+                    {
+                        title: `Центр освобождения пленных ОО "Офицерский корпус ...`,
+                        link: `https://vk.com/wall-12779085_1498418`,
+                        content: `419 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> Военный 12-июл-86 ... Если не учитывать,что у отца <span class="key-word">мать</span> с другой фамилией,а у отца отца тоже <span class="key-word">мать</span> с другой...`,
+                        link_weight: `1`,
+                        keyword_list: ['мать'],
+                    },
+
+                    {
+                        title: `Вигуржинская Елена Владиславовна - врач. Отзывы о нем.`,
+                        link: `https://гордк.рф/vigurzhinskaya-elena-vladislavovna`,
+                        content: `1) Клиника «<span class="key-word">мать</span> и дитя» Юго-Запад +74951273793 ○ г. Москва, улица Островитянова, дом 4 ... Манухин Святослав Андреевич · <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>...`,
+                        link_weight: `1`,
+                        keyword_list: ['мать'],
+                    },
+
+                    {
+                        title: `Морарь Станислав Павлович: 3 отзыва, уролог, где принимает ...`,
+                        link: `https://doctu.ru/msk/doctor/morar-stanislav-pavlovich`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> - Москва ... Клиника «<span class="key-word">мать</span> и дитя» Лефортово ... Клиника «<span class="key-word">мать</span> и дитя» Савеловская (ранее «Клиника ЗДОРОВЬЯ»). Прием 4000 руб.`,
+                        link_weight: `1`,
+                        keyword_list: ['мать'],
+                    },
+
+                    {
+                        title: `«Офицерский корпус» насчитал 504 пропавших без вести ...`,
+                        link: `https://fraza.com/news/206783-%C2%ABofitserskij_korpus%C2%BB_naschital_504_propavshih_bez_vesti_ukraintsa_v_zone_ato_polnyj_spisok`,
+                        content: `419 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> Военный 12-июл-86 ... <span class="key-word">отец</span> Арнольда Шварценеггера - нацист и шизофреник, а мама - «фанатик чистоты».`,
+                        link_weight: `1`,
+                        keyword_list: ['отец'],
+                    },
+
+                    {
+                        title: `ИП Карелина Ирина Васильевна, ОГРНИП - РБК Компании`,
+                        link: `https://companies.rbc.ru/persons/ogrnip/323619600078873-karelina-irina-vasilevna/`,
+                        content: `ИП <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>ИНН: 616700257559 ; ИП Аврамова Наталья ГеннадьевнаИНН: 616119338048 ; ИП Коденко Иван АлександровичИНН: 615308525080...`,
+                        link_weight: `1`,
+                        keyword_list: ['сын'],
+                    },
+
+                    {
+                        title: `Список вновь зарегистрированных на территории Камчатского ...`,
+                        link: `https://petropavlovskkamchatskiy.bezformata.com/listnews/kamchatskogo-kraya-nekommercheskih/47276317/`,
+                        content: `... Вице-Президент - <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>, Вице-Президент - Лукина Ксения ... община коренного малочисленного народа камчадалы "<span class="key-word">семья</span>" (РО КМНК "<span class="key-word">семья</span>")`,
+                        link_weight: `1`,
+                        keyword_list: ['семья'],
+                    },
+
+                    {
+                        title: `Поиск организаций и ИП по ИНН — страница 36140`,
+                        link: `https://www.1cont.ru/contragent?page=36140`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. ОГРН: 5087746202440 ... ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ДАВИД, <span class="key-word">семья</span> И КОМПАНИЯ". Статус организации: Ликвидирована.`,
+                        link_weight: `1`,
+                        keyword_list: ['семья'],
+                    },
+
+                    {
+                        title: `Поиск организаций и ИП по ИНН — страница 57624`,
+                        link: `https://www.1cont.ru/contragent?page=57624`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. ОГРН: 1026100025313 ... РЕГИОНАЛЬНОЕ ОБЩЕСТВЕННОЕ ПРАВОЗАЩИТНОЕ УЧРЕЖДЕНИЕ "<span class="key-word">семья</span> ПРОТИВ НАСИЛИЯ И НАРКОТИКОВ "ГОЛОС НАДЕЖДЫ".`,
+                        link_weight: `1`,
+                        keyword_list: ['семья'],
+                    },
+
+                    {
+                        title: `Путевые заметки проекты фонда ХАМОВНИКИ`,
+                        link: `https://khamovniky.ru/category/projects/notes/page/2/`,
+                        content: `... Стивенсон Светлана Абрамовна, <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> ... дачной жизни так или иначе задействована практически каждая <span class="key-word">семья</span> из крупных городов области.`,
+                        link_weight: `1`,
+                        keyword_list: ['семья'],
+                    },
+
+                    {
+                        title: `Итоги всероссийских конкурсов Рисуй с нами 636`,
+                        link: `https://рисуйснами.рф/content/rezultaty?field_name_konkurs_target_id_selective=All&field_nomination_tid=All&nid=&field_firstname_value=&field_name_value=&field_vid_diploma_value_selective=All&page=635&uid=&order=field_firstname&sort=desc`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> МКУ "ТМЦК", Вечная память ВЕТЕРАНАМ Заявка№28670, "Мы Помним!!Мы Гордимся! поделка взрослые (старше 18 лет), 20 мая, 2020.`,
+                        link_weight: `1`,
+                        keyword_list: ['семья'],
+                    },
+
+                    {
+                        title: `Итоги всероссийских конкурсов Рисуй с нами 3356`,
+                        link: `https://рисуйснами.рф/content/rezultaty?field_name_konkurs_target_id_selective=All&field_nomination_tid=All&nid=&field_firstname_value=&field_name_value=&field_vid_diploma_value_selective=All&page=3355&uid=&order=field_firstname&sort=asc`,
+                        content: `<span class="key-word">Титов</span> Вячеслав Максимович МДОУ детский сад 105, Космическое путешествие. Заявка№200724, Космическое путешествие ; <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> МКУ "ТМЦК", Вечная...`,
+                        link_weight: `1`,
+                        keyword_list: ['семья'],
+                    },
+
+                    {
+                        title: `Организационно-педагогическая деятельность по ...`,
+                        link: `https://cyberleninka.ru/article/n/organizatsionno-pedagogicheskaya-deyatelnost-po-resotsializatsii-detey-gruppy-riska-munitsipalnyy-opyt/viewer`,
+                        content: `<span class="key-word">семья</span> и формирование девиантного поведения у подростков, его профилактика средствами культурно-досуговой деятельности в ... 2009 / <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>.`,
+                        link_weight: `1`,
+                        keyword_list: ['семья'],
+                    },
+
+                    {
+                        title: `Взаимодействие органов местного самоуправления и ...`,
+                        link: `https://cyberleninka.ru/article/n/vzaimodeystvie-organov-mestnogo-samoupravleniya-i-gosudarstvennoy-vlasti-v-sfere-profilaktiki-deviantnogo-povedeniya`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> ... В едином банке данных асоциальных родителей в 2007 г. состояла 101 <span class="key-word">семья</span> (152 несовершеннолетних), в 2006 г.`,
+                        link_weight: `1`,
+                        keyword_list: ['семья'],
+                    },
+
+                    {
+                        title: `ИП Титов Дмитрий Викторович, Ростов-на-Дону (ИНН ...`,
+                        link: `https://www.rusprofile.ru/ip/304616704300026`,
+                        content: `ИП <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> зарегистрирован 12 февраля 2004 г. регистратором Межрайонная инспекция Федеральной налоговой службы № 26 по Ростовской области.`,
+                        link_weight: `1`,
+                        keyword_list: ['семья'],
+                    },
+
+                    {
+                        title: `Запись к врачу в клинику в Ниармедик - MedDocLab.ru`,
+                        link: `https://meddoclab.ru/zapis-na-priem/niarmedik/28446`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Уролог. Олюшева Екатерина Дмитриевна ... <span class="key-word">жена</span> сказала отличная клиника. 3 года назадОтветить. Комментарий #1236581.`,
+                        link_weight: `1`,
+                        keyword_list: ['жена'],
+                    },
+
+                    {
+                        title: `PEP: Титова Татьяна Дмитриевна - RUPEP.org`,
+                        link: `https://rupep.org/ru/person/19428?format=pdf`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> – сын, вывод о родстве сделан на основе анализа утечек государственных баз данных. <span class="key-word">Титов</span> Виктор Николаевич – <span class="key-word">муж</span>,.`,
+                        link_weight: `1`,
+                        keyword_list: ['муж'],
+                    },
+
+                    {
+                        title: `Титова Светлана Геннадьевна - RUPEP.org`,
+                        link: `https://rupep.org/ru/person/19395?format=pdf`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> – <span class="key-word">муж</span>, вывод о родстве сделан на основе анализа утечек государственных баз данных.`,
+                        link_weight: `1`,
+                        keyword_list: ['муж'],
+                    },
+
+                    {
+                        title: `Центр звільнення полонених - Facebook`,
+                        link: `https://www.facebook.com/CentrZvilnennya/posts/%D1%86%D0%B5%D0%BD%D1%82%D1%80-%D0%BE%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D0%BE%D0%BE-%D0%BE%D1%84%D0%B8%D1%86%D0%B5%D1%80%D1%81%D0%BA%D0%B8%D0%B9-%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81-%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D1%83%D0%B5%D1%82-%D1%81%D0%BF%D0%B8%D1%81%D0%BA%D0%B8-%D0%BF%D1%80%D0%BE%D0%BF%D0%B0%D0%B2%D1%88%D0%B8%D1%85-%D0%BD%D0%B0-22/774618669274369/`,
+                        content: `419 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> Военный 12-июл- ... фото поспортов этих бойцов,мой <span class="key-word">брат</span> ... бежать?Мой <span class="key-word">брат</span> 49 в списке пропавших.`,
+                        link_weight: `1`,
+                        keyword_list: ['брат'],
+                    },
+
+                    {
+                        title: `PEP: Титов Всеволод Дмитриевич - RUPEP.org`,
+                        link: `https://rupep.org/ru/person/19427?format=pdf`,
+                        content: `<span class="key-word">Титов</span> Арсений Дмитриевич – родной <span class="key-word">брат</span>, вывод о родстве сделан на основе анализа утечек государственных баз данных. <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>...`,
+                        link_weight: `1`,
+                        keyword_list: ['брат'],
+                    },
+
+                    {
+                        title: `PEP: Титов Арсений Дмитриевич - RUPEP.org`,
+                        link: `https://rupep.org/ru/person/19426?format=pdf`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> – отец, вывод о родстве сделан на основе анализа утечек ... <span class="key-word">Титов</span> Всеволод Дмитриевич – родной <span class="key-word">брат</span>,.`,
+                        link_weight: `1`,
+                        keyword_list: ['брат'],
+                    },
+
+                    {
+                        title: `Бойовики утримують понад 850 полонених - ВолиньPost`,
+                        link: `https://www.volynpost.com/news/39305-bojovyky-utrymuyut-ponad-850-polonenyh`,
+                        content: `347 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> Военный 12-июл-86 348 Ткаченко Олег Анатольевич Военный 28-фев-77 349 Ткаченко Игорь Юрьевич Военный 93 бригада 30-дек-94`,
+                        link_weight: `1`,
+                        keyword_list: ['сестра'],
+                    },
+
+                    {
+                        title: `Городская поликлиника № 27 - Нагатино-Садовники - ЕМИАС`,
+                        link: `https://mosregistratura.ru/uao/nagatino-sadovniki/gorodskaya-poliklinika-no-27`,
+                        content: `... подразделения - врач-терапевтМед. <span class="key-word">сестра</span> (медбрат) участковаяМед<span class="key-word">сестра</span> (медбрат)Мед<span class="key-word">сестра</span> (медбрат) врача общ. практ. ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>.`,
+                        link_weight: `1`,
+                        keyword_list: ['сестра'],
+                    },
+
+                    {
+                        title: `заявка команды - Смена-Легион 2010 г.р.`,
+                        link: `https://mosff.ru/tournament/497/teams/403/application`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Полузащитник. 03.08.2010 ... Мед.<span class="key-word">сестра</span>. 26.06.1969. 53 года. Краснобриж Павел Иванович. Тренер. 08.03.1984.`,
+                        link_weight: `1`,
+                        keyword_list: ['сестра'],
+                    },
+
+                    {
+                        title: `Лист1`,
+                        link: `https://admtyumen.ru/files/upload/OIV/U_gus/%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/taxi_license_2019-07-01%2016_16_21.729485+05_00.xls`,
+                        content: `81, 11001, Департамент дорожной инфраструктуры и транспорта, <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> ... Общество с ограниченной ответственностью <span class="key-word">партнер</span> ООО <span class="key-word">партнер</span>...`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `Иванов Глеб Владимирович проверка контрагента | Birank.com`,
+                        link: `https://uljanovsk.birank.com/ru-ru/russia/fizlico-ivanov-gleb-vladimirovich-inn-774331007960-20548622/`,
+                        content: `Беличенко Валерия Андреевна · <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> · Иванов Глеб Владимирович ... <span class="key-word">партнер</span> Контрагент Работник Бывший работник Другое... Отправить.`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `Лист1 - Администрация Брянского района`,
+                        link: `https://adminbr.ru/deyatelnost/okhrana-truda/konkursy/rsmp_09.03.2022.xlsx`,
+                        content: `1698, 1695, ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ПАРТНЁР", Юридическое лицо ... 2593, 2590, <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>, Индивидуальный предприниматель...`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `октябрь - Газпром газораспределение Смоленск`,
+                        link: `https://www.gas-smolensk.ru/files/437/informaciya-o-nalich94.xlsx`,
+                        content: `Строителей, дом 159а, ИП <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> (г.Гагарин, ул. ... 1223, Голынки, ООО "<span class="key-word">партнер</span>", Смоленская область, г. Рудня, ул.`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `Список поставщиков и производителей промышленного ...`,
+                        link: `https://onlinesklad.ru/suppliers/`,
+                        content: `ООО "<span class="key-word">партнер</span> ВВ" · ИП Патин Александр Васильевич ... ИП <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> · ООО "ТК ДОКСАЛ" · ООО "ТК "НОВОЕ РЕШЕНИЕ".`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `Каталог компаний по ОКВЭД - БИР-Аналитик`,
+                        link: `https://site.birweb.1prime.ru/catalog/okveds/51.46?page=5&pageSize=100`,
+                        content: `Генеральный директор<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Адрес123557, ГОРОД МОСКВА, ПЕРЕУЛОК ТИШИНСКИЙ Б., 38, СТР.2. 51.46 Оптовая торговля фармацевтическими и...`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `Поиск организаций и ИП по ИНН — страница 50026`,
+                        link: `https://www.1cont.ru/contragent?page=50026`,
+                        content: `ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ИНВЕСТИЦИОННЫЙ <span class="key-word">партнер</span>". Статус организации: Ликвидирована ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. ОГРН: 1077762617118.`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `Поиск организаций и ИП по ИНН — страница 36797`,
+                        link: `https://www.1cont.ru/contragent?page=36797`,
+                        content: `ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "<span class="key-word">партнер</span>". Статус организации: Действует. Ликвидатор: ... <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. ОГРН: 1227800125277.`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `ООО "РФН ПАРТНЕР", Санкт-Петербург, проверка по ИНН ...`,
+                        link: `https://www.audit-it.ru/contragent/1207800156002_ooo-rfn-partner`,
+                        content: `(руководитель, учредитель ООО "РФН - ГЕОДЕЗИЯ СПБ.") <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> (учредитель ООО "БКН.РУ"); Шолохова Светлана Владимировна (учредитель ООО "БКН.РУ")...`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `ОГРН 1126732007500, ИНН 6732039060 - ООО "ПАНОРАМА"`,
+                        link: `https://www.rbc.ru/companies/id/1126732007500-ooo-panorama/`,
+                        content: `Баранов Михаил Степанович является генеральным директором организации. Учредители компании — <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>, Баранов Михаил Степанович.`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `ООО "ТЕХНОДРЕВЭКСПОРТ" — ОГРН 1046209010143 ...`,
+                        link: `https://www.rbc.ru/companies/id/1046209010143-obschestvo-s-ogranichennoj-otvetstvennostyu-tehnodreveksport/`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> является генеральным директором организации. Учредители компании — <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>, Кудря Александр Николаевич. В соответствии...`,
+                        link_weight: `1`,
+                        keyword_list: ['партнер'],
+                    },
+
+                    {
+                        title: `Помощь родственникам пропавших в ходе АТО`,
+                        link: `https://reibert.info/threads/pomosch-rodstvennikam-propavshix-v-xode-ato.518141/`,
+                        content: `347 <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> Военный 12-июл-86 348 Ткаченко Олег Анатольевич Военный 28-фев-77 349 Ткаченко Игорь Юрьевич Военный 93 бригада 30-дек-94`,
+                        link_weight: `1`,
+                        keyword_list: ['коллега'],
+                    },
+
+                    {
+                        title: `ООО "МИР КВАРТИР СПБ" — ОГРН 1167847100849, ИНН ...`,
+                        link: `https://companies.rbc.ru/id/1167847100849-ooo-mir-kvartir-spb/`,
+                        content: `<span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span> является генеральным директором организации. Учредители компании — <span class="key-word">Титов</span> <span class="key-word">Дмитрий</span> <span class="key-word">Викторович</span>. Среднесписочная...`,
+                        link_weight: `1`,
+                        keyword_list: ['конфликт'],
+                    },
+                ],
+                socials: [
                     {
                         title: `Земля - 3000 советов адвокатов и юристов | Страница 29`,
                         link: `https://www.9111.ru/%D0%B7%D0%B5%D0%BC%D0%BB%D1%8F/%D0%97%D0%B5%D0%BC%D0%BB%D1%8F/?p=29`,
@@ -8686,7 +9299,8 @@
             3: 'negative',
             4: 'reputation',
             5: 'connections',
-            6: 'all_materials',
+            6: 'socials',
+            7: 'all_materials',
         }
 
         function isFilterableTab() {
@@ -8729,7 +9343,8 @@
             negative: 3,
             reputation: 4,
             connections: 5,
-            all_materials: 6,
+            socials: 6,
+            all_materials: 7,
         }
 
         Object.entries(tab_indexes).forEach(([tab_name, tab_index]) => {
@@ -8753,6 +9368,10 @@
                 page: 1,
             },
             connections: {
+                count: 0,
+                page: 1,
+            },
+            socials: {
                 count: 0,
                 page: 1,
             },
@@ -8873,6 +9492,24 @@
                     'руководитель': true,
                 },
                 5: {
+                    'коллега': true,
+                    'сын': true,
+                    'мать': true,
+                    'партнер': true,
+                    'ребенок': true,
+                    'дочь': true,
+                    'конфликт': true,
+                    'семья': true,
+                    'супруг': true,
+                    'сестра': true,
+                    'команда': true,
+                    'отец': true,
+                    'брат': true,
+                    'муж': true,
+                    'жена': true,
+                    'приятель': true,
+                },
+                6: {
                     'коллега': true,
                     'сын': true,
                     'мать': true,
