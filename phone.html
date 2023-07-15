@@ -10393,16 +10393,16 @@
 
         let filters = {
                 1: {
-                    'Вистино': true,
-                    'Кингисеппский ': true,
-                    '13.03.1988 ': true,
-                    '"13 марта 1988"': true,
-                    'Вистинская СОШ': true,
-                    'Рыболовецкий колхоз "Балтика" ': true,
-                    'ЗАО "Эфэск-ПГС"': true,
-                    'Морской торговый порт Усть-Луга': true,
-                    'Спецморподразделение Усть-Луга': true,
-                    'Стивидорно-судоходной компании': true,
+                    // 'Вистино': true,
+                    // 'Кингисеппский ': true,
+                    // '13.03.1988 ': true,
+                    // '"13 марта 1988"': true,
+                    // 'Вистинская СОШ': true,
+                    // 'Рыболовецкий колхоз "Балтика" ': true,
+                    // 'ЗАО "Эфэск-ПГС"': true,
+                    // 'Морской торговый порт Усть-Луга': true,
+                    // 'Спецморподразделение Усть-Луга': true,
+                    // 'Стивидорно-судоходной компании': true,
                 },
                 2: {
                     'Вистино': true,
@@ -10623,11 +10623,11 @@
             let temp_items = [...items[tab_name]];
 
             if (isFilterableTab()) {
-                temp_items = temp_items.filter(item => (item.keyword_list.find(keyword => filters[selected_tab_index][keyword])))
+                // temp_items = temp_items.filter(item => (item.keyword_list.find(keyword => filters[selected_tab_index][keyword])))
                 $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
             }
             else if (tab_name == 'main') {
-                temp_items = temp_items.filter(item => (+item.link_weight >= startRangeValue && +item.link_weight <= endRangeValue))
+                // temp_items = temp_items.filter(item => (+item.link_weight >= startRangeValue && +item.link_weight <= endRangeValue))
                 $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
             }
 
@@ -10639,11 +10639,11 @@
                 temp_items.slice((tab_pages[tab_name].page - 1) * range, tab_pages[tab_name].page * range)
             ));
 
-            if (isFilterableTab()) {
-                sliced_items.forEach(sliced_item => {
-                    sliced_item.keyword_list = sliced_item.keyword_list.filter(keyword => filters[selected_tab_index][keyword])
-                });
-            }
+            // if (isFilterableTab()) {
+            //     sliced_items.forEach(sliced_item => {
+            //         sliced_item.keyword_list = sliced_item.keyword_list.filter(keyword => filters[selected_tab_index][keyword])
+            //     });
+            // }
 
             temp_link_classes = {};
 

@@ -9706,9 +9706,7 @@
                     if (keyword_list) keyword_list += '<span style="color:black;font-size:17px">, </span>'
                     keyword_list += `<span
                                 class="query"
-                                onclick="copy(this)">
-                                ${decodeURI(query)}
-                            </span>`
+                                onclick="copy(this)">${decodeURI(query.trim())}</span>`
                 })
 
                 // Вес ссылки
