@@ -584,6 +584,7 @@
             margin: 2px 5px 0 0;
             height: 14.5px !important;
             width: 14.5px !important;
+            min-width: 14.5px !important;
             line-height: 1 !important;
             accent-color: #9300FF;
         }
@@ -975,6 +976,15 @@
         .seen_link .item {
             box-shadow: none;
         }
+        .filter-count {
+            margin-left: auto;
+            background: #9300FF;
+            color: white;
+            padding: 0 4px;
+            border-radius: 4px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
     </style>
 </head>
 
@@ -1246,7 +1256,7 @@
         function $(str) {
             let elements = document?.querySelectorAll(str);
 
-            return (elements?.length == 1) ? document?.querySelector(str) : elements;
+            return (elements?.length == 1 || str[0] == '#') ? document?.querySelector(str) : elements;
         }
         Object.prototype.html = function (html) {
             this?.forEach(item => {
@@ -9457,83 +9467,162 @@
         }
 
         let filters = {
-                2: {
-                    'Вистино': true,
-                    'Кингисеппский ': true,
-                    '13.03.1988 ': true,
-                    '"13 марта 1988"': true,
-                    'Вистинская СОШ': true,
-                    'Рыболовецкий колхоз "Балтика" ': true,
-                    'ЗАО "Эфэск-ПГС"': true,
-                    'Морской торговый порт Усть-Луга': true,
-                    'Спецморподразделение Усть-Луга': true,
-                    'Стивидорно-судоходной компании': true,
-                },
-                3: {
-                    'преступник': true,
-                    'скандал': true,
-                    'судебный': true,
-                    'следствие': true,
-                    'кража': true,
-                    'розыск': true,
-                    'сизо': true,
-                    'задержан': true,
-                    'преступление': true,
-                    'пирамида': true,
-                    'уголовное': true,
-                    'мошенничество': true,
-                    'следственный': true,
-                },
-                4: {
-                    'отзыв': true,
-                    'работал': true,
-                    'резюме': true,
-                    'репутация': true,
-                    'досье': true,
-                    'возглавил': true,
-                    'начальник': true,
-                    'отклик': true,
-                    'биография': true,
-                    'интервью': true,
-                    'руководитель': true,
-                },
-                5: {
-                    'коллега': true,
-                    'сын': true,
-                    'мать': true,
-                    'партнер': true,
-                    'ребенок': true,
-                    'дочь': true,
-                    'конфликт': true,
-                    'семья': true,
-                    'супруг': true,
-                    'сестра': true,
-                    'команда': true,
-                    'отец': true,
-                    'брат': true,
-                    'муж': true,
-                    'жена': true,
-                    'приятель': true,
-                },
-                6: {
-                    'коллега': true,
-                    'сын': true,
-                    'мать': true,
-                    'партнер': true,
-                    'ребенок': true,
-                    'дочь': true,
-                    'конфликт': true,
-                    'семья': true,
-                    'супруг': true,
-                    'сестра': true,
-                    'команда': true,
-                    'отец': true,
-                    'брат': true,
-                    'муж': true,
-                    'жена': true,
-                    'приятель': true,
-                },
-            }
+            2: {
+                'Вистино': true,
+                'Кингисеппский ': true,
+                '13.03.1988 ': true,
+                '"13 марта 1988"': true,
+                'Вистинская СОШ': true,
+                'Рыболовецкий колхоз "Балтика" ': true,
+                'ЗАО "Эфэск-ПГС"': true,
+                'Морской торговый порт Усть-Луга': true,
+                'Спецморподразделение Усть-Луга': true,
+                'Стивидорно-судоходной компании': true,
+            },
+            3: {
+                'преступник': true,
+                'скандал': true,
+                'судебный': true,
+                'следствие': true,
+                'кража': true,
+                'розыск': true,
+                'сизо': true,
+                'задержан': true,
+                'преступление': true,
+                'пирамида': true,
+                'уголовное': true,
+                'мошенничество': true,
+                'следственный': true,
+            },
+            4: {
+                'отзыв': true,
+                'работал': true,
+                'резюме': true,
+                'репутация': true,
+                'досье': true,
+                'возглавил': true,
+                'начальник': true,
+                'отклик': true,
+                'биография': true,
+                'интервью': true,
+                'руководитель': true,
+            },
+            5: {
+                'коллега': true,
+                'сын': true,
+                'мать': true,
+                'партнер': true,
+                'ребенок': true,
+                'дочь': true,
+                'конфликт': true,
+                'семья': true,
+                'супруг': true,
+                'сестра': true,
+                'команда': true,
+                'отец': true,
+                'брат': true,
+                'муж': true,
+                'жена': true,
+                'приятель': true,
+            },
+            6: {
+                'коллега': true,
+                'сын': true,
+                'мать': true,
+                'партнер': true,
+                'ребенок': true,
+                'дочь': true,
+                'конфликт': true,
+                'семья': true,
+                'супруг': true,
+                'сестра': true,
+                'команда': true,
+                'отец': true,
+                'брат': true,
+                'муж': true,
+                'жена': true,
+                'приятель': true,
+            },
+        }
+
+        let filter_counts = {
+            2: {
+                'Вистино': 126,
+                'Кингисеппский ': 126,
+                '13.03.1988 ': 126,
+                '"13 марта 1988"': 126,
+                'Вистинская СОШ': 126,
+                'Рыболовецкий колхоз "Балтика" ': 126,
+                'ЗАО "Эфэск-ПГС"': 126,
+                'Морской торговый порт Усть-Луга': 126,
+                'Спецморподразделение Усть-Луга': 126,
+                'Стивидорно-судоходной компании': 126,
+            },
+            3: {
+                'преступник': 126,
+                'скандал': 126,
+                'судебный': 126,
+                'следствие': 126,
+                'кража': 126,
+                'розыск': 126,
+                'сизо': 126,
+                'задержан': 126,
+                'преступление': 126,
+                'пирамида': 126,
+                'уголовное': 126,
+                'мошенничество': 126,
+                'следственный': 126,
+            },
+            4: {
+                'отзыв': 126,
+                'работал': 126,
+                'резюме': 126,
+                'репутация': 126,
+                'досье': 126,
+                'возглавил': 126,
+                'начальник': 126,
+                'отклик': 126,
+                'биография': 126,
+                'интервью': 126,
+                'руководитель': 126,
+            },
+            5: {
+                'коллега': 126,
+                'сын': 126,
+                'мать': 126,
+                'партнер': 126,
+                'ребенок': 126,
+                'дочь': 126,
+                'конфликт': 126,
+                'семья': 126,
+                'супруг': 126,
+                'сестра': 126,
+                'команда': 126,
+                'отец': 126,
+                'брат': 126,
+                'муж': 126,
+                'жена': 126,
+                'приятель': 126,
+            },
+            6: {
+                'коллега': 126,
+                'сын': 126,
+                'мать': 126,
+                'партнер': 126,
+                'ребенок': 126,
+                'дочь': 126,
+                'конфликт': 126,
+                'семья': 126,
+                'супруг': 126,
+                'сестра': 126,
+                'команда': 126,
+                'отец': 126,
+                'брат': 126,
+                'муж': 126,
+                'жена': 126,
+                'приятель': 126,
+            },
+        }
             
         function makeSafeForCSS(name) {
             return name.replace(/[^a-z0-9]/g, function (s) {
@@ -9620,7 +9709,8 @@
                 filter_keys_tags += `
                             <label class="arbitrary-key keyword-id-${makeSafeForCSS(arbitrary_key)}">
                                 <input type="checkbox" onclick="toggleArbitraryKey(event, '${makeSafeForCSS(arbitrary_key)}')" ${filters[selected_tab_index][arbitrary_key] ? 'checked' : 'unchecked'}/>
-                                <span title='${arbitrary_key}'>${arbitrary_key}</span>
+                                <span style="margin-right: 4px;" title='${arbitrary_key}'>${arbitrary_key}</span>
+                                <div class="filter-count">${filter_counts[selected_tab_index][arbitrary_key]}</div>
                             </label>
                         `;
             });
@@ -9663,6 +9753,7 @@
 
         function check_all_items() {
             Object.keys(temp_link_classes).forEach(link_class_name => {
+                console.log('#'+link_class_name);
                 let bool = isInViewport($('#'+link_class_name))
                 if (bool) seen_links[temp_link_classes[link_class_name]] = true;
             })
