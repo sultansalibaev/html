@@ -9460,8 +9460,38 @@
 
         const range = 20;
 
+        let seriesData = [
+            {
+                name: 'Произвольные',
+                y: 15,
+                // sliced: true,
+                // selected: true
+            },
+            {
+                name: 'Негатив',
+                y: 12
+            },
+            {
+                name: 'Репутация',
+                y: 4
+            },
+            {
+                name: 'Связи',
+                y: 3
+            },
+            {
+                name: 'Соц.сети',
+                y: 2
+            }
+        ]
+
         Object.keys(items).forEach(tab_name => {
-            if (items[tab_name]?.length) tab_pages[tab_name].count = Math.ceil(items[tab_name]?.length / range);
+            if (items[tab_name]?.length) {
+                tab_pages[tab_name].count = Math.ceil(items[tab_name]?.length / range);
+                if ([2,3,4,5,6].includes(tab_indexes[tab_name])) {
+                    seriesData[tab_indexes[tab_name] - 2].y = items[tab_name]?.length;
+                }
+            }
         });
         let page = 1;
         let onfocused = false;
@@ -10042,24 +10072,7 @@ Highcharts.chart('container', {
         name: 'Материалы',
         colorByPoint: true,
         innerSize: '80%',
-        data: [{
-            name: 'Произвольные',
-            y: 15,
-            // sliced: true,
-            // selected: true
-        },  {
-            name: 'Негатив',
-            y: 12
-        },  {
-            name: 'Репутация',
-            y: 4
-        }, {
-            name: 'Связи',
-            y: 3
-        },{
-            name: 'Соц.сети',
-            y: 2
-        }]
+        data: seriesData,
     }]
 });
     </script>
