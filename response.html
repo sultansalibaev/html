@@ -985,6 +985,108 @@
             font-size: 13px;
             white-space: nowrap;
         }
+        /* ------------------------------------ */
+
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 5;
+            stroke-miterlimit: 10;
+            stroke: #4400ed;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark {
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 6.5;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            box-shadow: inset 0px 0px 0px #4400ed;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+
+            margin-right: 5px;
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+        @keyframes scale {
+            0%, 100% {
+                transform: none;
+            }
+            50% {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+        @keyframes fill {
+            100% {
+                box-shadow: inset 0px 0px 0px 17px #4400ed;
+            }
+        }
+        .socials {
+            display: flex;
+            align-items: center;
+            padding: 0 7px;
+            background: white;
+            border-radius: 5px;
+        }
+        .social_type {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            transition: .25s all;
+        }
+        .social_type:not(.social_type:last-child) {
+            margin-right: 8px;
+        }
+        .social_type.vk {
+            fill: #ccc;
+        }
+        .social_type.vk.selected,
+        .social_type.vk:hover {
+            fill: #4a76a8;
+        }
+        .social_type.fb {
+            fill: #ccc;
+        }
+        .social_type.fb.selected,
+        .social_type.fb:hover {
+            fill: #4267b2;
+        }
+        .social_type.insta {
+            fill: #fff;
+            border-radius: 6px;
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+            /* vertical-align: text-bottom; */
+            background: #ccc;
+            padding: 1px;
+        }
+        .social_type.insta.selected,
+        .social_type.insta:hover {
+            background: linear-gradient(#a900ff,#ea3701,#ec920b);
+        }
+        .social_type.ok {
+            fill: #ccc;
+        }
+        .social_type.ok.selected,
+        .social_type.ok:hover {
+            fill: #ee8208;
+        }
     </style>
         </head>
 
@@ -1031,6 +1133,9 @@
         
             <div style="display: flex;gap: 15px;padding: 15px 15px 0;flex-wrap: wrap;">
                 <div id="container" style="min-width: 424px; height: 230px; border-radius: 6px; overflow: hidden;"></div>
+                <div class="socials" id="socials" style="display:none">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-social-name="Вконтакте" class="social_type selected vk"><path d="M31.4907 63.4907C0 94.9813 0 145.671 0 247.04V264.96C0 366.329 0 417.019 31.4907 448.509C62.9813 480 113.671 480 215.04 480H232.96C334.329 480 385.019 480 416.509 448.509C448 417.019 448 366.329 448 264.96V247.04C448 145.671 448 94.9813 416.509 63.4907C385.019 32 334.329 32 232.96 32H215.04C113.671 32 62.9813 32 31.4907 63.4907ZM75.6 168.267H126.747C128.427 253.76 166.133 289.973 196 297.44V168.267H244.16V242C273.653 238.827 304.64 205.227 315.093 168.267H363.253C359.313 187.435 351.46 205.583 340.186 221.579C328.913 237.574 314.461 251.071 297.733 261.227C316.41 270.499 332.907 283.63 346.132 299.751C359.357 315.873 369.01 334.618 374.453 354.747H321.44C316.555 337.262 306.614 321.61 292.865 309.754C279.117 297.899 262.173 290.368 244.16 288.107V354.747H238.373C136.267 354.747 78.0267 284.747 75.6 168.267Z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-social-name="Facebook" class="social_type selected fb"><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-social-name="Instagram" class="social_type selected insta"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-social-name="Одноклассники" class="social_type selected ok"><path d="M184.2 177.1c0-22.1 17.9-40 39.8-40s39.8 17.9 39.8 40c0 22-17.9 39.8-39.8 39.8s-39.8-17.9-39.8-39.8zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-305.1 97.1c0 44.6 36.4 80.9 81.1 80.9s81.1-36.2 81.1-80.9c0-44.8-36.4-81.1-81.1-81.1s-81.1 36.2-81.1 81.1zm174.5 90.7c-4.6-9.1-17.3-16.8-34.1-3.6 0 0-22.7 18-59.3 18s-59.3-18-59.3-18c-16.8-13.2-29.5-5.5-34.1 3.6-7.9 16.1 1.1 23.7 21.4 37 17.3 11.1 41.2 15.2 56.6 16.8l-12.9 12.9c-18.2 18-35.5 35.5-47.7 47.7-17.6 17.6 10.7 45.8 28.4 28.6l47.7-47.9c18.2 18.2 35.7 35.7 47.7 47.9 17.6 17.2 46-10.7 28.6-28.6l-47.7-47.7-13-12.9c15.5-1.6 39.1-5.9 56.2-16.8 20.4-13.3 29.3-21 21.5-37z"></path></svg>
+                </div>
                 <div style="display: flex;align-items: center;height: 34px;font-size: 13.5px;background: white;padding: 0 10px;border-radius: 5px;white-space:nowrap">
                     <div style="font-size: 16px;margin-right: 10px;">Совпадения: </div>
                     <label style="display: flex;"><input type="radio" style="margin-left: 20px;" name="fullname" onchange="update_fullname_filter(event)" checked value="0"> все данные <span id="fullname-0">48</span> </label>
@@ -16572,6 +16677,7 @@
                     socials: [
     {
                 title: `Виолет Чуа: записи профиля - ВКонтакте`,
+                social_type: 'Вконтакте',
                 link: `https://vk.com/wall472739285?offset=40`,
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 г.р. Второй Президент 010000, город Нурсултан, Левый берег реки Ишим, Резиденция Президента Акорда...`,
                 link_weight: `14`,
@@ -16581,6 +16687,7 @@
     
     {
                 title: `Президент Токаев Касым-Жомарт Кемелович: Мошенник ...`,
+                social_type: 'Вконтакте',
                 link: `https://vk.com/@472739285-prezident-tokaev-kasym-zhomart-kemelovich-moshennik-makarov`,
                 content: `<span class="key-word">президент</span> <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>: Мошенник Макаров Владимир Фадеевич. Виолет Чуа·14 авг 2019. 010000, город Нур-Султан, Левый берег реки Ишим...`,
                 link_weight: `14`,
@@ -16591,6 +16698,7 @@
     {
                 title: `Хачатрян Армен Суренович | Almaty - Facebook`,
                 link: `https://www.facebook.com/people/%D0%A5%D0%B0%D1%87%D0%B0%D1%82%D1%80%D1%8F%D0%BD-%D0%90%D1%80%D0%BC%D0%B5%D0%BD-%D0%A1%D1%83%D1%80%D0%B5%D0%BD%D0%BE%D0%B2%D0%B8%D1%87/100067356500965/?locale=hi_IN`,
+                social_type: 'Facebook',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953. Второй Президент Республики Казахстан 010000, город Нур-Султан, Левый берег реки Ишим`,
                 link_weight: `12`,
                 keyword_list: ['мать', 'сестра', 'убийство', 'кража', 'мошенничество', 'судебный', 'начальник', 'следствие', 'конфликт', 'преступление', 'мошенник'],
@@ -16600,6 +16708,7 @@
     {
                 title: `ҚР Бас прокуратурасының назарына / Вниманию ...`,
                 link: `https://www.facebook.com/groups/2311275672530253/posts/3164972827160529/`,
+                social_type: 'Facebook',
                 content: `... Касым - Жомарта <span class="key-word">Кемеловича</span> <span class="key-word">Токаева</span> по стабилизации страны, процветанию экономики, ... его испугала наша <span class="key-word">репутация</span> независимого издания,...`,
                 link_weight: `10`,
                 keyword_list: ['репутация', 'коррупция', 'отец', 'сын', 'убийство', 'уголовное', 'скандал', 'конфликт', 'расследование'],
@@ -16608,6 +16717,7 @@
     
     {
                 title: `Максим Петров: записи профиля | ВКонтакте`,
+                social_type: 'Вконтакте',
                 link: `https://vk.com/wall571201848?offset=220`,
                 content: `Мухамбеткалиев Сержан Тажибаевич * Тайчибеков Ермек Кенесулы * <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>. Максим Петров. Читать. Оценили 0 человек.`,
                 link_weight: `10`,
@@ -16617,6 +16727,7 @@
     
     {
                 title: `5. Хачатрян Маринэ Суреновна +77017550999 - ВКонтакте`,
+                social_type: 'Вконтакте',
                 link: `https://vk.com/@472739285-5-hachatryan-marine-surenovna-77017550999`,
                 content: `Мой папа <span class="key-word">работал</span> слесарем-инструментальщиком в Армении, а в Казахстане ... Абишевича и Второго Президента <span class="key-word">Токаева</span> <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span>,...`,
                 link_weight: `7`,
@@ -16627,6 +16738,7 @@
     {
                 title: `Жунусова Дина Илюбаевна, проживающая в ... - Instagram`,
                 link: `https://www.instagram.com/tv/CJ2cOZlpNn1/`,
+                social_type: 'Instagram',
                 content: `... Обращаюсь к Президенту Республики Казахстан <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span> <span class="key-word">Токаеву</span>, ... <span class="key-word">уголовное</span> дело в отношении моего сына Аширбекова Нурхана Нурлановича,...`,
                 link_weight: `7`,
                 keyword_list: ['жена', 'сизо', 'ребенок', 'уголовное', 'приговорен', 'конфликт', 'сын'],
@@ -16635,6 +16747,7 @@
     
     {
                 title: `Мошенники. Преступники. Маманова Куаныш и Маманов Сабит ...`,
+                social_type: 'Вконтакте',
                 link: `https://vk.com/@472739285-moshenniki-prestupniki-mamanova-kuanysh-i-mamanov-sabit-dula`,
                 content: `Президенту <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. От потерпевшего, пенсионера-инвалида Жаксыбаева Тлеугажы Молдагалиевича 12 ноября 1950 года рождения,...`,
                 link_weight: `7`,
@@ -16645,6 +16758,7 @@
     {
                 title: `Кускабекова Сауле - Facebook`,
                 link: `https://www.facebook.com/profile.php?id=100068446818946&locale=hi_IN`,
+                social_type: 'Facebook',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 ... <span class="key-word">преступник</span> как Джакупов Ерлан Муратович ... текущий момент, <span class="key-word">преступник</span> свободно передвигается, сам за рулём,...`,
                 link_weight: `6`,
                 keyword_list: ['розыск', 'коррупция', 'хищение', 'исковое', 'преступник', 'аферист'],
@@ -16653,6 +16767,7 @@
     
     {
                 title: `Кому: Токаев Касым-Жомарт Кемелович, 17.05.1953 Второй ...`,
+                social_type: 'Вконтакте',
                 link: `https://vk.com/wall472739285_2216`,
                 content: `Кому: <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953. Второй Президент Республики <span class="key-word">казах</span>стан 010000, город Нур-Султан, Левый берег реки Ишим Резиденция Президента...`,
                 link_weight: `6`,
@@ -16663,6 +16778,7 @@
     {
                 title: `АНТИКОРРУПЦИОНЕРЫ КАЗАХСТАНА !!! | Facebook`,
                 link: `https://www.facebook.com/groups/420625591656363/posts/1551423811909863/`,
+                social_type: 'Facebook',
                 content: `Как отметил глава государства <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span>, ... Его и ещё шесть подельников объявили в <span class="key-word">розыск</span>, остальные арестованы.`,
                 link_weight: `5`,
                 keyword_list: ['грабеж', 'следственный', 'розыск', 'семья', 'осужден'],
@@ -16672,6 +16788,7 @@
     {
                 title: `Кускабекова Сауле | Facebook`,
                 link: `https://www.facebook.com/people/%D0%9A%D1%83%D1%81%D0%BA%D0%B0%D0%B1%D0%B5%D0%BA%D0%BE%D0%B2%D0%B0-%D0%A1%D0%B0%D1%83%D0%BB%D0%B5/100068446818946/?locale=ms_MY`,
+                social_type: 'Facebook',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 Второй Президент Республики Казахстан. 010000, город Нур-Султан, Левый берег реки Ишим Резиденция Президента...`,
                 link_weight: `5`,
                 keyword_list: ['хищение', 'уголовное', 'аферист', 'дочь', 'мошенник'],
@@ -16680,6 +16797,7 @@
     
     {
                 title: `Jas Otan: записи сообщества | ВКонтакте`,
+                social_type: 'Вконтакте',
                 link: `https://vk.com/wall-18953378?offset=300`,
                 content: `<span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span> набрал максимальный процент по результатам Exit poll. ... 9 июня за <span class="key-word">Касым-Жомарт</span>а <span class="key-word">Токаев</span>а находил живой <span class="key-word">отклик</span> и поддержку.`,
                 link_weight: `5`,
@@ -16689,7 +16807,9 @@
     
     {
                 title: `Коррупция. Мошенничество. Заместитель Акима ...`,
+                social_type: 'Вконтакте',
                 link: `https://vk.com/@501600938-korrupciya-moshennichestvo-zamestitel-akima-karasaiskogo-rai`,
+                social_type: 'Вконтакте',
                 content: `Мне, Кайракбаеву Жансултану Шамшидин улы, коррумпированный <span class="key-word">мошенник</span> ... Абишевича и Второго Президента <span class="key-word">Токаева</span> <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span>,...`,
                 link_weight: `4`,
                 keyword_list: ['мошенничество', 'следственный', 'мошенник', 'коррупция'],
@@ -16699,6 +16819,7 @@
     {
                 title: `Вера Воднева | ВКонтакте`,
                 link: `https://vk.com/id551494752`,
+                social_type: 'Вконтакте',
                 content: `Резиденция Президента Акорда Президенту <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span> От Косовановой Зинаиды Семёновны 15.02.1939 г.р. удостоверение личности №025262557...`,
                 link_weight: `4`,
                 keyword_list: ['отец', 'расследование', 'обман', 'коррупция'],
@@ -16708,6 +16829,7 @@
     {
                 title: `Юристы и адвокаты Казахстана | Facebook`,
                 link: `https://www.facebook.com/groups/875583369145836/posts/4202972153073591/?locale=ms_MY`,
+                social_type: 'Facebook',
                 content: `Добрый день, хочу обратиться к Президенту Республики Казахстан, Г-ну <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Председателю Жамбылского областного суда,...`,
                 link_weight: `4`,
                 keyword_list: ['полиция', 'скандал', 'сестра'],
@@ -16717,6 +16839,7 @@
     {
                 title: `Котляров Сергей Владимирович. Аферист. Мошенник ...`,
                 link: `https://vk.com/@472739285-kotlyarov-sergei-vladimirovich-aferist-moshennik-kaznokrad`,
+                social_type: 'Вконтакте',
                 content: `Котляров Сергей Владимирович. Аферист. <span class="key-word">мошенник</span>. Казнокрад. Виолет Чуа·5 ноя 2019. Кому: <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953.`,
                 link_weight: `4`,
                 keyword_list: ['сын', 'работал', 'мошенник', 'аферист'],
@@ -16726,6 +16849,7 @@
     {
                 title: `15. Хачатрян Маринэ Суреновна +77017550999 - ВКонтакте`,
                 link: `https://vk.com/@501600938-15-hachatryan-marine-surenovna-77017550999`,
+                social_type: 'Вконтакте',
                 content: `За два месяца до смерти моего отца, у меня был <span class="key-word">конфликт</span> с сестрой ... Абишевича и Второго Президента <span class="key-word">Токаева</span> <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span>,...`,
                 link_weight: `3`,
                 keyword_list: ['сестра', 'конфликт', 'мать'],
@@ -16735,6 +16859,7 @@
     {
                 title: `‪#‎никаблогер‬ - Explore | Facebook`,
                 link: `https://www.facebook.com/hashtag/%D0%BD%D0%B8%D0%BA%D0%B0%D0%B1%D0%BB%D0%BE%D0%B3%D0%B5%D1%80/`,
+                social_type: 'Facebook',
                 content: `Так возмущенно написала нашему президенту <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span> <span class="key-word">Токаеву</span> знаменитная французская актриса Бриджит Бардо недавно. У нас не сжигают,...`,
                 link_weight: `3`,
                 keyword_list: ['сын', 'друзьями', 'брат'],
@@ -16744,6 +16869,7 @@
     {
                 title: `36. Мошенник и Аферист. Смагулов Дамир Даулетович и ...`,
                 link: `https://vk.com/@451521707-36-moshennik-i-aferist-smagulov-damir-dauletovich-i-pak-stan`,
+                social_type: 'Вконтакте',
                 content: `Президенту <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. От потерпевшего Супатаева Ильдара Канатовича, 01 марта 1986 года рождения,...`,
                 link_weight: `3`,
                 keyword_list: ['полиция', 'уголовное', 'начальник'],
@@ -16753,6 +16879,7 @@
     {
                 title: `29. Смагулов Дамир Даулетович. Аферист и Мошенник.`,
                 link: `https://vk.com/@545949540-29-smagulov-damir-dauletovich-aferist-i-moshennik`,
+                social_type: 'Вконтакте',
                 content: `29. Смагулов Дамир Даулетович. Аферист и <span class="key-word">мошенник</span>. ... Председателю Сената Парламента РК <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>.`,
                 link_weight: `3`,
                 keyword_list: ['уголовное', 'мошенник', 'аферист'],
@@ -16762,6 +16889,7 @@
     {
                 title: `38. Багисов Оскар Галимович * Тайчибеков Ермек ...`,
                 link: `https://vk.com/@571201848-38-bagisov-oskar-galimovich-taichibekov-ermek-kenesuly-asano`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 Второй Президент Республики Казахстан. 010000, город Нур-Султан, Левый берег реки Ишим Резиденция...`,
                 link_weight: `3`,
                 keyword_list: ['семья', 'присвоение', 'брат'],
@@ -16771,6 +16899,7 @@
     {
                 title: `За Ермека Тайчибекова! За правду! - ВКонтакте`,
                 link: `https://vk.com/public201668589`,
+                social_type: 'Вконтакте',
                 content: `... Мамин Аскар Азакпаевич, Кожамжаров Кайрат Пернешович <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>. Но вся элита подконтрольна. ... Я ни <span class="key-word">вор</span>, ни разбойник, ни убийца.`,
                 link_weight: `3`,
                 keyword_list: ['экстремизм', 'вор', 'враг'],
@@ -16780,6 +16909,7 @@
     {
                 title: `Мошенницы и аферистки. Конкабаева Марина ... - ВКонтакте`,
                 link: `https://vk.com/@472739285-moshennicy-i-aferistki-konkabaeva-marina-i-toishibaeva-asel`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 Второй Президент Республики ... <span class="key-word">исковое</span> заявление о признании сделки и договора купли-продажи.`,
                 link_weight: `3`,
                 keyword_list: ['исковое', 'муж', 'кража'],
@@ -16789,6 +16919,7 @@
     {
                 title: `Алексей Папин: записи профиля - ВКонтакте`,
                 link: `https://vk.com/wall25216350?offset=160`,
+                social_type: 'Вконтакте',
                 content: `составляет 80 тыс. человек, рассказал он в <span class="key-word">интервью</span> РБК. ... Хочется верить и надеяться, что <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, Мирзиёев Шавкат...`,
                 link_weight: `3`,
                 keyword_list: ['брат', 'друзьями', 'интервью'],
@@ -16798,6 +16929,7 @@
     {
                 title: `Қазақстандық полиция қызметін жаңғыртудың маңыздылығы ...`,
                 link: `https://vk.com/wall253950517_7225`,
+                social_type: 'Вконтакте',
                 content: `В рамках послании Президента Республики Казахстан <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span> <span class="key-word">Токаева</span> образ полиции, как силового инструмента государства, будет постепенно...`,
                 link_weight: `2`,
                 keyword_list: ['полиция', 'разбой'],
@@ -16807,6 +16939,7 @@
     {
                 title: `Караханян Ашхен Хачиковна | By Хачатрян Армен Суренович`,
                 link: `https://www.facebook.com/100067356500965/videos/%D0%BA%D0%B0%D1%80%D0%B0%D1%85%D0%B0%D0%BD%D1%8F%D0%BD-%D0%B0%D1%88%D1%85%D0%B5%D0%BD-%D1%85%D0%B0%D1%87%D0%B8%D0%BA%D0%BE%D0%B2%D0%BD%D0%B0/2934555673306138/`,
+                social_type: 'Facebook',
                 content: `особо тяжкое <span class="key-word">преступление</span>. ... <span class="key-word">преступление</span>, следы убийства моего отца. ... Президента <span class="key-word">Токаева</span> <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span>,`,
                 link_weight: `2`,
                 keyword_list: ['преступление', 'судебный'],
@@ -16816,6 +16949,7 @@
     {
                 title: `Адвокатская контора Yessimov Krivonossov &amp; partners | Facebook`,
                 link: `https://www.facebook.com/Adal.advokat.kensesi/videos/`,
+                social_type: 'Facebook',
                 content: `... нашего уважаемого Президента Касым - Жомарта <span class="key-word">Кемеловича</span> <span class="key-word">Токаева</span> по стабилизации страны, ... решил опубликовать своё <span class="key-word">интервью</span> в ноябре месяце 2021 года,...`,
                 link_weight: `2`,
                 keyword_list: ['задержан', 'интервью'],
@@ -16825,6 +16959,7 @@
     {
                 title: `Астана қаласының Полиция департаменті - «Лучших ...`,
                 link: `https://www.facebook.com/210440866121622/photos/a.920578905107811/993269197838781/?type=3`,
+                social_type: 'Facebook',
                 content: `... расширенном заседании Коллегии МВД, прошедшего под председательством Президента Республики Казахстан <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span> <span class="key-word">Токаева</span>.`,
                 link_weight: `2`,
                 keyword_list: ['полиция', 'работал'],
@@ -16834,6 +16969,7 @@
     {
                 title: `zhaloby astana on Instagram: "Repost from`,
                 link: `https://www.instagram.com/p/CKDHnRRJDfS/`,
+                social_type: 'Instagram',
                 content: `Обращаюсь к Президенту Республики Казахстан <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span> <span class="key-word">Токаеву</span>, Председателю Верховного суда и Генеральному Прокурору Республики Казахстан,...`,
                 link_weight: `2`,
                 keyword_list: ['ребенок', 'супруг'],
@@ -16843,6 +16979,7 @@
     {
                 title: `Адвокаты Казахстана | Когда граждане Казахстана не могут ...`,
                 link: `https://www.facebook.com/groups/advocatekz/permalink/1431843616847888/?locale=sv_SE`,
+                social_type: 'Facebook',
                 content: `И в итоге все её угрозы сбылись, и я <span class="key-word">осужден</span> и сижу в тюрьме. ... Г-ну <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Председателю Жамбылского областного суда,...`,
                 link_weight: `2`,
                 keyword_list: ['муж', 'осужден'],
@@ -16852,6 +16989,7 @@
     {
                 title: `Тулебаев и Солдатенко - ВКонтакте`,
                 link: `https://vk.com/@472739285-tulebaev-i-soldatenko`,
+                social_type: 'Вконтакте',
                 content: `... передавая бразды правления <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>, ... <span class="key-word">судебный</span> исполнитель Частные судебные исполнители Акмолинской области.`,
                 link_weight: `2`,
                 keyword_list: ['обман', 'судебный'],
@@ -16861,6 +16999,7 @@
     {
                 title: `31 июл 2019 - ВКонтакте`,
                 link: `https://vk.com/@501600938-httppravdarvuanovostiitem661855-prestupnaya-deyatelnost-mosh`,
+                social_type: 'Вконтакте',
                 content: `Президенту <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Левый берег реки Ишим, Резиденция Президента Акорда. 010000, город Нур-Султан, Левый берег реки...`,
                 link_weight: `2`,
                 keyword_list: ['следственный', 'руководитель'],
@@ -16870,6 +17009,7 @@
     {
                 title: `Russian Foreign Ministry - Facebook`,
                 link: `https://www.facebook.com/MIDRussia/photos/a.265191980246917/3421096527989764/?type=3`,
+                social_type: 'Facebook',
                 content: `... Путина с Президентом <span class="key-word">казах</span>стана <span class="key-word">Касым-Жомартом</span> <span class="key-word">Токаевым</span> и Первым ... настрой на всемерное укрепление российско-<span class="key-word">казах</span>станских отношений...`,
                 link_weight: `2`,
                 keyword_list: ['казах'],
@@ -16879,6 +17019,7 @@
     {
                 title: `Котляров Сергей Владимирович. Хищения в сфере ...`,
                 link: `https://vk.com/@472739285-kotlyarov-sergei-vladimirovich-hischeniya-v-sfere-stroitelst`,
+                social_type: 'Вконтакте',
                 content: `Президенту <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Резиденция Президента Акорда. 010000, город Нур-Султан, Левый берег реки Ишим.`,
                 link_weight: `2`,
                 keyword_list: ['сын', 'казах'],
@@ -16888,6 +17029,7 @@
     {
                 title: `Благотворительный фонд "Жулдыз", г. Уральск, ЗКО`,
                 link: `https://vk.com/wall-58580629?offset=20`,
+                social_type: 'Вконтакте',
                 content: `Президент Республики Казахстан <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, ... недостаточность не дают Тимуру нормально жить, общаться с <span class="key-word">друзьями</span> и получать профессию.`,
                 link_weight: `2`,
                 keyword_list: ['сестра', 'друзьями'],
@@ -16897,6 +17039,7 @@
     {
                 title: `Мошенничество. Махинации с земельными участками ...`,
                 link: `https://vk.com/@472739285-moshennichestvo-mahinacii-s-zemelnymi-uchastkami-akimat-kara`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 ... по обвинительному приговору суда и <span class="key-word">осужден</span> на длительный срок за совершённые преступления.`,
                 link_weight: `2`,
                 keyword_list: ['махинации', 'осужден'],
@@ -16906,6 +17049,7 @@
     {
                 title: `Преступного сговора региональной палаты частных ...`,
                 link: `https://vk.com/wall472739285_2532`,
+                social_type: 'Вконтакте',
                 content: `... частный <span class="key-word">судебный</span> исполнитель: Аяганов Еркебулан Бакитович, +77017555566, ... 23.10.19 Президент <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>`,
                 link_weight: `2`,
                 keyword_list: ['следственный', 'судебный'],
@@ -16915,6 +17059,7 @@
     {
                 title: `ОПГ мошенников. Группировка Адыл Китай. На воле и в ...`,
                 link: `https://vk.com/@472739285-opg-moshennikov-gruppirovka-adyl-kitai-na-vole-i-v-nevole`,
+                social_type: 'Вконтакте',
                 content: `Злоупотребление доверием – это специфичный вид <span class="key-word">обман</span>а (<span class="key-word">обман</span> доверия) и потому близко ... Президент <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>.`,
                 link_weight: `2`,
                 keyword_list: ['обман', 'хищение'],
@@ -16924,6 +17069,7 @@
     {
                 title: `Тулебаев Бекежан Беримкулович | ВКонтакте`,
                 link: `https://vk.com/@472739285-tulebaev-bekezhan-berimkulovich`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953. Второй Президент Республики Казахстан. 010000, город Нур-Султан, Левый берег реки Ишим Резиденция...`,
                 link_weight: `2`,
                 keyword_list: ['обман', 'розыск'],
@@ -16933,6 +17079,7 @@
     {
                 title: `Мошенник и аферист Шындаулетов Ермагамбет ...`,
                 link: `https://vk.com/@586710199-moshennik-i-aferist-shyndauletov-ermagambet-kurmashevich`,
+                social_type: 'Вконтакте',
                 content: `Мошенник и <span class="key-word">аферист</span> Шындаулетов Ермагамбет Курмашевич ... <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 Второй Президент Республики Казахстан.`,
                 link_weight: `2`,
                 keyword_list: ['розыск', 'аферист'],
@@ -16942,6 +17089,7 @@
     {
                 title: `Преступного сговора региональной палаты частных ...`,
                 link: `https://vk.com/wall536388325_380`,
+                social_type: 'Вконтакте',
                 content: `16.07.18 <span class="key-word">начальник</span> ДВД г. ... 23.10.19 Президент <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> ... 22.01.20 <span class="key-word">начальник</span> Департамента полиции города Алматы, Кудебаев Серик...`,
                 link_weight: `2`,
                 keyword_list: ['начальник', 'руководитель'],
@@ -16951,6 +17099,7 @@
     {
                 title: `В Департаменте полиции Карагандинской области прошел ...`,
                 link: `https://www.instagram.com/p/CFOFi74B1GY/`,
+                social_type: 'Instagram',
                 content: `... “Казахстан в новой реальности: время действий” Глава нашего государства <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span>, уделил особое внимание развитию массового спорта.`,
                 link_weight: `2`,
                 keyword_list: ['команда', 'начальник'],
@@ -16960,6 +17109,7 @@
     {
                 title: `Путин снова не смог произнести имя президента ...`,
                 link: `https://vk.com/wall-28905875_28839659`,
+                social_type: 'Вконтакте',
                 content: `Иван, Касым Жомарт <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span> должно быть. 18 июн 2022 ... Алексей Новиков. Данияр, обиженный <span class="key-word">казах</span>. 18 июн 2022.`,
                 link_weight: `2`,
                 keyword_list: ['арестован', 'казах'],
@@ -16969,6 +17119,7 @@
     {
                 title: `Судья Иембердиева Мира Мухаметкалиевна - ВКонтакте`,
                 link: `https://vk.com/@586710199-sudya-iemberdieva-mira-muhametkalievna`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 Второй Президент Республики Казахстан. 010000, город Нур-Султан, Левый берег реки Ишим Резиденция...`,
                 link_weight: `2`,
                 keyword_list: ['резюме', 'исковое'],
@@ -16978,6 +17129,7 @@
     {
                 title: `Указом президента Касым-Жомарта Токаева Самат Абиш ...`,
                 link: `https://www.instagram.com/p/CY0mLabtQ2h/`,
+                social_type: 'Instagram',
                 content: `Указом президента <span class="key-word">Касым-Жомарта</span> <span class="key-word">Токаева</span> Самат Абиш освобожден от должности первого заместителя председателя Комитета · Сегодня, 3 июля, во многих микрорайонах...`,
                 link_weight: `1`,
                 keyword_list: ['казах'],
@@ -16987,6 +17139,7 @@
     {
                 title: `FCAtyrauFans | ВКонтакте`,
                 link: `https://vk.com/fcatyraufans`,
+                social_type: 'Вконтакте',
                 content: `Я ее единственная <span class="key-word">дочь</span>! ... Ниже приводим слова Президента Республики Казахстан <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span> <span class="key-word">Токаева</span> озвученные как послание на совместном...`,
                 link_weight: `1`,
                 keyword_list: ['дочь'],
@@ -16996,6 +17149,7 @@
     {
                 title: `Жиренчин Абиш Казбекович и Тлеумбеков Ерлан ...`,
                 link: `https://vk.com/@501600938-zhirenchin-abish-kazbekovich-i-tleumbekov-erlan-bigalievich`,
+                social_type: 'Вконтакте',
                 content: `01 марта 2019 зарегистрировано в канцелярии <span class="key-word">исковое</span> заявление ... на имя Второго Президента <span class="key-word">Токаева</span> <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span> и Посла России...`,
                 link_weight: `1`,
                 keyword_list: ['исковое'],
@@ -17005,6 +17159,7 @@
     {
                 title: `ҚР ІІМ | МВД РК on Instagram: " ҚР Тәуелсіздігінің 30 ...`,
                 link: `https://www.instagram.com/p/CbPLHI7AJkJ/`,
+                social_type: 'Instagram',
                 content: `... 3-<span class="key-word">полиция</span> батальонының полицейі <span class="key-word">полиция</span> сержанты Нұржанова Гүлназ Сыдыкқызы ... статьи Главы государства <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span> <span class="key-word">Токаева</span> «Независимость...`,
                 link_weight: `1`,
                 keyword_list: ['полиция'],
@@ -17014,6 +17169,7 @@
     {
                 title: `Американец, русский и казах попали в плен к аборигенам ...`,
                 link: `https://vk.com/wall-92819180_506663`,
+                social_type: 'Вконтакте',
                 content: `- Да ты гонишь! Это же сколько ждать??? - Е-е-е... асыкпаймыз. Последние записи: <span class="key-word">Касым-Жомарту</span> <span class="key-word">Токаеву</span> исполнилось 70 лет`,
                 link_weight: `1`,
                 keyword_list: ['казах'],
@@ -17023,6 +17179,7 @@
     {
                 title: `Avesta - информационное агентство - Facebook`,
                 link: `https://www.facebook.com/avesta.tj/photos/a.1584040255096650/2101770953323575/?type=3&locale=hi_IN`,
+                social_type: 'Facebook',
                 content: `Эмомали Рахмон выразил соболезнования <span class="key-word">Касым-Жомарту</span> <span class="key-word">Токаеву</span> <span class="key-word">президент</span> Таджикистана Эмомали Рахмон направил сегодня, 10 января телеграмму соболезнования...`,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17032,6 +17189,7 @@
     {
                 title: `Евразия» on Instagram: "ТОКАЕВ: ЗЕМЛЕТРЯСЕНИЕ В ...`,
                 link: `https://www.instagram.com/reel/Cp3Om_Ittsk/`,
+                social_type: 'Instagram',
                 content: `... во время сокрушительных землетрясений <span class="key-word">президент</span> Турции Реджеп Тайип Эрдоган выразил признательность <span class="key-word">Касым-Жомарту</span> <span class="key-word">Токаеву</span>. Лично. <span class="key-word">президент</span> Казахстана с...`,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17041,6 +17199,7 @@
     {
                 title: `Ақтөбе ішкі саясат бөлімі on Instagram: "Дорогие земляки ...`,
                 link: `https://www.instagram.com/p/B_e9m1_DC0q/`,
+                social_type: 'Instagram',
                 content: `Ақтөбе ішкі саясат бөлімі on Instagram: "Дорогие земляки, согласно заявлению нашего Главы Государства <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span> <span class="key-word">Токаева</span> режим...`,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17050,6 +17209,7 @@
     {
                 title: `Обсуждение Послания Президента 4 сентября текущего ...`,
                 link: `https://vk.com/wall253950517_7860`,
+                social_type: 'Вконтакте',
                 content: `... <span class="key-word">президент</span>а <span class="key-word">Касым-Жомарта</span> <span class="key-word">Кемеловича</span> <span class="key-word">Токаева</span> Народу Казахстана «Казахстан в новой реальности: время действий» от 1 сентября 2020 года.`,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17059,6 +17219,7 @@
     {
                 title: `Адвокаты Казахстана | Добрый день, коллеги .. | Facebook`,
                 link: `https://www.facebook.com/groups/advocatekz/permalink/3617047414994153/`,
+                social_type: 'Facebook',
                 content: `Вам проплатили за агитацию или <span class="key-word">родственник</span>? ... Г-ну <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Председателю Жамбылского областного суда, Председателю Верховного...`,
                 link_weight: `1`,
                 keyword_list: ['родственник'],
@@ -17068,6 +17229,7 @@
     {
                 title: `Международный календарь дат и событий | Навсегда в любимых ...`,
                 link: `https://www.facebook.com/groups/560365704304116/permalink/1447621698911841/?locale=sw_KE`,
+                social_type: 'Facebook',
                 content: `О случившемся сообщил несколько часов назад в Facebook <span class="key-word">муж</span> актрисы, журналист Алексей ... 17 мая 2023 года - 70 лет <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span> (1953),...`,
                 link_weight: `1`,
                 keyword_list: ['муж'],
@@ -17077,6 +17239,7 @@
     {
                 title: `Адвокаты Казахстана | СНОВА К ТЕМЕ НОРМАТИВНЫХ ...`,
                 link: `https://www.facebook.com/groups/advocatekz/permalink/3550423048323257/?locale=cs_CZ`,
+                social_type: 'Facebook',
                 content: `Судебное <span class="key-word">следствие</span> длилось 2 месяца . ... хочу обратиться к Президенту Республики Казахстан, Г-ну <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Председателю Жамбылского...`,
                 link_weight: `1`,
                 keyword_list: ['следствие'],
@@ -17086,6 +17249,7 @@
     {
                 title: `Адвокаты Казахстана | Доброе утро, дорогие | Facebook`,
                 link: `https://www.facebook.com/groups/advocatekz/permalink/2029547663744144/?locale=en_GB`,
+                social_type: 'Facebook',
                 content: `Там страшная межведомственная связь и <span class="key-word">коррупция</span>. ... Республики Казахстан, Г-ну <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Председателю Жамбылского областного суда,...`,
                 link_weight: `1`,
                 keyword_list: ['коррупция'],
@@ -17095,6 +17259,7 @@
     {
                 title: `Адвокаты Казахстана | Пока мы на карантине хотелось бы ...`,
                 link: `https://www.facebook.com/groups/advocatekz/permalink/3293870723978492/?locale=tr_TR`,
+                social_type: 'Facebook',
                 content: `Добрый день, хочу обратиться к Президенту Республики Казахстан, Г-ну <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Председателю Жамбылского областного суда,...`,
                 link_weight: `1`,
                 keyword_list: ['следственный'],
@@ -17104,6 +17269,7 @@
     {
                 title: `Адвокаты Казахстана | Доброе утро | Facebook`,
                 link: `https://www.facebook.com/groups/advocatekz/permalink/2726865840678986/?locale=ms_MY`,
+                social_type: 'Facebook',
                 content: `Добрый день, хочу обратиться к Президенту Республики Казахстан, Г-ну <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Председателю Жамбылского областного суда,...`,
                 link_weight: `1`,
                 keyword_list: ['следственный'],
@@ -17113,6 +17279,7 @@
     {
                 title: `30. Багисов Оскар Галимович * Тайчибеков Ермек ...`,
                 link: `https://vk.com/@571201848-30-bagisov-oskar-galimovich-taichibekov-ermek-kenesuly-ibrae`,
+                social_type: 'Вконтакте',
                 content: `Президенту <span class="key-word">Токаеву</span> <span class="key-word">Касым-Жомарту</span> <span class="key-word">Кемеловичу</span>. Ходатайство ... 2-3798/2012 от 24.05.2012 вынес <span class="key-word">судебный</span> акт о взыскании с:.`,
                 link_weight: `1`,
                 keyword_list: ['судебный'],
@@ -17122,6 +17289,7 @@
     {
                 title: `Заключительные предвыборные фанфары - Facebook`,
                 link: `https://www.facebook.com/amanat.atyrauoblysy/videos/%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D0%BF%D1%80%D0%B5%D0%B4%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%BD%D1%8B%D0%B5-%D1%84%D0%B0%D0%BD%D1%84%D0%B0%D1%80%D1%8B/464995984075009/?locale=ar_AR`,
+                social_type: 'Facebook',
                 content: ``,
                 link_weight: `1`,
                 keyword_list: ['руководитель'],
@@ -17131,6 +17299,7 @@
     {
                 title: `Владимир Путин поговорил с президентом республики ...`,
                 link: `https://vk.com/wall-24136539_7686503`,
+                social_type: 'Вконтакте',
                 content: `... Путин поговорил с президентом республики <span class="key-word">казах</span>стан <span class="key-word">Касым-Жомартом</span> <span class="key-word">Токаевым</span>. ... Сегодня показывали по ТВ, как косивший под Чингизида <span class="key-word">казах</span> рубал рёбрами...`,
                 link_weight: `1`,
                 keyword_list: ['казах'],
@@ -17140,6 +17309,7 @@
     {
                 title: `Ысык-Көл областтык медиа борбору - Facebook`,
                 link: `https://www.facebook.com/YGTRK/photos/a.2525718077721307/2838405583119220/?type=3`,
+                social_type: 'Facebook',
                 content: `... телефонный разговор с Президентом Республики <span class="key-word">казах</span>стан <span class="key-word">Касым-Жомартом</span> <span class="key-word">Токаевым</span>. ... Стороны обсудили перспективы развития кыргызско-<span class="key-word">казах</span>станского...`,
                 link_weight: `1`,
                 keyword_list: ['казах'],
@@ -17149,6 +17319,7 @@
     {
                 title: `UzNews on Instagram`,
                 link: `https://www.instagram.com/p/CTFOeeKIJHE/`,
+                social_type: 'Instagram',
                 content: `Сегодня, 27 августа, Шавкат Мирзиёев провел телефонный разговор с <span class="key-word">президент</span>ом Республики Казахстан <span class="key-word">Касым-Жомартом</span> <span class="key-word">Токаевым</span>. <span class="key-word">президент</span> выразил искренние...`,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17158,6 +17329,7 @@
     {
                 title: `‪#‎узунколь‬ - Explore | Facebook`,
                 link: `https://www.facebook.com/hashtag/%D1%83%D0%B7%D1%83%D0%BD%D0%BA%D0%BE%D0%BB%D1%8C/?__eep__=6&source=feed_text&epa=HASHTAG`,
+                social_type: 'Facebook',
                 content: `<span class="key-word">команда</span> ресурсного центра по северному региону побывала в Узункольском районе с ... Президентом страны <span class="key-word">Касым-Жомартом</span> <span class="key-word">Кемеловичем</span> <span class="key-word">Токаевым</span> неоднократно...`,
                 link_weight: `1`,
                 keyword_list: ['команда'],
@@ -17167,6 +17339,7 @@
     {
                 title: `Журналист, ведущая, копирайтер|Астана on Instagram ...`,
                 link: `https://www.instagram.com/p/Cfds7jdlX1V/`,
+                social_type: 'Instagram',
                 content: `... Кыргызстана Аскаром Акаевым Первый <span class="key-word">президент</span> Кыргызстана Аскар Акаев ... возвращении в Кыргызстан и <span class="key-word">Касым-Жомарте</span> <span class="key-word">Токаеве</span>. - За 16 лет Вы впервые...`,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17176,6 +17349,7 @@
     {
                 title: `Даниэль Витт | Эксклюзив от @ptrk.kz. Представляем ...`,
                 link: `https://www.facebook.com/ptrk.kz/videos/%D0%B4%D0%B0%D0%BD%D0%B8%D1%8D%D0%BB%D1%8C-%D0%B2%D0%B8%D1%82%D1%82/259155502174095/`,
+                social_type: 'Facebook',
                 content: ``,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17185,6 +17359,7 @@
     {
                 title: `Касым-Жомарт Токаев на своей странице в Twitter ...`,
                 link: `https://vk.com/wall-7977109_6076`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">Касым-Жомарт</span> <span class="key-word">Токаев</span> на своей странице в Twitter поддержал написание ... было введено в официальное обращение широко распространенное ныне слово "<span class="key-word">казах</span>".`,
                 link_weight: `1`,
                 keyword_list: ['казах'],
@@ -17194,6 +17369,7 @@
     {
                 title: `Президент Касым-Жомарт Токаев поздравил женскую ...`,
                 link: `https://www.instagram.com/p/CPibp9ktEdx/?utm_source=ig_embed&ig_rid=99418987-c645-4415-aa8d-f60fb5d9ed00`,
+                social_type: 'Instagram',
                 content: `Президент <span class="key-word">Касым-Жомарт</span> <span class="key-word">Токаев</span> поздравил женскую сборную <span class="key-word">казах</span>стана по боксу с победой на чемпионате Азии. Об этом ... Нурдаулет/ ПРОСТОЙ <span class="key-word">казах</span> NNN.`,
                 link_weight: `1`,
                 keyword_list: ['казах'],
@@ -17203,6 +17379,7 @@
     {
                 title: `Уральская Неделя ▪︎ СМИ ▪︎ Новости on Instagram`,
                 link: `https://www.instagram.com/p/CcAcz2MtqYF/`,
+                social_type: 'Instagram',
                 content: `... а это значит, что еще один <span class="key-word">ребенок</span> получит шанс на полноценную жизнь и ... Амине: Президент Республики Казахстан <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>,...`,
                 link_weight: `1`,
                 keyword_list: ['ребенок'],
@@ -17212,6 +17389,7 @@
     {
                 title: `ҚазҰУ "Экономика" кафедрасы - Facebook`,
                 link: `https://www.facebook.com/%D2%9A%D0%B0%D0%B7%D2%B0%D0%A3-%D0%AD%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D0%BA%D0%B0-%D0%BA%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D1%81%D1%8B-2177239685684460/`,
+                social_type: 'Facebook',
                 content: `аралас 60-тан астам <span class="key-word">команда</span> жиналды. Толығырақ: https://www.kaznu. kz/kz/3/news/one/25064/ ... Президент <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span> в`,
                 link_weight: `1`,
                 keyword_list: ['команда'],
@@ -17221,6 +17399,7 @@
     {
                 title: `АнтиЖЕМҚОР-ЮГ | Facebook`,
                 link: `https://www.facebook.com/ANTIJEMKOR/posts/d41d8cd9/482569833203019/`,
+                social_type: 'Facebook',
                 content: `Уважемый Президент <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span>!!! Уважаемый мэр города ... Хабидин Абдалиевич и многодетная <span class="key-word">мать</span> Рахманбердиева Гүлсина Хабидиновна!!!`,
                 link_weight: `1`,
                 keyword_list: ['мать'],
@@ -17230,6 +17409,7 @@
     {
                 title: `"NOVЫЙ" Казахстанский исполнитель V $ X V PRiNCE ...`,
                 link: `https://vk.com/wall-29573241_17471270`,
+                social_type: 'Вконтакте',
                 content: `... нынешний президент "<span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span>" предложил создать "Новый Казахстан", сказав, что при прошлом ... Хочу новую <span class="key-word">дочь</span>.`,
                 link_weight: `1`,
                 keyword_list: ['дочь'],
@@ -17239,6 +17419,7 @@
     {
                 title: `Смайлова Дуржан Абдрзаховна. Илийский районный суд.`,
                 link: `https://vk.com/@586710199-smailova-durzhan-abdrzahovna-iliiskii-raionnyi-sud`,
+                social_type: 'Вконтакте',
                 content: `Нуждаясь в денежных средствах, я и мой <span class="key-word">супруг</span>, мы, 27.12.2017 года заложили нашу ... 13.06.2019 Президент <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>.`,
                 link_weight: `1`,
                 keyword_list: ['супруг'],
@@ -17248,6 +17429,7 @@
     {
                 title: `Кускабекова Сауле - Кому: Смаилов Аскар Спартакович`,
                 link: `https://www.facebook.com/110483647238757/posts/161001248853663/?locale=ar_AR`,
+                social_type: 'Facebook',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 Второй Президент Республики Казахстан ... вела не как адвокат, <span class="key-word">подруга</span> ответчицы Тойшибаевой Асель Тойшибаевны,...`,
                 link_weight: `1`,
                 keyword_list: ['подруга'],
@@ -17257,6 +17439,7 @@
     {
                 title: `‪#‎нехотят‬ - Explore | Facebook`,
                 link: `https://www.facebook.com/hashtag/%D0%BD%D0%B5%D1%85%D0%BE%D1%82%D1%8F%D1%82/?__eep__=6&source=feed_text&epa=HASHTAG`,
+                social_type: 'Facebook',
                 content: `Уважемый Президент <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span>!!! ♦️ Хотим чтобы вы нас услышали и помогли!!! Мы, с дочерью с 2006-года как законопослушные граждане своей...`,
                 link_weight: `1`,
                 keyword_list: ['подруга'],
@@ -17266,6 +17449,7 @@
     {
                 title: `Судья Жапакова Дина Асилбековна VS ответчик ...`,
                 link: `https://vk.com/@472739285-sudya-zhapakova-dina-asilbekovna-vs-otvetchik-budeneeva-ulzh`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 Второй Президент Республики ... в словесный жёсткий <span class="key-word">конфликт</span> с одной из процессуальных сторон.`,
                 link_weight: `1`,
                 keyword_list: ['конфликт'],
@@ -17275,6 +17459,7 @@
     {
                 title: `7. Коррупция. Акимат. Карасайский район - ВКонтакте`,
                 link: `https://vk.com/@472739285-7-korrupciya-akimat-karasaiskii-raion`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 г.р. Второй Президент. 010000, город Нурсултан, Левый берег реки Ишим, Резиденция Президента...`,
                 link_weight: `1`,
                 keyword_list: ['коррупция'],
@@ -17284,6 +17469,7 @@
     {
                 title: `Шарипов Нурсерик Каримович, 13.10.1965 г.р ... - ВКонтакте`,
                 link: `https://vk.com/wall501600938_1810`,
+                social_type: 'Вконтакте',
                 content: `... долг и или он будет <span class="key-word">задержан</span>, арестован и с него будет взыскана сумма, ... Ермек Кенесулы * <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953.`,
                 link_weight: `1`,
                 keyword_list: ['задержан'],
@@ -17293,6 +17479,7 @@
     {
                 title: `+77017555566 Аяганов Еркебулан частный судебный ...`,
                 link: `https://vk.com/@472739285-77017555566-ayaganov-erkebulan-chastnyi-sudebnyi-ispolnitel`,
+                social_type: 'Вконтакте',
                 content: `+77017555566 Аяганов Еркебулан частный <span class="key-word">судебный</span> исполнитель. Виолет Чуа·6 ноя 2019. Кому: <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953.`,
                 link_weight: `1`,
                 keyword_list: ['судебный'],
@@ -17302,6 +17489,7 @@
     {
                 title: `Судьба языка это прежде всего судьба народа Наш ...`,
                 link: `https://vk.com/wall253950517_7651`,
+                social_type: 'Вконтакте',
                 content: `В своем нынешнем Послании «Казахстан в новой реальности: время действий» Президент Республики <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span> отметил,...`,
                 link_weight: `1`,
                 keyword_list: ['полиция'],
@@ -17311,6 +17499,7 @@
     {
                 title: `Инвестиционная пирамида КПК Шанырак - ВКонтакте`,
                 link: `https://vk.com/@451521707-investicionnaya-piramida-kpk-shanyrak`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17 августа 1953 г.р. Второй Президент Республики Казахстан. Резиденция Президента Акорда, Левый берег реки Ишим,...`,
                 link_weight: `1`,
                 keyword_list: ['пирамида'],
@@ -17320,6 +17509,7 @@
     {
                 title: `ШҚО тілдерді дамыту жөніндегі басқармасы - Facebook`,
                 link: `https://www.facebook.com/SHQOtil/photos/a.127661475390766/259388382218074/?type=3`,
+                social_type: 'Facebook',
                 content: `<span class="key-word">руководитель</span> отдела культуры и развития языков Боролулихинского района «Президент Республики Казахстан <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span> в своей...`,
                 link_weight: `1`,
                 keyword_list: ['руководитель'],
@@ -17329,6 +17519,7 @@
     {
                 title: `Преступник, аферист и мошенник Макаров Владимир + ...`,
                 link: `https://vk.com/@536388325-prestupnik-aferist-i-moshennik-makarov-vladimir-77778154717`,
+                social_type: 'Вконтакте',
                 content: `<span class="key-word">преступник</span>, мошенник, злостный неплательщик по решению суда, Макаров Владимир Фадеевич, ... 18.04.19 Президент <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>.`,
                 link_weight: `1`,
                 keyword_list: ['преступник'],
@@ -17338,6 +17529,7 @@
     {
                 title: `Дом Дружбы Усть-Каменогорск - ВКонтакте`,
                 link: `https://vk.com/dom_dryjbi_yka`,
+                social_type: 'Вконтакте',
                 content: `Сегодня, <span class="key-word">Токаев</span> Касым - Жомарт <span class="key-word">Кемелович</span> выступил на заседании Мажилиса. ... <span class="key-word">возглавил</span> проведение всех мероприятий по обеспечению безопасности населения.`,
                 link_weight: `1`,
                 keyword_list: ['возглавил'],
@@ -17347,6 +17539,7 @@
     {
                 title: `Қазақстан Республикасы Экология және табиғи ресурстар ...`,
                 link: `https://www.facebook.com/EcologyofKazakhstan/posts/%D0%B2-%D0%B0%D0%BB%D0%BC%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B9-%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8-%D0%BF%D1%80%D0%BE%D1%88%D0%BB%D0%B0-%D1%86%D0%B5%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B8-%D1%84%D1%83%D0%BD%D0%B4%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D0%B0-%D0%B8%D0%BD%D0%BD%D0%BE%D0%B2%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-%D1%80%D1%8B%D0%B1%D0%BE%D0%BF%D1%80/1002860807145264/`,
+                social_type: 'Facebook',
                 content: `«<span class="key-word">президент</span> Республики Казахстан <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span> в своем Послании народу Казахстана от 1 сентября 2020 года акцентировал внимание на...`,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17356,6 +17549,7 @@
     {
                 title: `Друзья, я недавно узнал, что сам Президент Казахстана ...`,
                 link: `https://www.instagram.com/p/B1N66vVlgJA/`,
+                social_type: 'Instagram',
                 content: `Друзья, я недавно узнал, что сам <span class="key-word">президент</span> Казахстана, Господин <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span>, обратился ко мне с ... more. View all 144 comments · kingdarkhan.`,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17365,6 +17559,7 @@
     {
                 title: `роль казахского языка к - Instagram`,
                 link: `https://www.instagram.com/p/CEwuBEejjIu/`,
+                social_type: 'Instagram',
                 content: `"РОЛЬ КАЗАХСКОГО ЯЗЫКА КАК ГОСУДАРСТВЕННОГО БУДЕТ УСИЛЕНА!" ✓ <span class="key-word">президент</span> РЕСПУБЛИКИ КАЗАХСТАН КАСЫМ - ЖОМАРТ <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span> … | Instagram post...`,
                 link_weight: `1`,
                 keyword_list: ['президент'],
@@ -17374,6 +17569,7 @@
     {
                 title: `Хачатрян Армен Суренович | Almaty - Facebook`,
                 link: `https://www.facebook.com/people/%D0%A5%D0%B0%D1%87%D0%B0%D1%82%D1%80%D1%8F%D0%BD-%D0%90%D1%80%D0%BC%D0%B5%D0%BD-%D0%A1%D1%83%D1%80%D0%B5%D0%BD%D0%BE%D0%B2%D0%B8%D1%87/100067356500965/?ref=page_internal&locale=ar_AR`,
+                social_type: 'Facebook',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953 Второй Президент Республики <span class="key-word">казах</span>стан ... ИИН 890621302978 уроженец Восточно-<span class="key-word">казах</span>станской области, <span class="key-word">казах</span>,...`,
                 link_weight: `1`,
                 keyword_list: ['казах'],
@@ -17383,6 +17579,7 @@
     {
                 title: `Кафедра “Менеджмент” | Almaty - Facebook`,
                 link: `https://www.facebook.com/managementkaznu/`,
+                social_type: 'Facebook',
                 content: `Президент <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span> <span class="key-word">Токаев</span> в своей программной статье «Независимость – ... течение вечера была представлена <span class="key-word">биография</span>`,
                 link_weight: `1`,
                 keyword_list: ['биография'],
@@ -17392,6 +17589,7 @@
     {
                 title: `ЧСИ Кумаргалиева Гаухар - ВКонтакте`,
                 link: `https://vk.com/@472739285-chsi-kumargalieva-gauhar`,
+                social_type: 'Вконтакте',
                 content: `Президент. <span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>. ... инвестиционный климат и деловая <span class="key-word">репутация</span> нашего государства Казахстан будет не расти,...`,
                 link_weight: `1`,
                 keyword_list: ['репутация'],
@@ -17591,6 +17789,7 @@
     {
                 title: `Хачатрян Армен Суренович | Almaty - Facebook`,
                 link: `https://www.facebook.com/people/%D0%A5%D0%B0%D1%87%D0%B0%D1%82%D1%80%D1%8F%D0%BD-%D0%90%D1%80%D0%BC%D0%B5%D0%BD-%D0%A1%D1%83%D1%80%D0%B5%D0%BD%D0%BE%D0%B2%D0%B8%D1%87/100067356500965/?locale=hi_IN`,
+                social_type: 'Facebook',
                 content: `<span class="key-word">Токаев</span> <span class="key-word">Касым-Жомарт</span> <span class="key-word">Кемелович</span>, 17.05.1953. Второй Президент Республики Казахстан 010000, город Нур-Султан, Левый берег реки Ишим`,
                 link_weight: `12`,
                 keyword_list: ['мать', 'сестра', 'убийство', 'кража', 'мошенничество', 'судебный', 'начальник', 'следствие', 'конфликт', 'преступление', 'мошенник'],
@@ -17645,6 +17844,7 @@
     {
                 title: `ҚР Бас прокуратурасының назарына / Вниманию ...`,
                 link: `https://www.facebook.com/groups/2311275672530253/posts/3164972827160529/`,
+                social_type: 'Facebook',
                 content: `... Касым - Жомарта <span class="key-word">Кемеловича</span> <span class="key-word">Токаева</span> по стабилизации страны, процветанию экономики, ... его испугала наша <span class="key-word">репутация</span> независимого издания,...`,
                 link_weight: `10`,
                 keyword_list: ['репутация', 'коррупция', 'отец', 'сын', 'убийство', 'уголовное', 'скандал', 'конфликт', 'расследование'],
@@ -30858,7 +31058,7 @@
 
                 endRangeValue = []
                 items.main.forEach(item => {
-                    endRangeValue.push(+item.link_weight)
+                    endRangeValue.push(+item.keyword_list.length)
                 });
                 startRangeValue = endRangeValue.length ? Math.min(...endRangeValue) : 0
                 endRangeValue = endRangeValue.length ? Math.max(...endRangeValue) : 0
@@ -30885,6 +31085,8 @@
                     return filterable_tabs.find(filterable_tab => filterable_tab == selected_tab_index) != undefined
                 }
                 function select_tab(new_tab_index) {
+                    $('#container').style.display = new_tab_index == 1 ? '' : 'none'
+                    $('#socials').style.display = new_tab_index == 6 ? '' : 'none'
                     if (selected_tab_index == new_tab_index) return
         
                     $(`.tab-${new_tab_index}`)?.addClass('selected')
@@ -31167,14 +31369,32 @@
 'конфликт': true,
 'супруг': true,
  },
-                    6: { 'вконтакте': true,
-'фейсбук': true,
-'инстаграм': true,
+                    6: {
+    "репутация": true,
+    "исковое": true,
+    "интервью": true,
+    "аферист": true,
+    "мошенник": true,
+    "казах": true,
+    "казах": true,
+    "друзьями": true,
+    "присвоение": true,
+    "казах": true,
+    "мошенник": true,
+    "супруг": true,
  } 
-                }
-        
+}
+
+let social_types = {
+    'Вконтакте': true,
+    'Facebook': true,
+    'Одноклассники': true,
+    'Instagram': true,
+} 
                 let filter_counts = {
                 }
+
+                console.log('items', items)
                     
                 function makeSafeForCSS(name) {
                     return name.replace(/[^a-z0-9]/g, function (s) {
@@ -31325,6 +31545,20 @@
                     fullname_filter[tab_name] = event?.target?.value ?? 0;
                     render_items()
                 }
+
+                $('.social_type').forEach(social_type => {
+                    social_type.addEventListener('click', (event) => {
+                        if (social_type.hasClass('selected')) {
+                            social_type.removeClass('selected')
+                            social_types[social_type.dataset.socialName] = false;
+                        }
+                        else {
+                            social_type.addClass('selected')
+                            social_types[social_type.dataset.socialName] = true;
+                        }
+                        render_items()
+                    })
+                })
         
                 function render_items() {
                     let result = ``;
@@ -31346,11 +31580,17 @@
                     }
         
                    if (isFilterableTab()) {
+                       if (tab_name == 'socials') {
+                           console.log('tab_name', tab_name, social_types);
+                           temp_items = temp_items.filter(item => (social_types[item?.social_type]))
+                       }
+
                         temp_items = temp_items.filter(item => (item.keyword_list.find(keyword => filters[selected_tab_index][keyword])))
+
                         $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
                     }
                     else if (tab_name == 'main') {
-                        temp_items = temp_items.filter(item => (+item.link_weight >= startRangeValue && +item.link_weight <= endRangeValue))
+                        temp_items = temp_items.filter(item => (+(item?.keyword_list?.length ?? 0) >= startRangeValue && +(item?.keyword_list?.length ?? 0) <= endRangeValue))
                         $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
                     }
         
@@ -31391,25 +31631,29 @@
                                 <div class="item-container ${seen_links[item?.link] ? 'seen_link' : ''}" id="${temp_link_class}">
                                     <div class="item">
                                         <div class="flex items-center">
+                                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                                                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                            </svg>
                                             <a target="_blank" href="${item?.link}" class="item-title" title="${item?.title}">${item?.title}</a>
                                             <!-- <a target="_blank" href="${item?.link}" class="item-more">Источник <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a> -->
                                         </div>
                                         <div class="item-content">${item?.content}</div>
                                         <div class="item-info" style="display:flex;align-items:center;margin-top:5px;font-size:12px;">
-                                            <a href="${item?.link}" style="color: #4d4dff;" title="${get_domain_name(item?.link)}">${get_domain_name(item?.link).maxLength(20)}</a>
+                                            <a href="${item?.link}" target="_blank" style="color: #4d4dff;" title="${get_domain_name(item?.link)}">${get_domain_name(item?.link).maxLength(20)}</a>
                                             
-                                            <span style="margin: 0 .8em;white-space:nowrap;display:flex;align-items:center;cursor:default;" title="Вес ссылки: найдено ${item?.link_weight} раз">
+                                            <span style="margin: 0 .8em;white-space:nowrap;display:flex;align-items:center;cursor:default;" title="Вес ссылки: найдено ${item?.keyword_list?.length ?? 0} раз">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="clone" style="max-width:12px;min-width:12px;"
                                                     viewBox="0 0 512 512">
                                                     <path
                                                         d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
                                                 </svg>
-                                                <span style="margin-left:5px;font-size:12px;">${item?.link_weight}</span>
+                                                <span style="margin-left:5px;font-size:12px;">${item?.keyword_list?.length ?? 0}</span>
                                             </span>
                                             
                                             <div class="mt-auto item-keywords">
                                                 <div class="item-param"><div class="query-content" title='${decodeURI(item?.keyword_list?.join(',  '))}'><span style="color:black">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:12px;fill:#9300FF;margin-bottom: -2.1px;"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg> </span>${keyword_list}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:12px;fill:#9300FF;margin-bottom: -2.1px;"><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg> </span>${keyword_list}
                                                     <small class="prompt">Копировать при клике</small></div>
                                                 </div>
                                                 <!-- <div class="item-param">Дубликаты: <span class="param-text">${item?.link_weight}</span></div> -->
@@ -31508,7 +31752,7 @@
             },
             credits: false,
             title: {
-                text: `<div style="text-align: center;line-height: 1.6"><b style="font-size:35px">${Object.values(seriesData).reduce((prev, next) => (prev + next.y), 0)}</b><br><span style="color: #ccc">материалов</span></div>`,
+                text: `<div style="text-align: center;line-height: 1.6"><b style="font-size:35px">${Object.values(seriesData).reduce((prev, next) => (prev + next.y), 0)}</b><br><span style="font-size:16px;color: #ccc">материалов</span></div>`,
                 useHTML: true,
                 align: 'center',
                 verticalAlign: 'middle',
@@ -31524,7 +31768,8 @@
                 labelFormat: `<div style="display:flex;width: 150px"><span>{name}</span> <div style="margin-left:auto;font-weight:600;">{y}</div></div>`, // : {y} | {percentage:.1f}%
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>',
+                headerFormat: ''
             },
             accessibility: {
                 point: {
@@ -31536,26 +31781,26 @@
                     allowPointSelect: true,
                     cursor: 'pointer',
                     dataLabels: {
-                        enabled: false
+                        enabled: false,
                     },
                     colors,
                     showInLegend: true,
-                    // dataLabels: {
-                    //     enabled: true,
-                    //     format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
-                    //     distance: -50,
-                    //     filter: {
-                    //         property: 'percentage',
-                    //         operator: '>',
-                    //         value: 4
-                    //     }
-                    // },
+                    // tooltip: {
+                    //     footerFormat: ''
+                    // }
                 }
             },
             series: [{
-                name: 'Материалы',
+                // name: ' ',
                 colorByPoint: true,
                 innerSize: '80%',
+                // dataLabels: {
+                //     formatter: function() {
+                //         return this.point.name; //<--------------- If the slice has a value greater than 5 show it.
+                //     },
+                //     // color: '#ffffff',
+                //     // distance: -30
+                // },
                 data: seriesData,
             }]
         });
