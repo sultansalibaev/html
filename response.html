@@ -975,6 +975,7 @@
         }
         .seen_link .item {
             box-shadow: none;
+            background: #c4d9ce;
         }
         .filter-count {
             margin-left: auto;
@@ -998,8 +999,8 @@
         }
 
         .checkmark {
-            width: 17px;
-            height: 17px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: block;
             stroke-width: 6.5;
@@ -1007,8 +1008,22 @@
             stroke-miterlimit: 10;
             box-shadow: inset 0px 0px 0px #4400ed;
             animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-
+            
             margin-right: 5px;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+        }
+        
+        .checkmark.unseen {
+            top: 6px;
+            left: 6px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .checkmark.unseen.seen_scale {
+            animation: fill .4s ease-in-out .4s forwards, seen_scale .3s ease-in-out .9s both;
         }
 
         .checkmark__check {
@@ -1031,9 +1046,20 @@
                 transform: scale3d(1.1, 1.1, 1);
             }
         }
+        @keyframes seen_scale {
+            20% {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+            99% {
+                transform: scale3d(0, 0, 0);
+            }
+            99% {
+                display: none;
+            }
+        }
         @keyframes fill {
             100% {
-                box-shadow: inset 0px 0px 0px 17px #4400ed;
+                box-shadow: inset 0px 0px 0px 20px #4400ed;
             }
         }
         .socials {
@@ -31101,7 +31127,7 @@
         
                     console.log('filter_counts', filter_counts);
                     if (isFilterableTab() && items[tab_names[selected_tab_index]]?.length > 0) {
-        
+
                         items[tab_names[selected_tab_index]].forEach(item => {
                             item.keyword_list.forEach(keyword => {
                                 if (!filter_counts[selected_tab_index]) {
@@ -31479,10 +31505,10 @@ let social_types = {
         
                     temp_keys.forEach(arbitrary_key => {
                         filter_keys_tags += `
-                                    <label class="arbitrary-key keyword-id-${makeSafeForCSS(arbitrary_key)}">
+                                    <label style="${filter_counts[selected_tab_index][arbitrary_key] == undefined ? 'display:none' : ''}" class="arbitrary-key keyword-id-${makeSafeForCSS(arbitrary_key)}">
                                         <input type="checkbox" onclick="toggleArbitraryKey(event, '${makeSafeForCSS(arbitrary_key)}')" ${filters[selected_tab_index][arbitrary_key] ? 'checked' : 'unchecked'}/>
                                         <span style="margin-right: 4px;" title='${arbitrary_key}'>${arbitrary_key}</span>
-                                        <div class="filter-count">${filter_counts[selected_tab_index][arbitrary_key]}</div>
+                                        <div class="filter-count">${filter_counts[selected_tab_index][arbitrary_key] ?? 0}</div>
                                     </label>
                                 `;
                     });
@@ -31526,7 +31552,14 @@ let social_types = {
                 function check_all_items() {
                     Object.keys(temp_link_classes).forEach(link_class_name => {
                         let bool = isInViewport($('#'+link_class_name))
-                        if (bool) seen_links[temp_link_classes[link_class_name]] = true;
+                        if (bool) {
+                            seen_links[temp_link_classes[link_class_name]] = true;
+                            let temp_svg = $(`#${link_class_name} .checkmark.unseen`);
+                            if (temp_svg) temp_svg.addClass('seen_scale');
+                            setTimeout(() => {
+                                temp_svg.style.display = 'none';
+                            }, 1100);
+                        }
                     })
                 }
         
@@ -31556,11 +31589,11 @@ let social_types = {
                             social_type.addClass('selected')
                             social_types[social_type.dataset.socialName] = true;
                         }
-                        render_items()
+                        render_items(true)
                     })
                 })
         
-                function render_items() {
+                function render_items(update_social_type = false) {
                     let result = ``;
                     let tab_name = tab_names[selected_tab_index];
         
@@ -31584,6 +31617,20 @@ let social_types = {
                            console.log('tab_name', tab_name, social_types);
                            temp_items = temp_items.filter(item => (social_types[item?.social_type]))
                        }
+
+                        if (update_social_type) {
+                            filter_counts[selected_tab_index] = {};
+                            temp_items.forEach(item => {
+                                item.keyword_list.forEach(keyword => {
+                                    if (!filter_counts[selected_tab_index][keyword]) {
+                                        filter_counts[selected_tab_index][keyword] = 0;
+                                    }
+                                    filter_counts[selected_tab_index][keyword]++;
+                                });
+                            })
+                            console.log('filter_counts', filter_counts);
+                            updateList({ target: { value: '' } })
+                        }
 
                         temp_items = temp_items.filter(item => (item.keyword_list.find(keyword => filters[selected_tab_index][keyword])))
 
@@ -31629,12 +31676,10 @@ let social_types = {
         
                         result += `
                                 <div class="item-container ${seen_links[item?.link] ? 'seen_link' : ''}" id="${temp_link_class}">
-                                    <div class="item">
+                                    <div class="item" style="position:relative">
+                                        ${seen_links[item?.link] ? '<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>' : '<svg class="checkmark unseen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"></circle></svg>'}
+                                        
                                         <div class="flex items-center">
-                                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                                                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                                            </svg>
                                             <a target="_blank" href="${item?.link}" class="item-title" title="${item?.title}">${item?.title}</a>
                                             <!-- <a target="_blank" href="${item?.link}" class="item-more">Источник <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a> -->
                                         </div>
