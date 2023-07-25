@@ -29285,9 +29285,16 @@
                 'жена': true,
             },
             6: {
-                'Instagram': true,
-                'Facebook': true,
-                'Вконтакте': true,
+                'биография': true,
+                'брат': true,
+                'мошенничество': true,
+                'следствие': true,
+                'преступление': true,
+                'преступление': true,
+                'репутация': true,
+                'конфликт': true,
+                'присвоение': true,
+                'розыск': true,
             }
         }
 
@@ -29439,7 +29446,7 @@
                     let temp_svg = $(`#${link_class_name} .checkmark.unseen`);
                     if (temp_svg) temp_svg.addClass('seen_scale');
                     setTimeout(() => {
-                        temp_svg.style.display = 'none';
+                        if (temp_svg?.style?.display != undefined) temp_svg.style.display = 'none';
                     }, 1100);
                 }
             })
