@@ -413,9 +413,9 @@
             font-size: 21px;
             margin-top: 0;
             margin-bottom: 0;
-            text-align: center;
+            /* text-align: center; */
             margin-right: 10px;
-            margin-bottom: 6px;
+            /* margin-bottom: 6px; */
         }
 
         @media (max-width: 710px) {
@@ -1191,14 +1191,28 @@
         .social_type.ok:hover {
             fill: #ee8208;
         }
+        .max-text-length {
+            font-size: 11px;
+            max-width: 600px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body>
     <div class="tab-head" onclick="closeModal(event)">
-        <div class="flex items-center" style="flex-wrap: wrap;">
-            <h2 class="object-full_name">Объект: <span style="white-space:nowrap">Токаев Касым-Жомарт Кемелович</span>
+        <div class="flex justify-center" id="head-info" style="flex-direction:column;margin-bottom: 6px;transition: .15s" onclick="$('#head-info').style.height = ($('#head-info').style.height == '112px' ? '28px' : '112px');$('#head-info h2 svg').style.transform = ($('#head-info').style.height == '112px' ? 'rotateX(180deg)' : 'rotateX(0deg)')">
+            <h2 style="display: inline;" class="object-full_name">Объект: <span style="white-space:nowrap">Токаев Касым-Жомарт Кемелович</span>
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;margin-bottom: -2px;transition: .15s;transform:rotateX(180deg)" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
             </h2>
+            <span class="max-text-length" title="Категории поиска: Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, "><b>Категории поиска:</b> Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, </span>
+            <span class="max-text-length"><b>Произвольные ключевые слова:</b> детектив, Сургут, Калининград, …</span>
+            <span class="max-text-length"><b>Перечень запрещённых сайтов:</b> vk.com, pornhub, google.ru, …</span>
+            <span class="max-text-length"><b>Минус-слова:</b> ученый</span>
+            <span class="max-text-length"><b>Плюс-слова:</b> не используются</span>
+            <span class="max-text-length"><b>Плюс-слова:</b> не используются</span>
 
         </div>
         <div class=" tabs flex flex-wrap items-center">
