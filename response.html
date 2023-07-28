@@ -1203,9 +1203,9 @@
 
 <body>
     <div class="tab-head" onclick="closeModal(event)">
-        <div class="flex justify-center" id="head-info" style="flex-direction:column;margin-bottom: 6px;transition: .15s" onclick="$('#head-info').style.height = ($('#head-info').style.height == '112px' ? '28px' : '112px');$('#head-info h2 svg').style.transform = ($('#head-info').style.height == '112px' ? 'rotateX(180deg)' : 'rotateX(0deg)')">
+        <div class="flex justify-center" id="head-info" style="flex-direction:column;margin-bottom: 6px;transition: .15s;height:112px">
             <h2 style="display: inline;" class="object-full_name">Объект: <span style="white-space:nowrap">Токаев Касым-Жомарт Кемелович</span>
-                <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;margin-bottom: -2px;transition: .15s;transform:rotateX(180deg)" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+                <svg onclick="$('#head-info').style.height = ($('#head-info').style.height == '112px' ? '28px' : '112px');$('#head-info h2 svg').style.transform = ($('#head-info').style.height == '112px' ? 'rotateX(180deg)' : 'rotateX(0deg)')" xmlns="http://www.w3.org/2000/svg" style="width:15px;margin-bottom: -2px;transition: .15s;transform:rotateX(180deg);cursor:pointer;" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
             </h2>
             <span class="max-text-length" title="Категории поиска: Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, "><b>Категории поиска:</b> Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, </span>
             <span class="max-text-length"><b>Произвольные ключевые слова:</b> детектив, Сургут, Калининград, …</span>
@@ -1243,7 +1243,7 @@
             <div class="tab-7" onclick="select_tab(7)">Документы
                 <span class="tab-count">0</span>
             </div>
-            <div class="tab-8" onclick="select_tab(7)">Все материалы
+            <div class="tab-8" onclick="select_tab(8)">Все материалы
                 <span class="tab-count">0</span>
             </div>
         </div>
