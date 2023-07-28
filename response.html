@@ -416,6 +416,7 @@
             /* text-align: center; */
             margin-right: 10px;
             /* margin-bottom: 6px; */
+            white-space: nowrap;
         }
 
         @media (max-width: 710px) {
@@ -1203,16 +1204,17 @@
 
 <body>
     <div class="tab-head" onclick="closeModal(event)">
-        <div class="flex justify-center" id="head-info" style="flex-direction:column;margin-bottom: 6px;transition: .15s;height:112px">
-            <h2 style="display: inline;" class="object-full_name">Объект: <span style="white-space:nowrap">Токаев Касым-Жомарт Кемелович</span>
-                <svg onclick="$('#head-info').style.height = ($('#head-info').style.height == '112px' ? '28px' : '112px');$('#head-info h2 svg').style.transform = ($('#head-info').style.height == '112px' ? 'rotateX(180deg)' : 'rotateX(0deg)')" xmlns="http://www.w3.org/2000/svg" style="width:15px;margin-bottom: -2px;transition: .15s;transform:rotateX(180deg);cursor:pointer;" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+        <div id="head-info" style="margin-bottom: 6px;transition: .15s;overflow:hidden;width: 100%;height:98px">
+            <h2 style="display: inline;cursor:pointer;" class="object-full_name" onclick="$('#head-info').style.height = ($('#head-info').style.height == '98px' ? '28px' : '98px');$('#head-info h2 svg').style.transform = ($('#head-info').style.height == '98px' ? 'rotateX(180deg)' : 'rotateX(0deg)')">Объект: <span style="white-space:nowrap;">Токаев Касым-Жомарт Кемелович</span>
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;margin-bottom: -2px;transition: .15s;transform:rotateX(180deg);" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
             </h2>
-            <span class="max-text-length" title="Категории поиска: Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, "><b>Категории поиска:</b> Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, </span>
-            <span class="max-text-length"><b>Произвольные ключевые слова:</b> детектив, Сургут, Калининград, …</span>
-            <span class="max-text-length"><b>Перечень запрещённых сайтов:</b> vk.com, pornhub, google.ru, …</span>
-            <span class="max-text-length"><b>Минус-слова:</b> ученый</span>
-            <span class="max-text-length"><b>Плюс-слова:</b> не используются</span>
-            <span class="max-text-length"><b>Плюс-слова:</b> не используются</span>
+            <div class="flex justify-center" style="flex-direction:column;width: 100%;">
+                <span class="max-text-length" title="Категории поиска: Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, "><b>Категории поиска:</b> Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, Негатив, Связи, Репутация, </span>
+                <span class="max-text-length"><b>Произвольные ключевые слова:</b> детектив, Сургут, Калининград, …</span>
+                <span class="max-text-length"><b>Перечень запрещённых сайтов:</b> vk.com, pornhub, google.ru, …</span>
+                <span class="max-text-length"><b>Минус-слова:</b> ученый</span>
+                <span class="max-text-length"><b>Плюс-слова:</b> не используются</span>
+            </div>
 
         </div>
         <div class=" tabs flex flex-wrap items-center">
@@ -30705,8 +30707,8 @@
 
             if ([1, 2].includes(+fullname)) {
                 temp_items = temp_items.filter(item => (item.fullname == { 1: true, 2: false }[fullname]))
-                $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
             }
+            $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
             
             if (update_social_type_count) update_social_type_counts(temp_items, tab_name == 'socials' ? tab_name : 'doc')
 
