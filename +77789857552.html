@@ -1187,6 +1187,10 @@ table table td img {
                     <span class="tab-count" style="display: none;">0</span>
                 </div>
                 <div class="tab-3" onclick="select_tab(3)">
+                    Теги
+                    <span class="tab-count" style="display: none;">0</span>
+                </div>
+                <div class="tab-4" onclick="select_tab(4)">
                     Привязки
                     <span class="tab-count" style="display: none;">0</span>
                 </div>
@@ -1292,41 +1296,85 @@ table table td img {
                 </div> 
                 <script> 
                     let leaks = ['Vkontakte (2022)']; 
- 
-                    if (leaks.length) { 
-                        let leaks_container = document.querySelector('.leaks .flex'); 
-                        let leak_tags = '<div class="flex flex-col">'; 
-     
-                        console.log('leaks_container', leaks_container); 
-     
-                        let per_col = Math.ceil(leaks.length ** .65) + 1; 
-     
-                        // per_col = per_col > 5 ? 5 : per_col; 
-     
-                        console.log('per_col', per_col); 
-     
-                        leaks.forEach((leak, i) => { 
-                                leak_tags += `<span class="leak">${leak}</span>`; 
-     
-                            if (((i+1) % per_col) == 0) { 
-                                leak_tags += `</div>`; 
-                                if (i != (leaks.length - 1)) leak_tags += `<div class="flex flex-col">`; 
-                            } 
-                            if (i == (leaks.length - 1) || ((i + 1) / per_col) == 6) { 
-                                leak_tags += `</div>`; 
-                            } 
-                        }) 
-     
-     
-                        leaks_container.innerHTML += leak_tags; 
-                    } 
-                    else { 
-                        document.querySelector('.leak-description .f-w-600').textContent = 'В утечках персональных данных не фигурирует' 
-                        document.querySelector('.leaks .flex').innerHTML = '...' 
+
+                    if (leaks.length) {
+                        let leaks_container = document.querySelector('.leaks .flex');
+                        let leak_leaks = '<div class="flex flex-col">';
+
+                        console.log('leaks_container', leaks_container);
+
+                        let per_col = Math.ceil(leaks.length ** .65) + 1;
+
+                        per_col = ((leaks.length) / per_col) > 8 ? (leaks.length) / 8 : per_col;
+
+                        console.log('per_col', per_col);
+
+                        leaks.forEach((leak, i) => {
+                            if (((i) % per_col) == 0 && i != 0) {
+                                leak_leaks += `</div>`;
+                                if (i != (leaks.length - 1)) leak_leaks += `<div class="flex flex-col">`;
+                            }
+                            leak_leaks += `<span class="leak">${leak}</span>`;
+
+                            if (i == (leaks.length - 1) || ((i + 1) / per_col) == 9) {
+                                leak_leaks += `</div>`;
+                            }
+                        })
+
+
+                        leaks_container.innerHTML += leak_leaks;
+                    }
+                    else {
+                        document.querySelector('.leak-description .f-w-600').textContent = 'Нету тегов из популярных мобильных приложений'
+                        document.querySelector('.leaks .flex').innerHTML = '...'
                     } 
                 </script>
             </div>
             <div class="tab-content-3">
+                <div class="leaks" id="tags" style="margin-bottom: 15px;"> 
+                    <div class="leak-description"><span class="f-w-600">Теги из популярных мобильных приложений определения звонящего: </span></div> 
+                    <div class="flex"> 
+                        <!-- Leaks --> 
+                    </div> 
+ 
+                </div> 
+                <script> 
+                    let tags = Array.from(Array(1000).keys()).map(item => `${item + 1}. Вася Пупкин`); 
+ 
+                    if (tags.length) { 
+                        let tags_container = document.querySelector('#tags .flex'); 
+                        let leak_tags = '<div class="flex flex-col">'; 
+     
+                        console.log('tags_container', tags_container); 
+     
+                        let per_col = Math.ceil(tags.length ** .65) + 1; 
+     
+                        per_col = ((tags.length) / per_col) > 8 ? (tags.length) / 8 : per_col; 
+     
+                        console.log('per_col', per_col); 
+     
+                        tags.forEach((leak, i) => { 
+                            if (((i) % per_col) == 0 && i != 0) { 
+                                leak_tags += `</div>`; 
+                                if (i != (tags.length - 1)) leak_tags += `<div class="flex flex-col">`; 
+                            } 
+                                leak_tags += `<span class="leak">${leak}</span>`; 
+     
+                            if (i == (tags.length - 1) || ((i + 1) / per_col) == 9) { 
+                                leak_tags += `</div>`; 
+                            }
+                        }) 
+     
+     
+                        tags_container.innerHTML += leak_tags; 
+                    } 
+                    else { 
+                        document.querySelector('#tags .leak-description .f-w-600').textContent = 'Нету тегов из популярных мобильных приложений' 
+                        document.querySelector('#tags .flex').innerHTML = '...' 
+                    } 
+                </script>
+            </div>
+            <div class="tab-content-4">
                 <table style="border-radius: 7px;overflow: hidden;margin-right: auto;margin-left: auto;outline: 1px solid #a7a3a3;margin-bottom: 15px;"
                     cellspacing="0">
                     <tbody style="margin: 5px 8px;">
