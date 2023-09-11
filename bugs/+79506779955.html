@@ -996,6 +996,7 @@
             margin: 0 3%;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,.25);
+            width: 100%;
         }
         .leaks .flex {
             gap: 6px 35px;
@@ -1298,116 +1299,120 @@ table table td img {
                     </svg>Нет найденных результатов!
                 </div>
             </div>
-            <div class="tab-content-2" style="overflow-x: scroll;">
-                <div class="leaks" style="margin-bottom: 15px;margin-left:10px"> 
-                    <div class="leak-description"><span class="f-w-600">Фигурирует в следующих утечках: </span></div> 
-                    <div class="flex"> 
-                        <!-- Leaks --> 
+            <div class="tab-content-2" style="overflow-x: scroll;min-height: calc(100vh - 103px);">
+                <div>
+                    <div class="leaks" style="margin-bottom: 15px;margin-left:10px"> 
+                        <div class="leak-description"><span class="f-w-600">Фигурирует в следующих утечках: </span></div> 
+                        <div class="flex"> 
+                            <!-- Leaks --> 
+                        </div> 
+    
                     </div> 
- 
-                </div> 
-                <script> 
-                    let leaks = ['Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр']; 
+                    <script> 
+                        let leaks = ['Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр']; 
 
-                    if (leaks.length) {
-                        let leaks_container = document.querySelector('.leaks .flex');
-                        let leak_leaks = '<div class="flex flex-col">';
+                        if (leaks.length) {
+                            let leaks_container = document.querySelector('.leaks .flex');
+                            let leak_leaks = '<div class="flex flex-col">';
 
-                        console.log('leaks_container', leaks_container);
+                            console.log('leaks_container', leaks_container);
 
-                        let per_col = Math.ceil(leaks.length ** .65) + 1;
+                            let per_col = Math.ceil(leaks.length ** .65) + 1;
 
-                        per_col = Math.ceil(((leaks.length) / per_col) > 6 ? (leaks.length) / 6 : per_col); 
+                            per_col = Math.ceil(((leaks.length) / per_col) > 6 ? (leaks.length) / 6 : per_col); 
 
-                        console.log('per_col', per_col);
+                            console.log('per_col', per_col);
 
-                        leaks.forEach((leak, i) => {
-                            if (((i) % per_col) == 0 && i != 0) {
-                                leak_leaks += `</div>`;
-                                if (i != (leaks.length - 1)) leak_leaks += `<div class="flex flex-col">`;
+                            leaks.forEach((leak, i) => {
+                                if (((i) % per_col) == 0 && i != 0) {
+                                    leak_leaks += `</div>`;
+                                    if (i != (leaks.length - 1)) leak_leaks += `<div class="flex flex-col">`;
+                                }
+                                leak_leaks += `<span class="leak">${leak}</span>`;
+
+                                if (i == (leaks.length - 1) || ((i + 1) / per_col) == 6) {
+                                    leak_leaks += `</div>`;
+                                }
+                            })
+
+
+                            leaks_container.innerHTML += leak_leaks;
+                        }
+                        else {
+                            document.querySelector('.leak-description .f-w-600').textContent = 'Нету тегов из популярных мобильных приложений'
+                            document.querySelector('.leaks .flex').innerHTML = '...'
+                        } 
+                    </script>
+                </div>
+            </div>
+            <div class="tab-content-3" style="overflow-x: scroll;min-height: calc(100vh - 103px);">
+                <div>
+                    <div class="leaks" id="tags" style="margin-bottom: 15px;margin-left:10px;"> 
+                        <div class="leak-description"><span class="f-w-600">Теги из популярных мобильных приложений определения звонящего: </span></div> 
+                        <div class="flex"> 
+                            <!-- Leaks --> 
+                        </div> 
+    
+                    </div> 
+                    <script> 
+                        let start_tags = ['Алексей Седых', 'Седых Алексей', 'Леха Седых', 'Алексей', 'Седых Леха', 'Алексей Детектив', 'Леха Седых Оур', 'Алексей Иванович Седых', 'Алексей Иванович', 'Пантера', 'Седых', 'Седых Алексей Иванович', 'Алексей Увд', 'Алексей Мод Соц Сети', 'Седых Алексей Калининград', 'Леха Седых Калининград', 'Седых Алексей Оур', 'Детектив', 'Алексей Седых Да Калининград Мод', 'Моб Зам Седых Алексей Ив', 'Леха Седых Ома Мвд Рф', 'Алексей Частный Ссыск Детектив', 'Алексей Бстм Мод Фс', 'Седых Алексей Осо Т', 'Алексей Седых Калининград', 'Алексей Седых Детектив', 'Седых Леха Калининград', 'Алексей Дет. Агенство', 'Леха Седых Т', 'Алексей Видеонаблюдение', 'Алексей Калининград', 'Детектив Инстаграмм', 'Алексей Дедектив', 'Алексей Сервис', 'Седых Детектив', 'Седых Лёха', 'Алексей П', 'Калининград', 'Детек', 'Леха', 'Ард Седых Алексей Иванович Калининград Osint', 'Алексей Седых Лиц Калининград Чд Мод', 'D Alexei Sedih Kalinigrad, Rusia', 'Алексей Седых Калининград Bc ()', 'Алексей Калининград Частный Детектив', 'Алексей Детектив Калининград Клиент', 'Алексей Седых Детектив Калининград?', 'Детектив От Пилипенко Калининград', 'Алексей Седых Частный Детектив', 'Чд Алексей (калининград) Седых', 'Алексей Детектив От Крючкова', 'Алексей Седых Денежный Поток', 'Алексей Седых Калининград ()', 'Алексей Седых Ханты Детектив', 'Племяница Леша Седых Марьяна', 'Д Калининград Алексей Седых', 'Алексей Дзержинского Х /', 'Алексей Седых Оур Сургут', '\u202a+ ‑‑\u202c Алексей Детектив', 'Алексей Седых Отдел Т', 'Седых Алексей Ома Мвд', 'Лёха Седых Кросс Фит', 'Опер В Душе Алексей', 'Моб Зам Седых Ив', 'Детективное Агентство "пантера"', 'Алексей Детектив Калининград', 'Интернет Расследования Остин', 'Алексей Детек, Калининград', 'Алексей Калининград Дедик', 'Алексей Седов Калининград', 'Леша Калининград Детектив', 'Алексей Детектив Пантера', 'Алексей Иваныч Калинград', 'Алексей Калиеинград Кофе', 'Алексей Пантера Детектив', 'Алексей Седых Клд(аскер)', 'Алексей Частный Детектив', 'Делектив Алексей Герцена', 'Алексей Седых Пенсионер', 'Алексей Седых Раевского', 'Калининград Пду Алексей', 'Сб Детективное Агенство', 'Детектив Кал-д Алексей', 'Алексей Иванович Угро', 'Дет. Алексей Иванович', 'Алексей Седых Калина', 'Алексей Седых Юрист', 'Леха Прокурор Седых', 'Смарт Инвест (лёха)', '+ Частный Детектив', 'Алексей Седых Умвд', 'Леха Седых Калик', 'Алексей Сидых T', 'Алексей Чайк -.', 'Леха Увд Седых', 'Леша Опер Умвд', 'Седых Леха Оур', 'Алек Ос Калин', 'Алексей Ч. Д.', 'Седых А. И', 'Детектив Калининград', 'Алексей Разбойный', 'Адвокат Череваня', 'Леха Калининград', 'Алексей Пантера', 'Алексей Клиент', 'Адексей Седых', 'Алексеей Стол', 'Алексей Жетта', 'Алексей Рубоп', 'Алексей Сасед', 'Алексей Сидых', 'Алексей Сосед', 'Алексей Тенев', 'Леха Детектив', 'Леха Кроссфит', 'Фотки Скинуть', 'Алексей Умвд', 'Алекс Седых', 'Алексей Дет', 'Алексей Лвс', 'Алексей Чай', 'Алеша Досье', 'Алек Калин', 'Алексей Чд', 'Лёха Детек', 'Лёха Рубоп', 'Лёха Седых', 'Леша Седвх', 'Леша Седых', 'Седых Леша', 'Алексей У', 'Алексей-детектив', 'Обталексейивано', 'Detective', 'Алексееич', 'Aleksey', 'Куратор', 'Травмат', 'Сосед', 'Am', 'Седых', 'Седых Алексей', 'Седых Алексей ОУР', 'Алексей Фаст-Фуд', 'Алексей (Кофе с собой)', 'Алексей Седых', 'Алексей Иванович Угро', 'Седых Леха', 'Седых Вова', 'Алексей Дзержинского 1 3х 4/5', 'Алексей Чаек)', 'Седых Алексей ОУР Сургут'];
+
+                        let tags = {};
+
+                        start_tags.forEach(tag => {
+                            if (tags[tag]) {
+                                tags[tag].count++;
                             }
-                            leak_leaks += `<span class="leak">${leak}</span>`;
-
-                            if (i == (leaks.length - 1) || ((i + 1) / per_col) == 6) {
-                                leak_leaks += `</div>`;
+                            else {
+                                tags[tag] = {
+                                    name: tag,
+                                    count: 1
+                                }
                             }
                         })
 
+                        tags = Object.values(tags)
 
-                        leaks_container.innerHTML += leak_leaks;
-                    }
-                    else {
-                        document.querySelector('.leak-description .f-w-600').textContent = 'Нету тегов из популярных мобильных приложений'
-                        document.querySelector('.leaks .flex').innerHTML = '...'
-                    } 
-                </script>
-            </div>
-            <div class="tab-content-3" style="overflow-x: scroll;">
-                <div class="leaks" id="tags" style="margin-bottom: 15px;margin-left:10px"> 
-                    <div class="leak-description"><span class="f-w-600">Теги из популярных мобильных приложений определения звонящего: </span></div> 
-                    <div class="flex"> 
-                        <!-- Leaks --> 
-                    </div> 
- 
-                </div> 
-                <script> 
-                    let start_tags = ['Алексей Седых', 'Седых Алексей', 'Леха Седых', 'Алексей', 'Седых Леха', 'Алексей Детектив', 'Леха Седых Оур', 'Алексей Иванович Седых', 'Алексей Иванович', 'Пантера', 'Седых', 'Седых Алексей Иванович', 'Алексей Увд', 'Алексей Мод Соц Сети', 'Седых Алексей Калининград', 'Леха Седых Калининград', 'Седых Алексей Оур', 'Детектив', 'Алексей Седых Да Калининград Мод', 'Моб Зам Седых Алексей Ив', 'Леха Седых Ома Мвд Рф', 'Алексей Частный Ссыск Детектив', 'Алексей Бстм Мод Фс', 'Седых Алексей Осо Т', 'Алексей Седых Калининград', 'Алексей Седых Детектив', 'Седых Леха Калининград', 'Алексей Дет. Агенство', 'Леха Седых Т', 'Алексей Видеонаблюдение', 'Алексей Калининград', 'Детектив Инстаграмм', 'Алексей Дедектив', 'Алексей Сервис', 'Седых Детектив', 'Седых Лёха', 'Алексей П', 'Калининград', 'Детек', 'Леха', 'Ард Седых Алексей Иванович Калининград Osint', 'Алексей Седых Лиц Калининград Чд Мод', 'D Alexei Sedih Kalinigrad, Rusia', 'Алексей Седых Калининград Bc ()', 'Алексей Калининград Частный Детектив', 'Алексей Детектив Калининград Клиент', 'Алексей Седых Детектив Калининград?', 'Детектив От Пилипенко Калининград', 'Алексей Седых Частный Детектив', 'Чд Алексей (калининград) Седых', 'Алексей Детектив От Крючкова', 'Алексей Седых Денежный Поток', 'Алексей Седых Калининград ()', 'Алексей Седых Ханты Детектив', 'Племяница Леша Седых Марьяна', 'Д Калининград Алексей Седых', 'Алексей Дзержинского Х /', 'Алексей Седых Оур Сургут', '\u202a+ ‑‑\u202c Алексей Детектив', 'Алексей Седых Отдел Т', 'Седых Алексей Ома Мвд', 'Лёха Седых Кросс Фит', 'Опер В Душе Алексей', 'Моб Зам Седых Ив', 'Детективное Агентство "пантера"', 'Алексей Детектив Калининград', 'Интернет Расследования Остин', 'Алексей Детек, Калининград', 'Алексей Калининград Дедик', 'Алексей Седов Калининград', 'Леша Калининград Детектив', 'Алексей Детектив Пантера', 'Алексей Иваныч Калинград', 'Алексей Калиеинград Кофе', 'Алексей Пантера Детектив', 'Алексей Седых Клд(аскер)', 'Алексей Частный Детектив', 'Делектив Алексей Герцена', 'Алексей Седых Пенсионер', 'Алексей Седых Раевского', 'Калининград Пду Алексей', 'Сб Детективное Агенство', 'Детектив Кал-д Алексей', 'Алексей Иванович Угро', 'Дет. Алексей Иванович', 'Алексей Седых Калина', 'Алексей Седых Юрист', 'Леха Прокурор Седых', 'Смарт Инвест (лёха)', '+ Частный Детектив', 'Алексей Седых Умвд', 'Леха Седых Калик', 'Алексей Сидых T', 'Алексей Чайк -.', 'Леха Увд Седых', 'Леша Опер Умвд', 'Седых Леха Оур', 'Алек Ос Калин', 'Алексей Ч. Д.', 'Седых А. И', 'Детектив Калининград', 'Алексей Разбойный', 'Адвокат Череваня', 'Леха Калининград', 'Алексей Пантера', 'Алексей Клиент', 'Адексей Седых', 'Алексеей Стол', 'Алексей Жетта', 'Алексей Рубоп', 'Алексей Сасед', 'Алексей Сидых', 'Алексей Сосед', 'Алексей Тенев', 'Леха Детектив', 'Леха Кроссфит', 'Фотки Скинуть', 'Алексей Умвд', 'Алекс Седых', 'Алексей Дет', 'Алексей Лвс', 'Алексей Чай', 'Алеша Досье', 'Алек Калин', 'Алексей Чд', 'Лёха Детек', 'Лёха Рубоп', 'Лёха Седых', 'Леша Седвх', 'Леша Седых', 'Седых Леша', 'Алексей У', 'Алексей-детектив', 'Обталексейивано', 'Detective', 'Алексееич', 'Aleksey', 'Куратор', 'Травмат', 'Сосед', 'Am', 'Седых', 'Седых Алексей', 'Седых Алексей ОУР', 'Алексей Фаст-Фуд', 'Алексей (Кофе с собой)', 'Алексей Седых', 'Алексей Иванович Угро', 'Седых Леха', 'Седых Вова', 'Алексей Дзержинского 1 3х 4/5', 'Алексей Чаек)', 'Седых Алексей ОУР Сургут'];
+                        tags.sort((a,b) => (b.count - a.count))
 
-                    let tags = {};
+                        console.log(tags)
+    
+                        if (tags.length) { 
+                            let tags_container = document.querySelector('#tags .flex'); 
+                            let leak_tags = '<div class="flex flex-col">'; 
+        
+                            console.log('tags_container', tags_container); 
+        
+                            let per_col = Math.ceil(tags.length ** .65) + 1; 
 
-                    start_tags.forEach(tag => {
-                        if (tags[tag]) {
-                            tags[tag].count++;
-                        }
-                        else {
-                            tags[tag] = {
-                                name: tag,
-                                count: 1
-                            }
-                        }
-                    })
-
-                    tags = Object.values(tags)
-
-                    tags.sort((a,b) => (b.count - a.count))
-
-                    console.log(tags)
- 
-                    if (tags.length) { 
-                        let tags_container = document.querySelector('#tags .flex'); 
-                        let leak_tags = '<div class="flex flex-col">'; 
-     
-                        console.log('tags_container', tags_container); 
-     
-                        let per_col = Math.ceil(tags.length ** .65) + 1; 
-
-                        console.log('per_col', per_col);
-                        
-                        per_col = Math.ceil(((tags.length) / per_col) > 5 ? (tags.length) / 5 : per_col); 
-                        console.log('per_col', per_col);
-     
-                        console.log('per_col', per_col); 
-     
-                        tags.forEach((tag, i) => { 
-                            if (((i) % per_col) == 0 && i != 0) { 
-                                leak_tags += `</div>`; 
-                                if (i != (tags.length - 1)) leak_tags += `<div class="flex flex-col">`; 
-                            } 
-                                leak_tags += `<span class="leak" style="position: relative;">${tag.name}${tag.count == 1 ? '' : `<div class="tag-repeated-count">${tag.count}</div>`}</span>`; 
-     
-                            if (i == (tags.length - 1) || ((i + 1) / per_col) == 5) { 
-                                leak_tags += `</div>`; 
-                            }
-                        }) 
-     
-     
-                        tags_container.innerHTML += leak_tags; 
-                    } 
-                    else { 
-                        document.querySelector('#tags .leak-description .f-w-600').textContent = 'Нету тегов из популярных мобильных приложений' 
-                        document.querySelector('#tags .flex').innerHTML = '...' 
-                    } 
-                </script>
+                            console.log('per_col', per_col);
+                            
+                            per_col = Math.ceil(((tags.length) / per_col) > 5 ? (tags.length) / 5 : per_col); 
+                            console.log('per_col', per_col);
+        
+                            console.log('per_col', per_col); 
+        
+                            tags.forEach((tag, i) => { 
+                                if (((i) % per_col) == 0 && i != 0) { 
+                                    leak_tags += `</div>`; 
+                                    if (i != (tags.length - 1)) leak_tags += `<div class="flex flex-col">`; 
+                                } 
+                                    leak_tags += `<span class="leak" style="position: relative;">${tag.name}${tag.count == 1 ? '' : `<div class="tag-repeated-count">${tag.count}</div>`}</span>`; 
+        
+                                if (i == (tags.length - 1) || ((i + 1) / per_col) == 5) { 
+                                    leak_tags += `</div>`; 
+                                }
+                            }) 
+        
+        
+                            tags_container.innerHTML += leak_tags; 
+                        } 
+                        else { 
+                            document.querySelector('#tags .leak-description .f-w-600').textContent = 'Нету тегов из популярных мобильных приложений' 
+                            document.querySelector('#tags .flex').innerHTML = '...' 
+                        } 
+                    </script>
+                </div>
             </div>
             <div class="tab-content-4">
                 <table style="border-radius: 7px;overflow: hidden;margin-right: auto;margin-left: auto;outline: 1px solid #a7a3a3;margin-bottom: 15px;"

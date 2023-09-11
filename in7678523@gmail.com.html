@@ -996,6 +996,7 @@
             margin: 0 3%;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,.25);
+            width: 100%;
         }
         .leaks .flex {
             gap: 6px 35px;
@@ -1289,50 +1290,77 @@ table table td img {
                             d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
                     </svg>Нет найденных результатов!
                 </div>
-            </div>
-            <div class="tab-content-2">
-                <div class="leaks" style="margin-bottom: 15px;"> 
-                    <div class="leak-description"><span class="f-w-600">Фигурирует в следующих утечках: </span></div> 
-                    <div class="flex"> 
-                        <!-- Leaks --> 
-                    </div> 
- 
-                </div> 
-                <script> 
-                    let leaks = []; 
- 
-                    if (leaks.length) { 
-                        let leaks_container = document.querySelector('.leaks .flex'); 
-                        let leak_tags = '<div class="flex flex-col">'; 
-     
-                        console.log('leaks_container', leaks_container); 
-     
-                        let per_col = Math.ceil(leaks.length ** .65) + 1; 
-     
-                        // per_col = per_col > 5 ? 5 : per_col; 
-     
-                        console.log('per_col', per_col); 
-     
-                        leaks.forEach((leak, i) => { 
-                                leak_tags += `<span class="leak">${leak}</span>`; 
-     
-                            if (((i+1) % per_col) == 0) { 
-                                leak_tags += `</div>`; 
-                                if (i != (leaks.length - 1)) leak_tags += `<div class="flex flex-col">`; 
-                            } 
-                            if (i == (leaks.length - 1) || ((i + 1) / per_col) == 6) { 
-                                leak_tags += `</div>`; 
-                            } 
-                        }) 
-     
-     
-                        leaks_container.innerHTML += leak_tags; 
-                    } 
-                    else { 
-                        document.querySelector('.leak-description .f-w-600').textContent = 'В утечках персональных данных не фигурирует' 
-                        document.querySelector('.leaks .flex').innerHTML = '...' 
-                    } 
-                </script>
+            </div><div class="tab-content-2" style="overflow-x: scroll;min-height: calc(100vh - 103px);">
+                <div>
+                    <div class="leaks" style="margin-bottom: 15px;margin-left:10px">
+                        <div class="leak-description"><span class="f-w-600">Фигурирует в следующих утечках: </span></div>
+                        <div class="flex">
+                            <!-- Leaks -->
+                        </div>
+            
+                    </div>
+                    <script>
+                        let leaks = [
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                            'Яндекс.Еда', 'СДЭК', 'Гемотест (клиенты)', 'DNS', 'Facebook', 'Miltor', 'GetContact', 'NL Star', 'Telegram', 'Numbuster', 'Level.Travel (клиенты)', 'Jivo', 'ФНС', 'Сбербанк (2021)', 'ЮТэйр',
+                        ];
+
+                        if (leaks.length) {
+                            let leaks_container = document.querySelector('.leaks .flex');
+                            let leak_leaks = '<div class="flex flex-col">';
+
+                            console.log('leaks_container', leaks_container);
+
+                            let per_col = Math.ceil(leaks.length ** .65) + 1;
+
+                            per_col = Math.ceil(((leaks.length) / per_col) > 6 ? (leaks.length) / 6 : per_col);
+
+                            console.log('per_col', per_col);
+
+                            leaks.forEach((leak, i) => {
+                                if (((i) % per_col) == 0 && i != 0) {
+                                    leak_leaks += `</div>`;
+                                    if (i != (leaks.length - 1)) leak_leaks += `<div class="flex flex-col">`;
+                                }
+                                leak_leaks += `<span class="leak">${leak}</span>`;
+
+                                if (i == (leaks.length - 1) || ((i + 1) / per_col) == 6) {
+                                    leak_leaks += `</div>`;
+                                }
+                            })
+
+
+                            leaks_container.innerHTML += leak_leaks;
+                        }
+                        else {
+                            document.querySelector('.leak-description .f-w-600').textContent = 'Нету тегов из популярных мобильных приложений'
+                            document.querySelector('.leaks .flex').innerHTML = '...'
+                        } 
+                    </script>
+                </div>
             </div>
             <div class="tab-content-3">
 
