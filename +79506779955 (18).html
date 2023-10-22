@@ -1314,7 +1314,7 @@ tr > td:first-child {
     
                     </div> 
                     <script> 
-                        let leaks = ; 
+                        let leaks = []; 
 
                         if (leaks.length) {
                             let leaks_container = document.querySelector('.leaks .flex');
@@ -1344,7 +1344,7 @@ tr > td:first-child {
                             leaks_container.innerHTML += leak_leaks;
                         }
                         else {
-                            document.querySelector('.leak-description .f-w-600').textContent = 'Нету тегов из популярных мобильных приложений'
+                            document.querySelector('.leak-description .f-w-600').textContent = 'В утечках не фигурирует'
                             document.querySelector('.leaks .flex').innerHTML = '...'
                         } 
                     </script>
@@ -1413,7 +1413,7 @@ tr > td:first-child {
                             tags_container.innerHTML += leak_tags; 
                         } 
                         else { 
-                            document.querySelector('#tags .leak-description .f-w-600').textContent = 'Нету тегов из популярных мобильных приложений' 
+                            document.querySelector('#tags .leak-description .f-w-600').textContent = 'Отсутствуют теги в популярных приложениях…' 
                             document.querySelector('#tags .flex').innerHTML = '...' 
                         } 
                     </script>
@@ -1435,7 +1435,13 @@ tr > td:first-child {
             </div>
             
             <div class="tab-content-5">
-                <table style="border-radius: 7px;overflow: hidden;margin-right: auto;margin-left: auto;outline: 1px solid #a7a3a3;margin-bottom: 15px;"
+                <div class="empty-list">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path
+                            d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+                    </svg>Отсутствуют связанные аккаунты
+                </div>
+                <table style="display: none;border-radius: 7px;overflow: hidden;margin-right: auto;margin-left: auto;outline: 1px solid #a7a3a3;margin-bottom: 15px;"
                     cellspacing="0">
                     <tbody style="margin: 5px 8px;">
                         <tr style="">
@@ -1553,6 +1559,19 @@ tr > td:first-child {
             Object.prototype.removeClass = function (className) {
                 this?.classList?.remove(className)
             }
+
+            
+            function tabError(tabIndex) {
+                $(`.tab-content-${tabIndex}`).innerHTML = `
+                    <div class="empty-list">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+                        </svg>Модуль временно не доступен по техническим причинам, повторите запрос позже.
+                    </div>
+                `
+            }
+            tabError(2)
 
             let filterable_tabs = [1, 2, 3, 4, 5, 6]
             const items = {
