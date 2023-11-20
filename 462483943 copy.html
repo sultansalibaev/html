@@ -1,0 +1,2144 @@
+
+    <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title></title>
+            <style>
+        @import url('https://fonts.cdnfonts.com/css/roboto');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, "Helvetica Neue", Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e7e7e7;
+            overflow-x: hidden;
+        }
+
+        .flex {
+            display: flex;
+        }
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .tab-head {
+            position: relative;
+            background: white;
+            padding: 12px 12px 0px 18px;
+            box-shadow: 0 2.5px 4px rgb(184, 183, 183);
+            font-size: 16px;
+
+            padding: 7px 20px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 640px) {
+            .tab-head {
+                padding: 7px 8px 0;
+                align-items: center;
+            }
+
+            .tab-head .tabs {
+                justify-content: center;
+            }
+        }
+
+        .tab-head .flex div {
+            font-size: 1em !important;
+        }
+
+        .tab-head .flex>div:not(.tab-head .flex > .pagination) {
+            position: relative;
+            padding: .625em .5em;
+            margin-right: .8125em;
+            cursor: pointer;
+            background: white;
+            user-select: none;
+            color: #747474;
+            transition: color .15s;
+            /*margin-top: .5em;*/
+            margin-top: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-head .flex>div:not(.tab-head .flex > .pagination):hover,
+        .tab-head .flex>.selected {
+            border-bottom: 2px solid #4400ed !important;
+            color: #4400ed;
+        }
+
+        .tab-head .flex>.selected {
+            border-bottom: 2px solid #4400ed !important;
+            color: #4400ed !important;
+        }
+
+        .tab-count {
+            position: absolute;
+            top: -2px;
+            right: -4px;
+            display: flex;
+            align-items: center;
+            padding: 0 3px;
+            border-radius: 3px;
+            height: 16px;
+            font-size: 11px;
+            /* 12px */
+            background: #4400ed;
+            color: white;
+        }
+
+        .content {
+            padding: 15px 7.5px 0;
+        }
+
+        .content>div.selected {
+            display: flex;
+            flex-wrap: wrap;
+            /*padding: 0 2.5px;*/
+        }
+
+        .content>div:not(.content > .selected) {
+            display: none;
+        }
+
+        .item-container {
+            /*min-width: 375px;*/
+            width: 50%;
+            padding: 0 7.5px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 1025px) {
+            .item-container {
+                width: 100%;
+            }
+        }
+
+        .filter-search-arbitrary {
+            margin-left: 7.5px;
+        }
+
+        @media (max-width: 570px) {
+            .item-container {
+                padding: 0 1.5px;
+            }
+
+            .filter-search-arbitrary {
+                margin-left: 1.5px;
+            }
+        }
+
+        .item {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 4px;
+            box-shadow: 0 0 4px #7f7f7f;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mt-auto {
+            margin-top: auto;
+        }
+
+        .key-word {
+            background: #e0ec90;
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+
+        .item-title {
+            font-size: 17px;
+            font-weight: 600;
+
+
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+
+            text-decoration: none;
+            color: #333;
+        }
+
+        .item-title:hover {
+            text-decoration: underline;
+        }
+
+        .item-content {
+            font-size: 13px;
+            margin-top: 6px;
+            margin-bottom: 0px;
+
+            text-align: justify;
+            max-height: 80px;
+            line-height: 20px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            margin-bottom: auto;
+        }
+
+        .item-more {
+            margin-left: auto;
+            font-size: 14px;
+            border: 1px solid #000;
+
+            border: 1px solid #e7eaec;
+            font-size: 15px;
+            height: 29px;
+            padding: 0 8px;
+            border-radius: 3px;
+            transition: .25s;
+
+            display: flex;
+            align-items: center;
+
+            text-decoration: none;
+            color: #333;
+        }
+
+        .item-more:hover {
+            background: #e7eaec70;
+            text-decoration: underline;
+        }
+
+        .item-more svg {
+            width: 13px;
+            margin-left: 7px;
+        }
+
+        .item-param {
+            font-size: 13px;
+            display: flex;
+            /*white-space: nowrap;*/
+            font-weight: 600;
+            position: relative;
+        }
+        .item-info > a + span,
+        .item-info > a {
+            white-space: nowrap;
+            padding-top:4px;
+        }
+        @media (max-width: 425px) {
+            .item-info {
+                flex-wrap: wrap-reverse;
+            }
+            .item-keywords {
+                width: 100%;
+                margin-bottom: 3px;
+            }
+            .item-info > a + span {
+                margin-left: auto !important;
+            }
+        }
+        .account-exist { 
+            color: rgb(22, 144, 119); 
+        } 
+        .account-dont-exist { 
+            color: rgb(236, 94, 94); 
+        }
+        .query-content {
+            position: relative;
+            overflow-x: clip;
+            display: flex;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            text-align: justify;
+            color: white;
+        }
+
+        .query {
+            color: white;
+            background: #9300FF;
+            font-size: 11px;
+            border-radius: 3px;
+            padding: 0px 4px 1px 4px;
+            /*padding: 0px 1px 1px 6px;*/
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .prompt {
+            position: absolute;
+            bottom: calc(100% + 7px);
+            right: 0;
+            font-size: 11px;
+            background: #9300ff;
+            color: #fff;
+            padding: 3px 5px;
+            border-radius: 6px;
+            transition: .15s;
+            display: none;
+            opacity: 0;
+        }
+
+        .prompt::after {
+            content: "▶";
+            position: absolute;
+            top: 100%;
+            left: 10px;
+            color: #9300ff;
+            height: 9px;
+            transform: rotate(90deg);
+        }
+
+        .query:hover+.prompt {
+            display: block !important;
+            opacity: 1 !important;
+        }
+
+        .param-text {
+            overflow: hidden;
+            margin-left: 8px;
+            font-size: 12px;
+        }
+
+        .empty-list {
+            color: #8a6d3b;
+            background: #fce7c4;
+            border: 1px solid #fad292;
+            display: flex;
+            align-items: center;
+            height: 35px;
+            padding: 0 10px;
+            border-radius: 4px;
+            margin: 0 auto 15px;
+        }
+
+        .empty-list svg {
+            height: 18px;
+            margin-right: 7px;
+            fill: #8a6d3b;
+        }
+
+        .pagination svg {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0 3px;
+            padding: 6px 0 !important;
+            width: 22px;
+        }
+
+        .pagination {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            /*position: absolute;
+                right: 10px;
+                bottom: 10px;*/
+            font-size: 13px;
+            height: 25px;
+            user-select: none;
+        }
+
+        .pagination>div>*,
+        .pagination>*:not(.pagination > div) {
+            height: 100%;
+            padding: 0 7px;
+            display: flex !important;
+            align-items: center !important;
+            cursor: pointer;
+            background: white;
+        }
+
+        .h-full {
+            height: 100%;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .w-half {
+            width: 50%;
+        }
+
+        .pagination>*:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .pagination>*:last-child {
+            border-radius: 0 4px 4px 0;
+        }
+
+        .pagination>div>* {
+            border-bottom: 1px solid transparent;
+
+        }
+
+        .pagination>div>*.selected,
+        .pagination>div>*:hover {
+            border-bottom: 1px solid #3b5998;
+            color: #3b5998;
+            font-weight: 600;
+        }
+
+        .pagination>.hovered-angle>svg:hover {
+            background: #3b5998;
+            fill: white;
+        }
+
+        .pagination div span {
+            display: flex;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+
+        .object-full_name {
+            font-size: 21px;
+            margin-top: 0;
+            margin-bottom: 0;
+            text-align: center;
+            margin-right: 10px;
+            margin-bottom: 6px;
+        }
+
+        @media (max-width: 710px) {
+            .tab-head>.tabs:not(.tab-head .pagination) {
+                margin: 0 -5px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .item-container {
+                margin-bottom: 12px;
+            }
+
+            .item {
+                padding: 8px 11px;
+            }
+
+            .item-title {
+                font-size: 14px;
+            }
+
+            .item-more {
+                font-size: 13px;
+                height: 25px;
+            }
+
+            .item-more svg {
+                width: 11px;
+                margin-left: 7px;
+            }
+
+            .item-content {
+                font-size: 11px;
+                margin-top: 5px;
+                margin-bottom: auto;
+                line-height: 17px;
+            }
+
+            .item-param {
+                font-size: 11px;
+                line-height: 14px;
+            }
+        }
+
+        .filter-search-arbitrary {
+            padding: 15px 7.5px 0;
+            width: 50%;
+        }
+
+        .filter-search-arbitrary .input {
+            position: relative;
+            display: flex;
+            box-shadow: 0 0 4px #7f7f7f;
+            max-width: 450px;
+            margin: auto;
+        }
+
+        .filter-search-arbitrary .input>input {
+            width: 100%;
+            height: 28px;
+            padding-left: 7px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+        }
+
+        .filter-search-arbitrary .input svg {
+            position: absolute;
+            right: 7px;
+            top: 0;
+            bottom: 0;
+            width: 14px;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            fill: #706f6f;
+            cursor: pointer;
+            transition: .15s;
+        }
+
+        .filter-search-arbitrary .input svg:hover {
+            fill: black;
+        }
+
+        .filter-search-arbitrary .input.selected svg {
+            transform: rotateX(180deg);
+        }
+
+        .scrollbar::-webkit-scrollbar {
+            width: 7px;
+            height: 6px;
+            margin-left: 2px;
+        }
+
+        .scrollbar::-webkit-scrollbar-track {
+            margin-left: 2px;
+            background-color: transparent;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb {
+            /*background-color: #eaeaea;*/
+            background-color: rgb(170, 227, 255);
+            border-radius: 5px;
+        }
+
+        .arbitrary-keys>div:first-child::-webkit-scrollbar {
+            width: 7px;
+            height: 6px;
+            margin-left: 2px;
+        }
+
+        .arbitrary-keys>div:first-child::-webkit-scrollbar-track {
+            margin-left: 2px;
+            background-color: transparent;
+        }
+
+        .arbitrary-keys>div:first-child::-webkit-scrollbar-thumb {
+            /*background-color: #eaeaea;*/
+            background-color: rgb(170, 227, 255);
+            border-radius: 5px;
+        }
+
+        .arbitrary-keys {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 5px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 0 4px #7f7f7f;
+        }
+
+        .arbitrary-keys>div:first-child {
+            border-radius: 4px;
+            min-height: 50px;
+            max-height: 270px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background: white;
+            padding: 8px 10px;
+            font-size: 14px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .arbitrary-keys:not(.arbitrary-keys.show) {
+            display: none;
+        }
+
+        .arbitrary-key {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .arbitrary-key span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .arbitrary-key:not(.arbitrary-key:last-child) {
+            margin-bottom: 8px;
+        }
+
+        .arbitrary-key input {
+            margin: 2px 5px 0 0;
+            height: 14.5px !important;
+            width: 14.5px !important;
+            line-height: 1 !important;
+            accent-color: #9300FF;
+        }
+
+        .hovered-angle svg {
+            transition: .15s;
+        }
+
+        svg.first-page,
+        svg.last-page {
+            margin: 0;
+            padding: 5.65px 0 !important;
+            width: 22px;
+        }
+
+        .first-page {
+            margin-left: 22px !important;
+        }
+
+        .last-page {
+            margin-right: 22px !important;
+        }
+
+        .hovered-angle {
+            height: 100%;
+        }
+
+        .pagination {
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .hovered-angle:not(.hovered-angle:hover) svg.first-page,
+        .hovered-angle:not(.hovered-angle:hover) svg.last-page {
+            width: 0;
+        }
+
+        .hovered-angle:not(.hovered-angle:hover) svg:not(svg.last-page) {
+            border-radius: 0 4px 4px 0;
+        }
+
+        .hovered-angle:not(.hovered-angle:hover) svg.first-page+svg {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .hovered-angle:hover svg.first-page,
+        .hovered-angle:hover svg.last-page {
+            margin: 0 !important;
+        }
+
+        .pagination-container {
+            padding: 15px 7.5px 0;
+            margin: auto;
+        }
+
+        @media (max-width: 670px) {
+
+            .hovered-angle:hover svg:not(svg.last-page) {
+                border-radius: 0 4px 4px 0 !important;
+            }
+
+            .hovered-angle:hover svg.first-page+svg {
+                border-radius: 4px 0 0 4px !important;
+            }
+
+            .filter-search-arbitrary {
+                width: 100%;
+            }
+
+            .wrap-reverse-container {
+                flex-wrap: wrap-reverse;
+            }
+
+            svg.first-page,
+            svg.last-page {
+                display: none !important;
+            }
+
+            .pagination .flex.h-full {
+                max-width: 250px;
+                overflow-y: hidden;
+                overflow-x: scroll;
+                margin-bottom: 0px;
+                min-height: 34px !important;
+            }
+
+            .pagination .flex.h-full>* {
+                height: 26px !important;
+            }
+
+            .pagination {
+                height: 33px;
+                margin-bottom: -8px;
+            }
+
+            .pagination .hovered-angle {
+                padding-bottom: 8px;
+            }
+        }
+
+        .filter-btns {
+            background: white;
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid #ccc;
+            font-size: 15px;
+            display: flex;
+        }
+
+        .filter-btns span {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 38px;
+            cursor: pointer;
+            transition: .15s;
+            padding-bottom: 1px;
+        }
+
+        .filter-btns span:first-child {
+            border-right: 1px solid #ccc;
+        }
+
+        .filter-btns span:hover {
+            color: white;
+            background: #9300FF;
+        }
+
+        .filter-info {
+            position: absolute !important;
+            top: unset !important;
+            bottom: 38px !important;
+            right: 0 !important;
+            margin: 5px;
+            z-index: 15;
+            width: 18.5px !important;
+            height: 18.5px !important;
+        }
+
+        .filter-info svg {
+            width: 18.5px !important;
+            height: 18.5px !important;
+            fill: rgba(131, 131, 131, 0.58) !important;
+            transform: rotateX(0deg) !important;
+        }
+
+        .filter-info svg:hover {
+            fill: #838383 !important;
+        }
+
+        .filter-info .filter-info_prompt {
+            position: absolute;
+            bottom: calc(100% + 9px);
+            right: 0;
+            background: #838383;
+            color: white;
+            font-size: 11px;
+            white-space: nowrap;
+            padding: 3px 5px;
+            border-radius: 4px;
+            transition: .15s;
+        }
+
+        .filter-info_prompt::after {
+            content: "▶";
+            position: absolute;
+            top: calc(100% - 1.5px);
+            right: 8.5px;
+            color: #838383;
+            height: 3px;
+            transform: rotate(90deg);
+        }
+
+        .filter-info svg:not(.filter-info svg:hover)+.filter-info_prompt {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .similars-range {
+            max-width: 300px;
+            width: 100%;
+            /*max-height: 25px;*/
+            position: relative;
+
+            margin: 15px 7.5px 0;
+            padding-top: 11.5px;
+            height: 25px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .similars-range input {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Range */
+
+        [slider] {
+            position: relative;
+            height: 3px;
+            border-radius: 10px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        [slider]>div {
+            position: absolute;
+            left: 13px;
+            right: 15px;
+            height: 3px;
+        }
+
+        [slider]>div>[inverse-left] {
+            position: absolute;
+            left: 0;
+            height: 3px;
+            border-radius: 10px;
+            background-color: #CCC;
+            margin: 0 7px;
+        }
+
+        [slider]>div>[inverse-right] {
+            position: absolute;
+            right: 0;
+            height: 3px;
+            border-radius: 10px;
+            background-color: #CCC;
+            margin: 0 7px;
+        }
+
+        [slider]>div>[range] {
+            position: absolute;
+            left: 0;
+            height: 3px;
+            border-radius: 14px;
+            background-color: #4169e1;
+        }
+
+        [slider]>div>[thumb] {
+            position: absolute;
+            top: -5px;
+            z-index: 2;
+            height: 12px;
+            width: 12px;
+            text-align: left;
+            margin-left: -7px;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            background-color: #FFF;
+            border-radius: 3px;
+            outline: none;
+        }
+
+        [slider]>input[type=range] {
+            position: absolute;
+            pointer-events: none;
+            -webkit-appearance: none;
+            z-index: 3;
+            height: 3px;
+            top: -2px;
+            width: 100%;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+            -moz-opacity: 0;
+            -khtml-opacity: 0;
+            opacity: 0;
+        }
+
+        div[slider]>input[type=range]::-ms-track {
+            -webkit-appearance: none;
+            background: transparent;
+            color: transparent;
+        }
+
+        div[slider]>input[type=range]::-moz-range-track {
+            -moz-appearance: none;
+            background: transparent;
+            color: transparent;
+        }
+
+        div[slider]>input[type=range]:focus::-webkit-slider-runnable-track {
+            background: transparent;
+            border: transparent;
+        }
+
+        div[slider]>input[type=range]:focus {
+            outline: none;
+        }
+
+        div[slider]>input[type=range]::-ms-thumb {
+            pointer-events: all;
+            width: 28px;
+            height: 28px;
+            border-radius: 0px;
+            border: 0 none;
+            background: red;
+        }
+
+        div[slider]>input[type=range]::-moz-range-thumb {
+            pointer-events: all;
+            width: 28px;
+            height: 28px;
+            border-radius: 0px;
+            border: 0 none;
+            background: red;
+        }
+
+        div[slider]>input[type=range]::-webkit-slider-thumb {
+            pointer-events: all;
+            width: 28px;
+            height: 28px;
+            border-radius: 0px;
+            border: 0 none;
+            background: red;
+            -webkit-appearance: none;
+        }
+
+        div[slider]>input[type=range]::-ms-fill-lower {
+            background: transparent;
+            border: 0 none;
+        }
+
+        div[slider]>input[type=range]::-ms-fill-upper {
+            background: transparent;
+            border: 0 none;
+        }
+
+        div[slider]>input[type=range]::-ms-tooltip {
+            display: none;
+        }
+
+        [slider]>div>[sign] {
+            font-size: 15px;
+            opacity: 0;
+            position: absolute;
+            margin-left: -13px;
+            top: -2.4375em;
+            z-index: 3;
+            background-color: #4169e1;
+            color: #fff;
+            width: 1.75em;
+            height: 1.75em;
+            border-radius: 1.75em;
+            -webkit-border-radius: 1.75em;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        [slider]>div>[sign]:after {
+            position: absolute;
+            content: '';
+            left: 0;
+            border-radius: 1em;
+            top: calc(1.1875em + 1px);
+            border-left: 0.875em solid transparent;
+            border-right: 0.875em solid transparent;
+            border-top-width: 1em;
+            border-top-style: solid;
+            border-top-color: #4169e1;
+        }
+
+        [slider]>div>[sign]>span {
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 28px;
+        }
+
+        [slider]:hover>div>[sign] {
+            opacity: 1;
+        }
+
+        .clone {
+            width: 16px;
+            height: 16px;
+            fill: #4169e1;
+        }
+        .seen_link {
+            opacity: 0.8;
+        }
+
+        .seen_link .item {
+            box-shadow: none;
+            background: #c4d9ce;
+        }
+        .phones,
+        .groups,
+        .leaks {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            padding: 6px 6px 10px 6px;
+            gap: 5px;
+            background: #cdcdcd;
+            margin: 0 3%;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,.25);
+            width: 100%;
+        }
+        .phones .flex,
+        .groups .flex,
+        .leaks .flex {
+            gap: 6px 35px;
+            padding: 0 5px;
+        }
+        .phones-description,
+        .groups-description,
+        .leak-description {
+            padding: 6px 12px 7px 10px;
+            font-size: 18px;
+            background: white;
+            border-radius: 4px 4px 0 0;
+            margin: -6px;
+            margin-bottom: 10px;
+        }
+        .f-w-600 {
+            font-weight: 600;
+        }
+        .leak {
+            white-space: nowrap;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px 0 10px;
+            line-height: 1;
+            background: white;
+            border-radius: 5px;
+        }
+        /* .leak:not(.leak:last-child) {
+            border-bottom: 1px solid;
+        }
+        .leaks .flex .flex-col:not(.leak:last-child) {
+            border-right: 1px solid;
+        } */
+        table {
+            background: #0000008c;
+        }
+        .gray-color {
+            color: #ccc;
+        }
+        .m-b-5 {
+            margin-bottom: 5px;
+        }
+
+/* ------------------------------------ */
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 5;
+    stroke-miterlimit: 10;
+    stroke: #4400ed;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 6.5;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #4400ed;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+
+    margin-right: 5px;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+
+.checkmark.unseen {
+    top: 6px;
+    left: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.checkmark.unseen.seen_scale {
+    animation: fill .4s ease-in-out .4s forwards, seen_scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes scale {
+
+    0%,
+    100% {
+        transform: none;
+    }
+
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+
+@keyframes seen_scale {
+    20% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+
+    99% {
+        transform: scale3d(0, 0, 0);
+    }
+
+    99% {
+        display: none;
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 20px #4400ed;
+    }
+}
+table tbody tr td:last-child { 
+    /* font-size: 15px; */ 
+} 
+td { 
+    vertical-align: top; 
+} 
+td:first-child, th:first-child { 
+    border-right: 1px solid #ccc; 
+} 
+tr:last-child td { 
+    border-bottom: none; 
+} 
+table table tr td:first-child { 
+    /* border-right: none; */ 
+    border-right-color: #f3f3f3bb; 
+} 
+table table tr td { 
+    border-bottom-color: #f3f3f3bb; 
+} 
+td, th { 
+    background: white; 
+    padding: 8px 14px 7px 14px; 
+    /* margin-bottom: 5px !important; */ 
+    border-bottom: 1px solid #ccc; 
+    height: 40px; 
+} 
+.td-key { 
+    letter-spacing: 1px; 
+    font-weight: 600; 
+    margin-right: 15px; 
+} 
+.td-link { 
+    block-size: border-box; 
+    display: inline-block; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    max-width: 400px; 
+} 
+.empty-result { 
+    color: #9d9d9d; 
+}
+table table td img { 
+    padding: 0 5px 5px 0; 
+}
+    </style>
+        </head>
+        
+        <body>
+            <div class="tab-head" onclick="closeModal(event)">
+                <div class="flex items-center" style="flex-wrap: wrap;">
+                    <h2 class="object-full_name">Пользователь: <span style="white-space:nowrap"></span></h2>
+    
+                </div>
+                <div class=" tabs flex flex-wrap items-center">
+                    <div class="tab-1 selected" onclick="select_tab(1)">
+                        Интересы
+                    </div>
+                    <div class="tab-2" onclick="select_tab(2)">
+                        Группы
+                    </div>
+                    <div class="tab-3" onclick="select_tab(3)">
+                        История профиля  
+                    </div>
+                    <div class="tab-4" onclick="select_tab(4)">
+                        Телефоны
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flex items-center wrap-reverse-container only-for-mentions" style="padding: 0 10px;">
+                <div class="similars-range" style="padding-left: 20px;display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="clone" style="position:absolute;left:5px;top:4px;"
+                        viewBox="0 0 512 512">
+                        <path
+                            d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                    </svg>
+                    <div slider id="slider-distance">
+                        <div>
+                            <div inverse-left style="width:100%;"></div>
+                            <div inverse-right style="width:100%;"></div>
+                            <div range style="left:0%;right:0%;"></div>
+                            <span thumb style="left:0%;"></span>
+                            <span thumb style="left:100%;"></span>
+                            <div sign style="left:0%;">
+                                <span id="value">0</span>
+                            </div>
+                            <div sign style="left:100%;">
+                                <span id="value">100</span>
+                            </div>
+                        </div>
+                        <input id="startRangeValue" type="range" tabindex="0" value="0" max="100" min="0" step="1"
+                            onchange="update_startRangeValue(+event.target.value)" oninput="startRange(event)" />
+    
+                        <input id="endRangeValue" type="range" tabindex="0" value="100" max="100" min="0" step="1"
+                            onchange="update_endRangeValue(+event.target.value)" oninput="endRange(event)" />
+                    </div>
+                </div>
+                <div class="filter-search-arbitrary" style="display: none;">
+                    <label class="input">
+                        <!-- Введите название произвольного ключа -->
+                        <input type="text" placeholder="Введите название ключа" onclick="showListModal(event)"
+                            oninput="updateList(event)" />
+                        <svg onclick="toggleListModal(event)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path
+                                d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+                        </svg>
+                        <div class="arbitrary-keys" onclick="showListModal(event)">
+                        </div>
+                    </label>
+                </div>
+                <div class="pagination-container" onclick="closeModal(event)">
+                    <div class="pagination">
+                        <div class="flex hovered-angle">
+                            <svg class="first-page" onclick="first_page('main')" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512">
+                                <path
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z" />
+                            </svg>
+                            <svg onclick="minus_page('main')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                <path
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="flex h-full scrollbar">
+                            <span onclick="set_page('main', 1)" class="selected">1</span><span
+                                onclick="set_page('main', 2)">2</span><span onclick="set_page('main', 3)">3</span><span
+                                onclick="set_page('main', 4)">4</span><span onclick="set_page('main', 5)">5</span><span
+                                onclick="set_page('main', 6)">6</span><span onclick="set_page('main', 7)">7</span><span
+                                onclick="set_page('main', 8)">8</span><span onclick="set_page('main', 9)">9</span><span
+                                onclick="set_page('main', 10)">10</span>
+                        </div>
+                        <div class="flex hovered-angle">
+                            <svg onclick="plus_page('main')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                <path
+                                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z">
+                                </path>
+                            </svg>
+                            <svg class="last-page" onclick="last_page('main')" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512">
+                                <path
+                                    d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="content" onclick="closeModal(event)">
+                <div class="tab-content-1 selected">
+                    <style>
+                        .block {
+                            font-size: 18px;
+                            font-weight: 600;
+                        }
+                        .block:not(:has(+ ul)) {
+                            margin-bottom: 10px;
+                        }
+                        .block:has(+ ul)::after {
+                            content: ':';
+                        }
+                        .category {
+                            margin-left: 35px;
+                        }
+                        ol ul ul li {
+                            font-style: italic;
+                            list-style-type: circle;
+                        }
+                        /* ol ul ul li::marker {width: 15px;
+                        } */
+                        ol > li {
+                            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                            list-style: none;
+                            margin-left: -10px;
+                        }
+                        ol > ul {
+                            padding-top: 10px;
+                            padding-bottom: 10px;
+                        }
+                        ol ul,
+                        ol ul ul {
+                            padding-left: 30px;
+                        }
+                        ol ul li {
+                            list-style-type: disc;
+                        }
+                        .border > li {
+                            border: 1px solid #4400ed;
+                            padding: 4px 10px;
+                            border-radius: 5px;
+                            border-left: 8px solid #4400ed; 
+                            transition: 0.3s all linear;
+                        }
+                        .border > li:has(+ ul:hover),
+                        .border > li:hover {border-right-width: 8px;border-left-width: 1px;}
+                    </style>
+                    <div style="background: white;padding: 15px 20px;border-radius: 8px;min-width: 600px;">
+                        <ol class="border" style="padding: 0 35px;margin-top: 10px;">
+                            <li class="block">гео</li>
+                            <ul>
+                                <li>канада</li>
+                            </ul>
+                            <li class="block">работа</li>
+                            <li class="block">блокчейн blockchаin</li>
+                            <ul>
+                                <li>платформа на блокчейн</li>
+                                <ul>
+                                    <li>singularitynet.io</li>
+                                </ul>
+                                <li>криптовалюта</li>
+                                <ul>
+                                    <li>ico</li>
+                                    <li>биткоин btc</li>
+                                </ul>
+                            </ul>
+                            <li class="block">навыки / знания / увлеченность </li>
+                            <ul>
+                                <li>IT</li>
+                                <ul>
+                                    <li>искусственный интеллект</li>
+                                </ul>
+                            </ul>
+                            <li class="block">новости</li>
+                            <ul>
+                                <li>происшествия</li>
+                            </ul>
+                            <li class="block">покупки</li>
+                            <ul>
+                                <li>магазин</li>
+                                <li>вкусвилл</li>
+                            </ul>
+                            <li class="block">эмиграция релокация</li>
+                            <li class="block">еда</li>
+                            <li class="block">политика</li>
+                            <ul>
+                                <li>нетолерантность</li>
+                                <li>конспирология</li>
+                                <li>оппозиция</li>
+                                <li>национал-социализм</li>
+                                <li>геополитика</li>
+                                <li>русская идея</li>
+                                <li>правые (политика)</li>
+                                <li>национализм</li>
+                                <li>протест</li>
+                                <li>мужское государство</li>
+                            </ul>
+                            <li class="block">развлечение</li>
+                            <ul>
+                                <li>мемы</li>
+                                <li>чернуха</li>
+                                <li>треш контент</li>
+                            </ul>
+                            <li class="block">гео карты</li>
+                            <li class="block">сообщества</li>
+                            <ul>
+                                <li>двач</li>
+                                <li>глогер вадим сша</li>
+                            </ul>
+                            <li class="block">увлечения</li>
+                            <ul>
+                                <li>аниме</li>
+                                <li>военные конфликты</li>
+                            </ul>
+                            <li class="block">увлечения</li>
+                            <li class="block">безопасность</li>
+                            <ul>
+                                <li>самооборона</li>
+                            </ul>
+                            <li class="block">мессенджеры</li>
+                            <ul>
+                                <li>телеграм</li>
+                            </ul>
+                            <li class="block">мракобесие</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="tab-content-2" style="overflow-x: scroll;min-height: calc(100vh - 103px);">
+                    <div>
+                        <div class="groups" style="margin-bottom: 15px;margin-left:10px">
+                            <div class="groups-description"><span class="f-w-600">Группы, в которых замечен пользователь:<br> 
+(в формате [имя группы | дата выявления]):</span></div>
+                            <div class="flex">
+                                <!-- Leaks -->
+                            </div>
+                
+                        </div>
+                        <script>
+                            let groups = ;
+    
+                            if (groups.length) {
+                                let leaks_container = document.querySelector('.groups .flex');
+                                let leak_leaks = '<div class="flex flex-col">';
+    
+                                console.log('leaks_container', leaks_container);
+    
+                                let per_col = Math.ceil(groups.length ** .65) + 1;
+    
+                                per_col = Math.ceil(((groups.length) / per_col) > 6 ? (groups.length) / 6 : per_col);
+    
+                                console.log('per_col', per_col);
+    
+                                groups.forEach((leak, i) => {
+                                    if (((i) % per_col) == 0 && i != 0) {
+                                        leak_leaks += `</div>`;
+                                        if (i != (groups.length - 1)) leak_leaks += `<div class="flex flex-col">`;
+                                    }
+                                    leak_leaks += `<span class="leak">${leak}</span>`;
+    
+                                    if (i == (groups.length - 1) || ((i + 1) / per_col) == 6) {
+                                        leak_leaks += `</div>`;
+                                    }
+                                })
+    
+    
+                                leaks_container.innerHTML += leak_leaks;
+                            }
+                            else {
+                                document.querySelector('.groups-description .f-w-600').textContent = 'Информация о группах отсудствует'
+                                document.querySelector('.groups .flex').innerHTML = '...'
+                            } 
+                        </script>
+                    </div>
+                </div>
+                <div class="tab-content-3" style="overflow-x: scroll;min-height: calc(100vh - 103px);">
+                    <div>
+                        <div class="leaks" style="margin-bottom: 15px;margin-left:10px">
+                            <div class="leak-description"><span class="f-w-600">История изменения профиля пользователя содержит записей: 0<br> 
+                             </span></div>
+                            <div class="flex">
+                                <!-- Leaks -->
+                            </div>
+                    
+                        </div>
+                        <script>
+                            let leaks = ;
+    
+                            if (leaks.length) {
+                                let leaks_container = document.querySelector('.leaks .flex');
+                                let leak_leaks = '<div class="flex flex-col">';
+    
+                                console.log('leaks_container', leaks_container);
+    
+                                let per_col = Math.ceil(leaks.length ** .65) + 1;
+    
+                                per_col = Math.ceil(((leaks.length) / per_col) > 6 ? (leaks.length) / 6 : per_col);
+    
+                                console.log('per_col', per_col);
+    
+                                leaks.forEach((leak, i) => {
+                                    if (((i) % per_col) == 0 && i != 0) {
+                                        leak_leaks += `</div>`;
+                                        if (i != (leaks.length - 1)) leak_leaks += `<div class="flex flex-col">`;
+                                    }
+                                    leak_leaks += `<span class="leak">${leak}</span>`;
+    
+                                    if (i == (leaks.length - 1) || ((i + 1) / per_col) == 6) {
+                                        leak_leaks += `</div>`;
+                                    }
+                                })
+    
+    
+                                leaks_container.innerHTML += leak_leaks;
+                            }
+                            else {
+                                document.querySelector('.leak-description .f-w-600').textContent = 'Информация об изменений профиля отсудствует'
+                                document.querySelector('.leaks .flex').innerHTML = '...'
+                            } 
+                        </script>
+                    </div>
+                </div>
+                <div class="tab-content-4" style="overflow-x: scroll;min-height: calc(100vh - 103px);">
+                    <div>
+                        <div class="phones" style="margin-bottom: 15px;margin-left:10px">
+                            <div class="phones-description"><span class="f-w-600">Список телефонов пользователя: </span></div>
+                            <div class="flex">
+                                <!-- Leaks -->
+                            </div>
+                    
+                        </div>
+                        <script>
+                            let phones = ;
+    
+                            if (phones.length) {
+                                let leaks_container = document.querySelector('.phones .flex');
+                                let leak_leaks = '<div class="flex flex-col">';
+    
+                                console.log('leaks_container', leaks_container);
+    
+                                let per_col = Math.ceil(phones.length ** .65) + 1;
+    
+                                per_col = Math.ceil(((phones.length) / per_col) > 6 ? (phones.length) / 6 : per_col);
+    
+                                console.log('per_col', per_col);
+    
+                                phones.forEach((leak, i) => {
+                                    if (((i) % per_col) == 0 && i != 0) {
+                                        leak_leaks += `</div>`;
+                                        if (i != (phones.length - 1)) leak_leaks += `<div class="flex flex-col">`;
+                                    }
+                                    leak_leaks += `<span class="leak">${leak}</span>`;
+    
+                                    if (i == (phones.length - 1) || ((i + 1) / per_col) == 6) {
+                                        leak_leaks += `</div>`;
+                                    }
+                                })
+    
+    
+                                leaks_container.innerHTML += leak_leaks;
+                            }
+                            else {
+                                document.querySelector('.phones-description .f-w-600').textContent = 'Информация об телефоне пользователя отсудствует'
+                                document.querySelector('.phones .flex').innerHTML = '...'
+                            } 
+                        </script>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flex only-for-mentions" onclick="closeModal(event)">
+                <div class="pagination-container" style="padding: 0 7.5px 15px;">
+                    <div class="pagination">
+                        <div class="flex hovered-angle">
+                            <svg class="first-page" onclick="first_page('main')" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512">
+                                <path
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z" />
+                            </svg>
+                            <svg onclick="minus_page('main')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                <path
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="flex h-full scrollbar">
+                            <span onclick="set_page('main', 1)" class="selected">1</span><span
+                                onclick="set_page('main', 2)">2</span><span onclick="set_page('main', 3)">3</span><span
+                                onclick="set_page('main', 4)">4</span><span onclick="set_page('main', 5)">5</span><span
+                                onclick="set_page('main', 6)">6</span><span onclick="set_page('main', 7)">7</span><span
+                                onclick="set_page('main', 8)">8</span><span onclick="set_page('main', 9)">9</span><span
+                                onclick="set_page('main', 10)">10</span>
+                        </div>
+                        <div class="flex hovered-angle">
+                            <svg onclick="plus_page('main')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                <path
+                                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z">
+                                </path>
+                            </svg>
+                            <svg class="last-page" onclick="last_page('main')" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512">
+                                <path
+                                    d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <script>
+                let startRangeValue = 0;
+                let endRangeValue = 0;
+    
+                function update_startRangeValue(value) {
+                    startRangeValue = value;
+                    render_items()
+                }
+                function update_endRangeValue(value) {
+                    endRangeValue = value;
+                    render_items()
+                }
+    
+                const startRange = (event) => {
+                    let $this = event?.target;
+                    $this.value = Math.min($this.value, $this.parentNode.childNodes[5].value - 1);
+                    var value = (100 / (parseInt($this.max) - parseInt($this.min))) * parseInt($this.value) - (100 / (parseInt($this.max) - parseInt($this.min))) * parseInt($this.min);
+                    var children = $this.parentNode.childNodes[1].childNodes;
+                    children[1].style.width = value + '%';
+                    children[5].style.left = value + '%';
+                    children[7].style.left = value + '%'; children[11].style.left = value + '%';
+                    children[11].childNodes[1].innerHTML = $this.value;
+                }
+                const endRange = (event) => {
+                    let $this = event?.target;
+                    $this.value = Math.max($this.value, $this.parentNode.childNodes[3].value);
+                    var value = (100 / (parseInt($this.max) - parseInt($this.min))) * parseInt($this.value) - (100 / (parseInt($this.max) - parseInt($this.min))) * parseInt($this.min);
+                    var children = $this.parentNode.childNodes[1].childNodes;
+                    children[3].style.width = (100 - value) + '%';
+                    children[5].style.right = (100 - value) + '%';
+                    children[9].style.left = value + '%'; children[13].style.left = value + '%';
+                    children[13].childNodes[1].innerHTML = $this.value;
+                }
+    
+                const isMobile = Boolean(navigator.userAgent.match(/Android/i)
+                    || navigator.userAgent.match(/webOS/i)
+                    || navigator.userAgent.match(/iPhone/i)
+                    || navigator.userAgent.match(/iPad/i)
+                    || navigator.userAgent.match(/iPod/i)
+                    || navigator.userAgent.match(/BlackBerry/i)
+                    || navigator.userAgent.match(/Windows Phone/i));
+    
+                console.log('isMobile', isMobile, navigator.userAgent);
+    
+                let selected_tab_index = 1
+                function $(str) {
+                    let elements = document?.querySelectorAll(str);
+    
+                    return (elements?.length == 1) ? document?.querySelector(str) : elements;
+                }
+                Object.prototype.html = function (html) {
+                    this?.forEach(item => {
+                        item.innerHTML = html
+                    });
+                }
+                Object.prototype.hasClass = function (className) {
+                    return this?.classList?.contains(className)
+                }
+                Object.prototype.addClass = function (className) {
+                    this?.classList?.add(className)
+                }
+                Object.prototype.removeClass = function (className) {
+                    this?.classList?.remove(className)
+                }
+    
+                let filterable_tabs = [1, 2, 3, 4, 5, 6]
+                const items = {
+                    main: []
+                }
+    
+                endRangeValue = []
+                items.main.forEach(item => {
+                    endRangeValue.push(+item.link_weight)
+                });
+                startRangeValue = endRangeValue.length ? Math.min(...endRangeValue) : 0
+                endRangeValue = endRangeValue.length ? Math.max(...endRangeValue) : 0
+    
+                let endRangeElement = $('#endRangeValue');
+                let startRangeElement = $('#startRangeValue');
+                startRangeElement.min = endRangeElement.min = startRangeElement.value = startRangeValue;
+                startRangeElement.max = endRangeElement.max = endRangeElement.value = endRangeValue;
+                startRange({ target: startRangeElement })
+                endRange({ target: endRangeElement })
+    
+    
+                const tab_names = {
+                    1: 'main',
+                    2: 'arbitrary',
+                    3: 'negative',
+                    4: 'reputation',
+                    5: 'connections',
+                    6: 'socials',
+                    7: 'all_materials',
+                }
+    
+                function isFilterableTab() {
+                    return filterable_tabs.find(filterable_tab => filterable_tab == selected_tab_index) != undefined
+                }
+                function select_tab(new_tab_index) {
+                    if (selected_tab_index == new_tab_index) return
+    
+                    $(`.tab-${new_tab_index}`)?.addClass('selected')
+                    $(`.tab-content-${new_tab_index}`)?.addClass('selected')
+    
+                    $(`.tab-${selected_tab_index}`)?.removeClass('selected')
+                    $(`.tab-content-${selected_tab_index}`)?.removeClass('selected')
+    
+                    selected_tab_index = new_tab_index
+                    if (new_tab_index != 1) {
+                        $('.only-for-mentions').forEach(el => {
+                            el.style.display = 'none';
+                        })
+                        return;
+                    }
+                    else {
+                        $('.only-for-mentions').forEach(el => {
+                            el.style.display = '';
+                        })
+                    }
+                    render_items()
+                    let tab_name = tab_names[selected_tab_index];
+    
+                    // if (isFilterableTab() && items[tab_names[selected_tab_index]]?.length > 0) {
+    
+                    //     updateList({ target: { value: '' } })
+                    //     $(`.filter-search-arbitrary`).style.display = 'block';
+                    // }
+                    // else {
+                    //     $(`.filter-search-arbitrary`).style.display = 'none';
+                    // }
+                    // $(`.similars-range`).style.display = new_tab_index == 1 ? 'block' : 'none';
+                }
+                function copy(that) {
+                    var inp = document.createElement('input');
+                    document.body.appendChild(inp)
+                    inp.value = that.textContent
+                    inp.select();
+                    document.execCommand('copy', false);
+                    inp.remove();
+                }
+                const tab_indexes = {
+                    main: 1,
+                    arbitrary: 2,
+                    negative: 3,
+                    reputation: 4,
+                    connections: 5,
+                    socials: 6,
+                    all_materials: 7,
+                }
+    
+                Object.entries(tab_indexes).forEach(([tab_name, tab_index]) => {
+                    $(`.tab-${tab_index} .tab-count`).innerHTML = items[tab_name]?.length
+                });
+                const tab_pages = {
+                    main: {
+                        count: 0,
+                        page: 1,
+                    },
+                    arbitrary: {
+                        count: 0,
+                        page: 1,
+                    },
+                    negative: {
+                        count: 0,
+                        page: 1,
+                    },
+                    reputation: {
+                        count: 0,
+                        page: 1,
+                    },
+                    connections: {
+                        count: 0,
+                        page: 1,
+                    },
+                    socials: {
+                        count: 0,
+                        page: 1,
+                    },
+                    all_materials: {
+                        count: 0,
+                        page: 1,
+                    },
+                }
+    
+                function set_page(tab_name, page) {
+                    tab_pages[tab_name].page = page;
+                    render_items()
+                    update_pagination()
+                }
+                function minus_page(tab_name) {
+                    if (tab_pages[tab_name].page > 1) tab_pages[tab_name].page -= 1;
+                    render_items()
+                    update_pagination()
+                }
+                function first_page(tab_name) {
+                    if (tab_pages[tab_name].page > 1) tab_pages[tab_name].page = 1;
+                    render_items()
+                    update_pagination()
+                }
+                function plus_page(tab_name) {
+                    if (tab_pages[tab_name].page < tab_pages[tab_name].count) tab_pages[tab_name].page += 1;
+                    render_items()
+                    update_pagination()
+                }
+                function last_page(tab_name) {
+                    if (tab_pages[tab_name].page < tab_pages[tab_name].count) tab_pages[tab_name].page = tab_pages[tab_name].count;
+                    render_items()
+                    update_pagination()
+                }
+    
+                const range = 20;
+    
+                Object.keys(items).forEach(tab_name => {
+                        if (items[tab_name]?.length) tab_pages[tab_name].count = Math.ceil(items[tab_name]?.length / range);
+                    });
+    
+                let page = 1;
+                let onfocused = false;
+    
+                function showListModal(event) {
+                    event.stopPropagation()
+                    if (event.pointerType == '') return;
+                    if (!$('.arbitrary-keys').hasClass('show')) {
+                        $('.arbitrary-keys').addClass('show')
+                        $('.filter-search-arbitrary .input').addClass('selected')
+                        onfocused = true;
+                    }
+                }
+                function toggleListModal(event) {
+                    event.stopPropagation()
+                    //if (['path', 'svg'].includes(event.target.tagName)) return;
+                    if (!$('.arbitrary-keys').hasClass('show')) {
+                        $('.arbitrary-keys').addClass('show')
+                        $('.filter-search-arbitrary .input').addClass('selected')
+                        onfocused = true;
+                    }
+                    else {
+                        $('.arbitrary-keys').removeClass('show')
+                        $('.filter-search-arbitrary .input').removeClass('selected')
+                        onfocused = false;
+                    }
+                }
+                function closeModal(event) {
+                    event?.stopPropagation()
+                    if (onfocused) {
+                        setTimeout(() => {
+                            $('.arbitrary-keys').removeClass('show')
+                            $('.filter-search-arbitrary .input').removeClass('selected')
+                            event?.target?.blur()
+                        }, 100);
+                        onfocused = false;
+                    }
+                }
+    
+                let filters = {
+                        1: {  },
+                        }
+    
+                function makeSafeForCSS(name) {
+                    return name.replace(/[^a-z0-9]/g, function (s) {
+                        var c = s.charCodeAt(0);
+                        if (c == 32) return '-';
+                        if (c >= 65 && c <= 90) return '_' + s.toLowerCase();
+                        return '__' + ('000' + c.toString(16)).slice(-4);
+                    });
+                }
+    
+                let temp_link_classes = {};
+                let seen_links = {};
+    
+                const decode_filter_classes = Object.entries(filters).reduce((prev,next) => ({ ...prev, [next[0]]: {
+                    ...(Object.keys(next[1]).reduce((_prev, key) => ({
+                        ..._prev,
+                        [makeSafeForCSS(key)]: key
+                    }), {}))
+                } }), {})
+    
+                function filter() {
+                    updateList({ target: { value: '' } })
+                    render_items()
+                    $('.filter-search-arbitrary .input > input').focus()
+                }
+    
+                function uncheckAll() {
+                    Object.keys(filters[selected_tab_index]).forEach(arbitrary_key => {
+                        filters[selected_tab_index][arbitrary_key] = false;
+                    });
+                    filter()
+                }
+    
+                function checkAll() {
+                    Object.keys(filters[selected_tab_index]).forEach(arbitrary_key => {
+                        filters[selected_tab_index][arbitrary_key] = true;
+                    });
+                    filter()
+                }
+    
+                function toggleArbitraryKey(event, key_name) {
+                    if (event.ctrlKey) {
+                        Object.keys(filters[selected_tab_index]).forEach(arbitrary_key => {
+                            filters[selected_tab_index][arbitrary_key] = false;
+                            $(`.keyword-id-${makeSafeForCSS(arbitrary_key)} input`).checked = false;
+                        });
+                    }
+                    let decode_base_64 = decode_filter_classes[selected_tab_index][key_name];
+                    console.log('decode_base_64', decode_base_64);
+                    filters[selected_tab_index][decode_base_64] = !filters[selected_tab_index][decode_base_64]
+                    $(`.keyword-id-${key_name} input`).checked = filters[selected_tab_index][decode_base_64];
+    
+                    render_items()
+                    $('.filter-search-arbitrary .input > input').focus()
+                }
+    
+                String.prototype.lowerIncludes = function (string) {
+                    return this.toLowerCase().includes(string.toLowerCase())
+                }
+                String.prototype.maxLength = function (max_length) {
+                    if (this?.length > max_length) return this.slice(0,max_length) + '...';
+                    else return this;
+                }
+    
+                function updateList(event) {
+    
+                    let filter_keys_tags = ``
+    
+                    let temp_keys = Object.keys(filters[selected_tab_index]).filter(key_name => key_name?.lowerIncludes(event.target.value));
+    
+                    temp_keys.sort((a, b) => {
+                        if (a?.lowerIncludes(event.target.value) == false && b?.lowerIncludes(event.target.value) == false) {
+                            return 0
+                        }
+                        else if (a?.lowerIncludes(event.target.value) && b?.lowerIncludes(event.target.value)) {
+                            return a?.indexOf(event.target.value) < b?.indexOf(event.target.value) ? -1 : 0
+                        }
+                        else {
+                            return a?.lowerIncludes(event.target.value) && b?.lowerIncludes(event.target.value) == false ? -1 : 0
+                        }
+                    });
+    
+                    temp_keys.forEach(arbitrary_key => {
+                        filter_keys_tags += `
+                                    <label class="arbitrary-key keyword-id-${makeSafeForCSS(arbitrary_key)}">
+                                        <input type="checkbox" onclick="toggleArbitraryKey(event, '${makeSafeForCSS(arbitrary_key)}')" ${filters[selected_tab_index][arbitrary_key] ? 'checked' : 'unchecked'}/>
+                                        <span title='${arbitrary_key}'>${arbitrary_key}</span>
+                                    </label>
+                                `;
+                    });
+    
+                    $('.filter-search-arbitrary .arbitrary-keys').innerHTML = `<div>` + filter_keys_tags + `</div>
+                        <div class="filter-btns">
+                            <span onclick="checkAll()">Выделить все</span>
+                            <span onclick="uncheckAll()">Снять выделение</span>
+                        </div>
+                        ${isMobile ? '' : `
+                            <div class="filter-info">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+                                <div class="filter-info_prompt">Выделить только один<br/> через Ctrl + Click</div>
+                            </div>
+                        `}
+                    `
+                }
+    
+                updateList({ target: { value: '' } })
+                let temp_pagination_count = 1;
+    
+                function get_domain_name(url) {
+                    let a = document.createElement('a')
+                    a.href = url;
+                    return a.hostname;
+                }
+    
+                function isInViewport(el) {
+                    const rect = el.getBoundingClientRect();
+    
+                    var isinview = (
+                        rect.top >= 0 &&
+                        rect.left >= 0 &&
+                        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    
+                    );
+    
+                    return isinview;
+                }
+    
+                function check_all_items() {
+                    Object.keys(temp_link_classes).forEach(link_class_name => {
+                        let bool = isInViewport($('#'+link_class_name))
+                        if (bool) {
+                            seen_links[temp_link_classes[link_class_name]] = true;
+                            let temp_svg = $(`#${link_class_name} .checkmark.unseen`);
+                            if (temp_svg) temp_svg.addClass('seen_scale');
+                            setTimeout(() => {
+                                if (temp_svg?.style?.display != undefined) temp_svg.style.display = 'none';
+                            }, 1100);
+                        }
+                    })
+                }
+    
+                function render_items() {
+                    let result = ``;
+                    let tab_name = tab_names[selected_tab_index];
+    
+                    let temp_items = [...items[tab_name]];
+    
+                    if (isFilterableTab()) {
+                        temp_items = temp_items.filter(item => (item.keyword_list.find(keyword => filters[selected_tab_index][keyword])))
+                        $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
+                    }
+                    else if (tab_name == 'main') {
+                        temp_items = temp_items.filter(item => (+item.link_weight >= startRangeValue && +item.link_weight <= endRangeValue))
+                        $(`.tab-${selected_tab_index} .tab-count`).innerHTML = temp_items.length;
+                    }
+    
+                    temp_pagination_count = Math.ceil(temp_items?.length / range) || 1;
+    
+                    if (tab_pages[tab_name].page > temp_pagination_count) tab_pages[tab_name].page = temp_pagination_count;
+    
+                    let sliced_items = JSON.parse(JSON.stringify(
+                        temp_items.slice((tab_pages[tab_name].page - 1) * range, tab_pages[tab_name].page * range)
+                    ));
+    
+                    if (isFilterableTab()) {
+                        sliced_items.forEach(sliced_item => {
+                            sliced_item.keyword_list = sliced_item.keyword_list.filter(keyword => filters[selected_tab_index][keyword])
+                        });
+                    }
+    
+                    temp_link_classes = {};
+    
+                    sliced_items.forEach(item => {
+    
+                        let keyword_list = ``
+                        item?.keyword_list.forEach(query => {
+                            if (keyword_list) keyword_list += '<span style="color:black;font-size:17px">, </span>'
+                            keyword_list += `<span
+                                        class="query"
+                                        onclick="copy(this)">
+                                        ${decodeURI(query)}
+                                    </span>`
+                        })
+    
+                        // Вес ссылки
+                        // Похожие
+    
+                        let temp_link_class = makeSafeForCSS(item?.link);
+    
+                        temp_link_classes[temp_link_class] = item?.link;
+    
+                        result += `
+                                <div class="item-container ${seen_links[item?.link] ? 'seen_link' : ''}" id="${temp_link_class}">
+                                    <div class="item" style="position:relative">
+                                        ${seen_links[item?.link] ? '<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>' : '<svg class="checkmark unseen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"></circle></svg>'}
+                                        
+                                        <div class="flex items-center">
+                                            <a target="_blank" href="${item?.link}" class="item-title" title="${item?.title}">${item?.title}</a>
+                                            <!-- <a target="_blank" href="${item?.link}" class="item-more">Источник <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a> -->
+                                        </div>
+                                        <div class="item-content">${item?.content}</div>
+                                        <div class="item-info" style="display:flex;align-items:center;margin-top:5px;font-size:12px;">
+                                            <a href="${item?.link}" target="_blank" style="color: #4d4dff;" title="${get_domain_name(item?.link)}">${get_domain_name(item?.link).maxLength(20)}</a>
+                                            
+                                            <!-- <span style="margin: 0 .8em;white-space:nowrap;display:flex;align-items:center;cursor:default;" title="Вес ссылки: найдено ${item?.keyword_list?.length ?? 0} раз">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="clone" style="max-width:12px;min-width:12px;"
+                                                    viewBox="0 0 512 512">
+                                                    <path
+                                                        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                                                </svg>
+                                                <span style="margin-left:5px;font-size:12px;">${item?.keyword_list?.length ?? 0}</span>
+                                            </span> -->
+                                            
+                                            <div class="mt-auto item-keywords" style="margin-left:9.6px">
+                                                <div class="item-param"><div class="query-content" title='${decodeURI(item?.keyword_list?.join(',  '))}'><span style="color:black">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:12px;fill:#9300FF;margin-bottom: -2.1px;"><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg> </span>${keyword_list}
+                                                    <small class="prompt">Копировать при клике</small></div>
+                                                </div>
+                                                <!-- <div class="item-param">Дубликаты: <span class="param-text">${item?.link_weight}</span></div> -->
+                                                <!-- <div class="item-param">Фигурирует в списках: <span class="param-text">${item?.has_in_list}</span></div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                    });
+    
+                    if (items[tab_name].length) {
+                        $(`.tab-content-${tab_indexes[tab_name]}`).innerHTML = result
+                        $(`.pagination`).forEach(pagination_element => {
+                            pagination_element.style.display = 'flex'
+                        });
+                    }
+                    else {
+                        $(`.pagination`).forEach(pagination_element => {
+                            pagination_element.style.display = 'none'
+                        });
+                    }
+    
+                    update_pagination()
+                    check_all_items()
+    
+                }
+    
+                function update_pagination() {
+                    let tab_name = tab_names[selected_tab_index];
+                    let start_page = 1
+    
+                    if (tab_pages[tab_name].page > 5) start_page = tab_pages[tab_name].page - 5;
+    
+                    let page_tags = ``
+    
+                    for (let i = start_page; i <= ((start_page + 9) <= temp_pagination_count ? start_page + 9 : temp_pagination_count); i++) {
+                        page_tags += `<span onclick="set_page('${tab_names[selected_tab_index]}', ${i})" ${tab_pages[tab_name].page == i ? 'class="selected"' : ''}>${i}</span>`
+                    }
+                    $(`.pagination`).html(`
+                        <div class="flex hovered-angle">
+                            <svg class="first-page" onclick="first_page('${tab_names[selected_tab_index]}')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z" />
+                            </svg>
+                            <svg onclick="minus_page('${tab_names[selected_tab_index]}')" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 320 512">
+                                <path
+                                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </div>
+                        <div class="flex h-full scrollbar">
+                            ${page_tags}
+                        </div>
+                        <div class="flex hovered-angle">
+                            <svg onclick="plus_page('${tab_names[selected_tab_index]}')" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 320 512">
+                                <path
+                                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                            </svg>
+                            <svg class="last-page" onclick="last_page('${tab_names[selected_tab_index]}')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path
+                                    d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
+                            </svg>
+                        </div>
+                    `);
+                }
+    
+                render_items()
+    
+                window.onscroll = function(event) {
+    
+                    console.log('window.onscroll', Object.keys(seen_links).length);
+                    check_all_items();
+            }
+            </script>
+    </body>
+    
+    </html>
+    
