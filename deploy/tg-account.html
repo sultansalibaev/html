@@ -1419,7 +1419,7 @@ table table td img {
                 
                         </div>
                         <script>
-                            let groups = ;
+                            let groups = [];
     
                             if (groups.length) {
                                 let leaks_container = document.querySelector('.groups .flex');
@@ -1449,7 +1449,7 @@ table table td img {
                                 leaks_container.innerHTML += leak_leaks;
                             }
                             else {
-                                document.querySelector('.groups-description .f-w-600').textContent = 'Информация о группах отсудствует'
+                                document.querySelector('.groups-description .f-w-600').textContent = 'Информация о группах отсутствует'
                                 document.querySelector('.groups .flex').innerHTML = '...'
                             } 
                         </script>
@@ -1466,7 +1466,7 @@ table table td img {
                     
                         </div>
                         <script>
-                            let leaks = ;
+                            let leaks = [];
     
                             if (leaks.length) {
                                 let leaks_container = document.querySelector('.leaks .flex');
@@ -1496,7 +1496,7 @@ table table td img {
                                 leaks_container.innerHTML += leak_leaks;
                             }
                             else {
-                                document.querySelector('.leak-description .f-w-600').textContent = 'Информация об изменений профиля отсудствует'
+                                document.querySelector('.leak-description .f-w-600').textContent = 'Информация об изменений профиля отсутствует'
                                 document.querySelector('.leaks .flex').innerHTML = '...'
                             } 
                         </script>
@@ -1512,7 +1512,7 @@ table table td img {
                     
                         </div>
                         <script>
-                            let phones = ;
+                            let phones = [];
     
                             if (phones.length) {
                                 let leaks_container = document.querySelector('.phones .flex');
@@ -1542,7 +1542,7 @@ table table td img {
                                 leaks_container.innerHTML += leak_leaks;
                             }
                             else {
-                                document.querySelector('.phones-description .f-w-600').textContent = 'Информация об телефоне пользователя отсудствует'
+                                document.querySelector('.phones-description .f-w-600').textContent = 'Информация о телефоне пользователя отсутствует'
                                 document.querySelector('.phones .flex').innerHTML = '...'
                             } 
                         </script>
@@ -1590,6 +1590,19 @@ table table td img {
             </div>
     
             <script>
+                
+
+                function tabError(tabIndex, isEmpty = false) {
+                    $(`.tab-content-${tabIndex}`).innerHTML = `
+                        <div class="empty-list">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path
+                                    d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+                            </svg>${isEmpty ? 'Проверка не запрашивалась.' : 'Модуль временно не доступен по техническим причинам, повторите запрос позже.'}
+                        </div>
+                    `
+                }
+                tabError(2, true)
                 let startRangeValue = 0;
                 let endRangeValue = 0;
     

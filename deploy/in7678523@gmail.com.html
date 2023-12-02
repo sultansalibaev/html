@@ -5,7 +5,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>+79506779955</title>
+            <title>in7678523@gmail.com</title>
             <style>
         @import url('https://fonts.cdnfonts.com/css/roboto');
 
@@ -1179,8 +1179,8 @@ table table td img {
     font-size: 13px; 
     white-space: nowrap; 
 }
-tr > td:first-child {
-    text-wrap: balance;
+tr > td:first-child { 
+    text-wrap: balance; 
 }
     </style>
         </head>
@@ -1188,9 +1188,9 @@ tr > td:first-child {
         <body>
         <div class="tab-head" onclick="closeModal(event)">
             <div class="flex items-center" style="flex-wrap: wrap;">
-                <h2 class="object-full_name">Номер: <span style="white-space:nowrap">+79506779955</span></h2>
+                <h2 class="object-full_name">Почта: <span style="white-space:nowrap">in7678523@gmail.com</span></h2>
+
             </div>
-            
             <div class=" tabs flex flex-wrap items-center">
                 <div class="tab-1 selected" onclick="select_tab(1)">
                     Упоминания
@@ -1200,17 +1200,17 @@ tr > td:first-child {
                     Утечки
                     <span class="tab-count" style="display: none;">0</span>
                 </div>
-                <div class="tab-3" onclick="select_tab(3)"> 
-                    Теги 
-                    <span class="tab-count" style="display: none;">0</span> 
-                </div> 
-                <div class="tab-4" onclick="select_tab(4)"> 
-                    Привязки 
-                    <span class="tab-count" style="display: none;">0</span> 
-                </div>
-                <div class="tab-5" onclick="select_tab(5)"> 
+                <div class="tab-3" onclick="select_tab(3)">
                     Поиск аккаунтов 
-                    <span class="tab-count" style="display: none;">0</span> 
+                    <span class="tab-count" style="display: none;">0</span>
+                </div>
+                <div class="tab-4" onclick="select_tab(4)">
+                    Фитнес-трекеры  
+                    <span class="tab-count" style="display: none;">0</span>
+                </div>
+                <div class="tab-5" onclick="select_tab(5)">
+                    Чекеры аккаунтов  
+                    <span class="tab-count" style="display: none;">0</span>
                 </div>
             </div>
         </div>
@@ -1306,15 +1306,15 @@ tr > td:first-child {
             </div>
             <div class="tab-content-2" style="overflow-x: scroll;min-height: calc(100vh - 103px);">
                 <div>
-                    <div class="leaks" style="margin-bottom: 15px;margin-left:10px"> 
-                        <div class="leak-description"><span class="f-w-600">Фигурирует в следующих утечках: </span></div> 
-                        <div class="flex"> 
-                            <!-- Leaks --> 
-                        </div> 
-    
-                    </div> 
-                    <script> 
-                        let leaks = []; 
+                    <div class="leaks" style="margin-bottom: 15px;margin-left:10px">
+                        <div class="leak-description"><span class="f-w-600">Фигурирует в следующих утечках: </span></div>
+                        <div class="flex">
+                            <!-- Leaks -->
+                        </div>
+
+                    </div>
+                    <script>
+                        let leaks = [];
 
                         if (leaks.length) {
                             let leaks_container = document.querySelector('.leaks .flex');
@@ -1324,7 +1324,7 @@ tr > td:first-child {
 
                             let per_col = Math.ceil(leaks.length ** .65) + 1;
 
-                            per_col = Math.ceil(((leaks.length) / per_col) > 6 ? (leaks.length) / 6 : per_col); 
+                            per_col = Math.ceil(((leaks.length) / per_col) > 6 ? (leaks.length) / 6 : per_col);
 
                             console.log('per_col', per_col);
 
@@ -1349,105 +1349,15 @@ tr > td:first-child {
                         } 
                     </script>
                 </div>
-            </div>
-            <div class="tab-content-3" style="overflow-x: scroll;min-height: calc(100vh - 103px);">
-                <div>
-                    <div class="leaks" id="tags" style="margin-bottom: 15px;margin-left:10px;"> 
-                        <div class="leak-description"><span class="f-w-600">Теги из популярных мобильных приложений определения звонящего: </span></div> 
-                        <div class="flex"> 
-                            <!-- Leaks --> 
-                        </div> 
-    
-                    </div> 
-                    <script> 
-                        let start_tags = [];
-
-                        let tags = {};
-
-                        start_tags.forEach(tag => {
-                            if (tags[tag]) {
-                                tags[tag].count++;
-                            }
-                            else {
-                                tags[tag] = {
-                                    name: tag,
-                                    count: 1
-                                }
-                            }
-                        })
-
-                        tags = Object.values(tags)
-
-                        tags.sort((a,b) => (b.count - a.count))
-
-                        console.log(tags)
-    
-                        if (tags.length) { 
-                            let tags_container = document.querySelector('#tags .flex'); 
-                            let leak_tags = '<div class="flex flex-col">'; 
-        
-                            console.log('tags_container', tags_container); 
-        
-                            let per_col = Math.ceil(tags.length ** .65) + 1; 
-
-                            console.log('per_col', per_col);
-                            
-                            per_col = Math.ceil(((tags.length) / per_col) > 5 ? (tags.length) / 5 : per_col); 
-                            console.log('per_col', per_col);
-        
-                            console.log('per_col', per_col); 
-        
-                            tags.forEach((tag, i) => { 
-                                if (((i) % per_col) == 0 && i != 0) { 
-                                    leak_tags += `</div>`; 
-                                    if (i != (tags.length - 1)) leak_tags += `<div class="flex flex-col">`; 
-                                } 
-                                    leak_tags += `<span class="leak" style="position: relative;">${tag.name}${tag.count == 1 ? '' : `<div class="tag-repeated-count">${tag.count}</div>`}</span>`; 
-        
-                                if (i == (tags.length - 1) || ((i + 1) / per_col) == 5) { 
-                                    leak_tags += `</div>`; 
-                                }
-                            }) 
-        
-        
-                            tags_container.innerHTML += leak_tags; 
-                        } 
-                        else { 
-                            document.querySelector('#tags .leak-description .f-w-600').textContent = 'Отсутствуют теги в популярных приложениях…' 
-                            document.querySelector('#tags .flex').innerHTML = '...' 
-                        } 
-                    </script>
-                </div>
-            </div>
-            <div class="tab-content-4">
-                <div class="empty-list">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path
-                            d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
-                    </svg>Привязки отсутствуют
-                </div>
-                <table style="display: none;border-radius: 7px;overflow: hidden;margin-right: auto;margin-left: auto;outline: 1px solid #a7a3a3;margin-bottom: 15px;"
-                    cellspacing="0">
-                    <tbody style="margin: 5px 8px;">
-                        <tr style="">
-                            <th
-                                style="width: 130px;height: 45px;background: #c4d9ce;border-right: 1px solid #939393;border-bottom: 1px solid #939393;">
-                                Проверка</th>
-                            <th style="/* width: 100px; */height: 45px;background: #c4d9ce;border-bottom: 1px solid #939393;">Результат</th>
-                        </tr>
-                        
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="tab-content-5">
+</div>
+            <div class="tab-content-3">
                 <div class="empty-list">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path
                             d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
                     </svg>Связанные аккаунты отсутствуют
                 </div>
-                <table style="display: none;border-radius: 7px;overflow: hidden;margin-right: auto;margin-left: auto;outline: 1px solid #a7a3a3;margin-bottom: 15px;"
+                <table style="border-radius: 7px;overflow: hidden;margin-right: auto;margin-left: auto;outline: 1px solid #a7a3a3;margin-bottom: 15px;"
                     cellspacing="0">
                     <tbody style="margin: 5px 8px;">
                         <tr style="">
@@ -1456,7 +1366,170 @@ tr > td:first-child {
                                 Проверка</th>
                             <th style="/* width: 100px; */height: 45px;background: #c4d9ce;border-bottom: 1px solid #939393;">Результат</th>
                         </tr>
-                        <tr><td class="td-key">Регион, оператор</td> <td>Россия, Калининградская обл., ООО "Т2 Мобайл"</td></tr><tr><td class="td-key">Связанные номера телефона</td> <td>79506779955</td></tr><tr><td class="td-key">Связанные адреса электронной почты</td> <td>sai84@list.ru, info@detective-kaliningrad.ru</td></tr><tr><td class="td-key">Аккаунты в соц. сетях</td> <td>https://facebook.com/profile.php?id=100008754370673</td></tr><tr><td class="td-key">Аккаунт ICQ</td> <td>Не выявлено.</td></tr><tr><td class="td-key">Аккаунт Skype</td> <td>Не выявлено.</td></tr><tr><td class="td-key">Аккаунт Telegram</td> <td>@sedykhaleksey 234343072, @speculantu_ru 234343072</td></tr><tr><td class="td-key">Никнеймы пользователя на сайтах и в соц. сетях</td> <td>sedykhaleksey, speculantu_ru</td></tr><tr><td class="td-key">Статус пользователя</td> <td>Не выявлено.</td></tr>
+                        <tr><td class="td-key">Связанные номера телефона</td> <td>Не выявлено.</td></tr><tr><td class="td-key">Связанные адреса электронной почты</td> <td>in7678523@gmail.com</td></tr><tr><td class="td-key">Аккаунты в соц. сетях</td> <td>Не выявлено.</td></tr><tr><td class="td-key">Аккаунт ICQ</td> <td>Не выявлено.</td></tr><tr><td class="td-key">Аккаунт Skype</td> <td>Не выявлено.</td></tr><tr><td class="td-key">Аккаунт Telegram</td> <td>Не выявлено.</td></tr><tr><td class="td-key">Никнеймы пользователя на сайтах и в соц. сетях</td> <td>Не выявлено.</td></tr><tr><td class="td-key">Статус пользователя</td> <td>Не выявлено.</td></tr>
+                    </tbody>
+                </table>                
+            </div>
+            <div class="tab-content-4">
+                <table style="border-radius: 7px;overflow: hidden;margin-right: auto;margin-left: auto;outline: 1px solid #a7a3a3;margin-bottom: 15px;"
+                    cellspacing="0">
+                    <tbody style="margin: 5px 8px;">
+                        <tr style="">
+                            <th
+                                style="width: 250px;height: 45px;background: #c4d9ce;border-right: 1px solid #939393;border-bottom: 1px solid #939393;">
+                                Проверка</th>
+                            <th style="/* width: 100px; */height: 45px;background: #c4d9ce;border-bottom: 1px solid #939393;">Результат</th>
+                        </tr>
+                        <tr>
+    <td>Runkeeper</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Sporttrack</td>
+    <td class="empty-result">результат отсутствует</td>
+</tr><tr>
+    <td>Fitbit</td>
+    <td class="empty-result">результат отсутствует</td>
+</tr><tr>
+    <td>mapmyfitness</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Pulsstory</td>
+    <td class="empty-result">результат отсутствует</td>
+</tr><tr>
+    <td>Nikeplus</td>
+    <td class="empty-result">результат отсутствует</td>
+</tr><tr>
+    <td>Myfitnesspal</td>
+    <td class="empty-result">результат отсутствует</td>
+</tr><tr>
+    <td>Adidas</td>
+    <td class="empty-result">результат отсутствует</td>
+</tr><tr>
+    <td>Garminconnect</td>
+    <td class="empty-result">результат отсутствует</td>
+</tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-content-5">
+                <table style="border-radius: 7px;overflow: hidden;margin-right: auto;margin-left: auto;outline: 1px solid #a7a3a3;margin-bottom: 15px;"
+                    cellspacing="0">
+                    <tbody style="margin: 5px 8px;">
+                        <tr style="">
+                            <th
+                                style="width: 250px;height: 45px;background: #c4d9ce;border-right: 1px solid #939393;border-bottom: 1px solid #939393;">
+                                Проверка</th>
+                            <th style="/* width: 100px; */height: 45px;background: #c4d9ce;border-bottom: 1px solid #939393;">Результат</th>
+                        </tr>
+                        <tr>
+    <td>Instagram_restore_v1</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Aliexpress</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Microsoft</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Freelancer</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Spotify</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Samsung_v1</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Github</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Adobe</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Twitter</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Quora</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Codecademy</td>
+    <td><table cellspacing="0"><tbody><tr> <td class="td-key">Аккаунт</td> <td class="account-exist">зарегистрирован</td></tr></tbody></table></td>
+</tr><tr>
+    <td>Aeroflot_v1</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>7cups</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Lastfm</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Vrbo</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Eventbrite</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Xing</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Seoclerks</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Replit</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Protonmail_v1</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Firefox</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Archiveorg</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Rambler_restore_v1</td>
+    <td class="empty-result">результат отсутствует</td>
+</tr><tr>
+    <td>Ivi</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Evernote</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Lastpass</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Smule</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Sporcle</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Anydo</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Blablacar</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Pornhub</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Wattpad</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Wordpress_com</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Amazon</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Xvideos</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr><tr>
+    <td>Snapchat_bitmoji</td>
+    <td><span class="account-dont-exist">Аккаунт не зарегистрирован</span><br></td>
+</tr>
                     </tbody>
                 </table>
             </div>
@@ -1502,6 +1575,21 @@ tr > td:first-child {
         </div>
 
         <script>
+
+
+
+            function tabError(tabIndex, isEmpty = false) {
+                $(`.tab-content-${tabIndex}`).innerHTML = `
+                            <div class="empty-list">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path
+                                        d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+                                </svg>${isEmpty ? 'Проверка не запрашивалась.' : 'Модуль временно не доступен по техническим причинам, повторите запрос позже.'}
+                            </div>
+                        `
+            }
+            tabError(2, true)
+
             let startRangeValue = 0;
             let endRangeValue = 0;
 
@@ -1565,19 +1653,6 @@ tr > td:first-child {
             Object.prototype.removeClass = function (className) {
                 this?.classList?.remove(className)
             }
-
-            
-            function tabError(tabIndex) {
-                $(`.tab-content-${tabIndex}`).innerHTML = `
-                    <div class="empty-list">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path
-                                d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
-                        </svg>Модуль временно не доступен по техническим причинам, повторите запрос позже.
-                    </div>
-                `
-            }
-            // tabError(2)
 
             let filterable_tabs = [1, 2, 3, 4, 5, 6]
             const items = {
@@ -1769,7 +1844,8 @@ tr > td:first-child {
             }
 
             let filters = {
-                    1: {  },
+                    1: { 'in7678523@gmail.com': true,
+ },
                     }
 
             function makeSafeForCSS(name) {
@@ -1967,7 +2043,7 @@ tr > td:first-child {
                             <div class="item-container ${seen_links[item?.link] ? 'seen_link' : ''}" id="${temp_link_class}">
                                 <div class="item" style="position:relative">
                                     ${seen_links[item?.link] ? '<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>' : '<svg class="checkmark unseen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"></circle></svg>'}
-                                    
+
                                     <div class="flex items-center">
                                         <a target="_blank" href="${item?.link}" class="item-title" title="${item?.title}">${item?.title}</a>
                                         <!-- <a target="_blank" href="${item?.link}" class="item-more">Источник <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg></a> -->
@@ -1975,7 +2051,7 @@ tr > td:first-child {
                                     <div class="item-content">${item?.content}</div>
                                     <div class="item-info" style="display:flex;align-items:center;margin-top:5px;font-size:12px;">
                                         <a href="${item?.link}" target="_blank" style="color: #4d4dff;" title="${get_domain_name(item?.link)}">${get_domain_name(item?.link).maxLength(20)}</a>
-                                        
+
                                         <!-- <span style="margin: 0 .8em;white-space:nowrap;display:flex;align-items:center;cursor:default;" title="Вес ссылки: найдено ${item?.keyword_list?.length ?? 0} раз">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="clone" style="max-width:12px;min-width:12px;"
                                                 viewBox="0 0 512 512">
@@ -1984,7 +2060,7 @@ tr > td:first-child {
                                             </svg>
                                             <span style="margin-left:5px;font-size:12px;">${item?.keyword_list?.length ?? 0}</span>
                                         </span> -->
-                                        
+
                                         <div class="mt-auto item-keywords" style="margin-left:9.6px">
                                             <div class="item-param"><div class="query-content" title='${decodeURI(item?.keyword_list?.join(',  '))}'><span style="color:black">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:12px;fill:#9300FF;margin-bottom: -2.1px;"><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg> </span>${keyword_list}
